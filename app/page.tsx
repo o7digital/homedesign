@@ -22,7 +22,6 @@ export default function Home() {
 
   return (
     <div className="bg-[#fefaf3] font-sans flex flex-col min-h-screen">
-      {/* Header */}
       <header className="fixed top-0 w-full bg-black text-white z-50">
         <div className="max-w-[1100px] mx-auto flex justify-between items-center p-4">
           <div className="font-bold text-lg">Home Design Márquez</div>
@@ -58,7 +57,6 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Slider */}
       <div className="h-screen mt-[60px] relative overflow-hidden">
         {slides.map((src, i) => (
           <Image
@@ -73,7 +71,6 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Quiénes somos */}
       <section className="max-w-[1100px] mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4">Quiénes somos</h2>
         <p>
@@ -95,7 +92,6 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Tipos de Madera */}
       <section id="tipos" className="max-w-[1100px] mx-auto p-6">
         <h2 className="text-3xl font-bold mb-6 text-center text-[#5d3b2d]">
           Tipos de Madera
@@ -125,7 +121,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Productos */}
       <section id="productos" className="max-w-[1100px] mx-auto p-6 w-full">
         <h2 className="text-3xl font-bold mb-8 text-center text-[#5d3b2d]">
           Nuestros Productos
@@ -158,19 +153,12 @@ export default function Home() {
                 <p className="text-green-600 font-semibold mt-1">
                   Stock: {prod.stock} unidades
                 </p>
-                <Link
-                  href={`/productos/${prod.id}`}
-                  className="mt-3 inline-block bg-[#5d3b2d] text-white px-4 py-2 rounded-lg hover:bg-[#4a2f23] transition"
-                >
-                  Ver más
-                </Link>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </section>
 
-      {/* Contacto */}
       <section id="contacto" className="max-w-[1100px] mx-auto p-6">
         <h2 className="text-3xl font-bold mb-4 text-center text-[#5d3b2d]">
           Contáctanos
@@ -201,7 +189,6 @@ export default function Home() {
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
-
           <div>
             <label
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
@@ -218,7 +205,6 @@ export default function Home() {
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
-
           <div>
             <label
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
@@ -235,7 +221,6 @@ export default function Home() {
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
-
           <div>
             <label
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
@@ -252,7 +237,6 @@ export default function Home() {
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
-
           <div>
             <label
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
@@ -269,7 +253,6 @@ export default function Home() {
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             ></textarea>
           </div>
-
           <button
             type="submit"
             className="w-full bg-[#5d3b2d] text-white py-3 rounded-lg font-bold hover:bg-[#4a2f23] transition"
@@ -279,7 +262,6 @@ export default function Home() {
         </form>
       </section>
 
-      {/* Footer */}
       <footer className="bg-black text-white text-center py-6 mt-10">
         <p className="text-sm">
           © {new Date().getFullYear()} Home Design Márquez. Todos los derechos

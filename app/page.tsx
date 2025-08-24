@@ -75,21 +75,23 @@ export default function Home() {
 
       {/* Quiénes somos */}
       <section className="max-w-[1100px] mx-auto p-6">
-        <h2 className="text-2xl font-bold mb-4">Quiénes somos</h2>
-        <p>
-          <strong>Misión:</strong> Ofrecer viviendas de madera prefabricadas de
+        <h2 className="text-3xl font-bold mb-6 text-center text-[#5d3b2d]">
+          Quiénes somos
+        </h2>
+        <p className="text-lg text-gray-800 mb-3">
+          <strong className="text-[#5d3b2d]">Misión:</strong> Ofrecer viviendas de madera prefabricadas de
           alta calidad, ecológicas y accesibles para familias mexicanas.
         </p>
-        <p>
-          <strong>Visión:</strong> Ser líderes en el mercado nacional de casas
+        <p className="text-lg text-gray-800 mb-3">
+          <strong className="text-[#5d3b2d]">Visión:</strong> Ser líderes en el mercado nacional de casas
           de madera, innovando en diseño y servicio al cliente.
         </p>
-        <p>
-          <strong>Valores:</strong> Calidad · Sustentabilidad · Cercanía ·
+        <p className="text-lg text-gray-800 mb-3">
+          <strong className="text-[#5d3b2d]">Valores:</strong> Calidad · Sustentabilidad · Cercanía ·
           Diseño innovador
         </p>
-        <p>
-          <strong>Nuestra historia:</strong> Home Design Márquez nace del sueño
+        <p className="text-lg text-gray-800">
+          <strong className="text-[#5d3b2d]">Nuestra historia:</strong> Home Design Márquez nace del sueño
           de crear hogares accesibles y acogedores, con diseño moderno y
           materiales naturales.
         </p>
@@ -143,13 +145,15 @@ export default function Home() {
             <SwiperSlide key={prod.id}>
               <div className="bg-[#fff2e6] p-4 rounded-xl text-center shadow-md hover:shadow-lg transition">
                 <Image
-                  src="/img/productos/default.jpeg"
+                  src={prod.img || "/img/productos/default.jpeg"}
                   alt={prod.nombre}
                   width={250}
                   height={200}
                   className="rounded-lg mx-auto mb-4"
                 />
-                <div className="text-sm text-gray-600 mb-2">{prod.id}</div>
+                <div className="text-sm text-gray-600 mb-2">
+                  {prod.sku || prod.id}
+                </div>
                 <h3 className="font-bold text-lg text-[#5d3b2d]">
                   {prod.nombre}
                 </h3>

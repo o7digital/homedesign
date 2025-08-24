@@ -138,14 +138,14 @@ export default function Home() {
             <SwiperSlide key={prod.id}>
               <div className="bg-[#fff2e6] p-4 rounded-xl text-center shadow-md hover:shadow-lg transition">
                 <Image
-                  src={prod.img ? prod.img : "/img/productos/default.jpeg"}
+                  src={(prod as any).img || "/img/productos/default.jpeg"}
                   alt={prod.nombre}
                   width={250}
                   height={200}
                   className="rounded-lg mx-auto mb-4"
                 />
                 <div className="text-sm text-gray-600 mb-2">
-                  {prod.sku || prod.id}
+                  {(prod as any).sku || prod.id}
                 </div>
                 <h3 className="font-bold text-lg text-[#5d3b2d]">
                   {prod.nombre}
@@ -197,6 +197,7 @@ export default function Home() {
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
+
           <div>
             <label
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
@@ -213,6 +214,7 @@ export default function Home() {
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
+
           <div>
             <label
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
@@ -229,6 +231,7 @@ export default function Home() {
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
+
           <div>
             <label
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
@@ -245,6 +248,7 @@ export default function Home() {
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
+
           <div>
             <label
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
@@ -261,6 +265,7 @@ export default function Home() {
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             ></textarea>
           </div>
+
           <button
             type="submit"
             className="w-full bg-[#5d3b2d] text-white py-3 rounded-lg font-bold hover:bg-[#4a2f23] transition"

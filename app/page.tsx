@@ -76,19 +76,19 @@ export default function Home() {
       {/* Quiénes somos */}
       <section className="max-w-[1100px] mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4 text-[#5d3b2d]">Quiénes somos</h2>
-        <p>
+        <p className="text-gray-800">
           <strong>Misión:</strong> Ofrecer viviendas de madera prefabricadas de
           alta calidad, ecológicas y accesibles para familias mexicanas.
         </p>
-        <p>
+        <p className="text-gray-800">
           <strong>Visión:</strong> Ser líderes en el mercado nacional de casas
           de madera, innovando en diseño y servicio al cliente.
         </p>
-        <p>
+        <p className="text-gray-800">
           <strong>Valores:</strong> Calidad · Sustentabilidad · Cercanía ·
           Diseño innovador
         </p>
-        <p>
+        <p className="text-gray-800">
           <strong>Nuestra historia:</strong> Home Design Márquez nace del sueño
           de crear hogares accesibles y acogedores, con diseño moderno y
           materiales naturales.

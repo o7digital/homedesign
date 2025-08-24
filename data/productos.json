@@ -7,7 +7,8 @@
     "precio": "$10 MXN",
     "stock": 25,
     "valorInventario": 1275,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0002",
@@ -17,7 +18,8 @@
     "precio": "$10 MXN",
     "stock": 132,
     "valorInventario": 12276,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0003",
@@ -27,7 +29,8 @@
     "precio": "$10 MXN",
     "stock": 151,
     "valorInventario": 8607,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0004",
@@ -37,7 +40,8 @@
     "precio": "$10 MXN",
     "stock": 186,
     "valorInventario": 3534,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0005",
@@ -47,7 +51,8 @@
     "precio": "$10 MXN",
     "stock": 62,
     "valorInventario": 4650,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0006",
@@ -57,7 +62,8 @@
     "precio": "$10 MXN",
     "stock": 5,
     "valorInventario": 55,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0007",
@@ -67,7 +73,8 @@
     "precio": "$10 MXN",
     "stock": 58,
     "valorInventario": 3248,
-    "descatalogado": "Sí"
+    "descatalogado": "Sí",
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0008",
@@ -77,7 +84,8 @@
     "precio": "$10 MXN",
     "stock": 101,
     "valorInventario": 3838,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0009",
@@ -87,7 +95,8 @@
     "precio": "$10 MXN",
     "stock": 122,
     "valorInventario": 7198,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0010",
@@ -97,7 +106,8 @@
     "precio": "$10 MXN",
     "stock": 175,
     "valorInventario": 8750,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0011",
@@ -107,7 +117,8 @@
     "precio": "$10 MXN",
     "stock": 50,
     "valorInventario": 3150,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0012",
@@ -117,7 +128,8 @@
     "precio": "$10 MXN",
     "stock": 49,
     "valorInventario": 1715,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0013",
@@ -127,7 +139,8 @@
     "precio": "$10 MXN",
     "stock": 93,
     "valorInventario": 2046,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0014",
@@ -137,7 +150,8 @@
     "precio": "$10 MXN",
     "stock": 10,
     "valorInventario": 80,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0015",
@@ -147,7 +161,8 @@
     "precio": "$10 MXN",
     "stock": 10,
     "valorInventario": 120,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0016",
@@ -157,7 +172,8 @@
     "precio": "$10 MXN",
     "stock": 10,
     "valorInventario": 90,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0017",
@@ -167,7 +183,8 @@
     "precio": "$10 MXN",
     "stock": 10,
     "valorInventario": 80,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0018",
@@ -177,7 +194,8 @@
     "precio": "$10 MXN",
     "stock": 10,
     "valorInventario": 110,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0019",
@@ -187,7 +205,8 @@
     "precio": "$10 MXN",
     "stock": 10,
     "valorInventario": 90,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0020",
@@ -197,7 +216,8 @@
     "precio": "$10 MXN",
     "stock": 10,
     "valorInventario": 70,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0021",
@@ -207,7 +227,8 @@
     "precio": "$10 MXN",
     "stock": 10,
     "valorInventario": 80,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0022",
@@ -217,7 +238,8 @@
     "precio": "$10 MXN",
     "stock": 10,
     "valorInventario": 70,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   },
   {
     "id": "HDM0023",
@@ -227,6 +249,7 @@
     "precio": "$10 MXN",
     "stock": 10,
     "valorInventario": 90,
-    "descatalogado": null
+    "descatalogado": null,
+    "img": "/img/productos/default.jpeg"
   }
 ]

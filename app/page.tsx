@@ -75,7 +75,7 @@ export default function Home() {
 
       {/* Quiénes somos */}
       <section className="max-w-[1100px] mx-auto p-6">
-        <h2 className="text-2xl font-bold mb-4">Quiénes somos</h2>
+        <h2 className="text-2xl font-bold mb-4 text-[#5d3b2d]">Quiénes somos</h2>
         <p>
           <strong>Misión:</strong> Ofrecer viviendas de madera prefabricadas de
           alta calidad, ecológicas y accesibles para familias mexicanas.
@@ -295,4 +295,3 @@ export default function Home() {
     </div>
   );
 }
-  # añade un espacio en blanco

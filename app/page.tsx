@@ -25,7 +25,7 @@ export default function Home() {
       {/* Header */}
       <header className="fixed top-0 w-full bg-black text-white z-50">
         <div className="max-w-[1100px] mx-auto flex justify-between items-center p-4">
-          <div className="font-bold text-lg">Home Design Márquez</div>
+          <div className="font-bold text-lg">Home Design Márques</div>
           <div
             className="text-2xl cursor-pointer md:hidden"
             onClick={() => setMenuOpen(!menuOpen)}

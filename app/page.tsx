@@ -282,7 +282,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-black text-white text-center py-6 mt-10">
         <p className="text-sm">
-          © {new Date().getFullYear()} Home Design Márquez. Todos los derechos
+          © {new Date().getFullYear()} Home Design Márques. Todos los derechos
           reservados.
         </p>
         <Link

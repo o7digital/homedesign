@@ -11,6 +11,9 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
 
+  const [selectedTipo, setSelectedTipo] = useState("Todos");
+  const [visibleCount, setVisibleCount] = useState(9);
+
   const slides = ["/img/slider1.jpg", "/img/slider2.jpg", "/img/slider3.jpg"];
 
   useEffect(() => {
@@ -20,12 +23,19 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [slides.length]);
 
+  // Filtrar productos por tipo
+  const tipos = ["Todos", ...Array.from(new Set(productos.map((p) => p.Tipo).filter(Boolean)))];
+  const productosFiltrados =
+    selectedTipo === "Todos"
+      ? productos
+      : productos.filter((p) => p.Tipo === selectedTipo);
+
   return (
     <div className="bg-[#fefaf3] font-sans flex flex-col min-h-screen">
       {/* Header */}
       <header className="fixed top-0 w-full bg-black text-white z-50">
         <div className="max-w-[1100px] mx-auto flex justify-between items-center p-4">
-          <div className="font-bold text-lg">Home Design Márques</div>
+          <div className="font-bold text-lg">Home Design Marques</div>
           <div
             className="text-2xl cursor-pointer md:hidden"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -89,7 +99,7 @@ export default function Home() {
           Diseño innovador
         </p>
         <p className="text-gray-800">
-          <strong>Nuestra historia:</strong> Home Design Márquez nace del sueño
+          <strong>Nuestra historia:</strong> Home Design Marques nace del sueño
           de crear hogares accesibles y acogedores, con diseño moderno y
           materiales naturales.
         </p>
@@ -130,44 +140,85 @@ export default function Home() {
         <h2 className="text-3xl font-bold mb-8 text-center text-[#5d3b2d]">
           Nuestros Productos
         </h2>
-        <Swiper
-          spaceBetween={20}
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-        >
-          {productos.map((prod) => (
-            <SwiperSlide key={prod.id}>
-              <div className="bg-[#fff2e6] p-4 rounded-xl text-center shadow-md hover:shadow-lg transition">
+
+        {/* Filtro */}
+        <div className="flex flex-wrap justify-center gap-2 mb-6">
+          {tipos.map((tipo) => (
+            <button
+              key={tipo}
+              onClick={() => {
+                setSelectedTipo(tipo);
+                setVisibleCount(9);
+              }}
+              className={`px-4 py-2 rounded-lg font-semibold ${
+                selectedTipo === tipo
+                  ? "bg-[#5d3b2d] text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+            >
+              {tipo}
+            </button>
+          ))}
+        </div>
+
+        {/* Lista de productos */}
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          {productosFiltrados.slice(0, visibleCount).map((prod) => (
+            <div
+              key={prod.SKU}
+              className="bg-[#fff2e6] p-4 rounded-xl text-center shadow-md hover:shadow-lg transition"
+            >
+              {prod.Imagen ? (
                 <Image
-                  src={prod.img || "/img/productos/default.jpeg"}
-                  alt={prod.nombre}
+                  src={prod.Imagen}
+                  alt={prod.NombreProducto}
                   width={250}
                   height={200}
                   className="rounded-lg mx-auto mb-4"
                 />
-                <div className="text-sm text-gray-600 mb-2">{prod.id}</div>
-                <h3 className="font-bold text-lg text-[#5d3b2d]">
-                  {prod.nombre}
-                </h3>
-                <p className="text-sm text-gray-700">{prod.descripcion}</p>
-                <p className="font-semibold mt-2">{prod.precio}</p>
-                <p className="text-green-600 font-semibold mt-1">
-                  Stock: {prod.stock} unidades
-                </p>
-                <Link
-                  href={`/productos/${prod.id}`}
-                  className="mt-3 inline-block bg-[#5d3b2d] text-white px-4 py-2 rounded-lg hover:bg-[#4a2f23] transition"
-                >
-                  Ver más
-                </Link>
-              </div>
-            </SwiperSlide>
+              ) : (
+                <div className="w-[250px] h-[200px] flex items-center justify-center bg-gray-300 rounded-lg mx-auto mb-4 text-gray-700 text-sm">
+                  Foto no disponible
+                </div>
+              )}
+              <div className="text-sm text-gray-600 mb-2">{prod.SKU}</div>
+              <h3 className="font-bold text-lg text-[#5d3b2d]">
+                {prod.NombreProducto}
+              </h3>
+              <p className="text-sm text-gray-700">{prod.Descripcion}</p>
+              <p className="font-semibold mt-2">
+                {prod.Precio > 0
+                  ? `Precio: $${prod.Precio} MXN`
+                  : "Precio: Por cotizar"}
+              </p>
+              <p
+                className={`font-semibold mt-1 ${
+                  prod.Stock > 0 ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {prod.Stock > 0 ? `Stock: ${prod.Stock} unidades` : "Agotado"}
+              </p>
+              <Link
+                href={`/productos/${prod.SKU}`}
+                className="mt-3 inline-block bg-[#5d3b2d] text-white px-4 py-2 rounded-lg hover:bg-[#4a2f23] transition"
+              >
+                Ver más
+              </Link>
+            </div>
           ))}
-        </Swiper>
+        </div>
+
+        {/* Botón Ver más */}
+        {visibleCount < productosFiltrados.length && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 9)}
+              className="bg-[#5d3b2d] text-white px-6 py-3 rounded-lg hover:bg-[#4a2f23] transition"
+            >
+              Ver más productos
+            </button>
+          </div>
+        )}
       </section>
 
       {/* Contacto */}
@@ -282,7 +333,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-black text-white text-center py-6 mt-10">
         <p className="text-sm">
-          © {new Date().getFullYear()} Home Design Márques. Todos los derechos
+          © {new Date().getFullYear()} Home Design Marques. Todos los derechos
           reservados.
         </p>
         <Link

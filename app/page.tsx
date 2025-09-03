@@ -5,7 +5,7 @@ import Link from "next/link";
 import productosData from "../data/productos.json";
 import maderas from "../data/maderas.json";
 
-// Definimos el tipo de producto para que TypeScript lo reconozca
+// Definimos el tipo de producto
 interface Producto {
   SKU: string;
   NombreProducto: string;
@@ -18,8 +18,8 @@ interface Producto {
   Imagen?: string | null;
 }
 
-// Cast explícito a Producto[]
-const productos: Producto[] = productosData as Producto[];
+// ✅ Forzamos el tipado del JSON
+const productos: Producto[] = productosData as unknown as Producto[];
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,7 +37,7 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  // Tipos únicos desde productos.json
+  // ✅ Aquí ya reconoce el campo "Tipo"
   const tipos = [
     "Todos",
     ...Array.from(

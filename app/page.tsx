@@ -21,8 +21,8 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  // Tipos únicos desde productos.json
-  const tipos = ["Todos", ...Array.from(new Set(productos.map((p) => p.Tipo).filter(Boolean)))];
+  // Tipos únicos desde productos.json (forzado a string[])
+  const tipos = ["Todos", ...Array.from(new Set(productos.map((p) => p.Tipo).filter(Boolean)))] as string[];
 
   const productosFiltrados =
     selectedTipo === "Todos"

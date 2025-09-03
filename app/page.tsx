@@ -2,8 +2,32 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import productos from "../data/productos.json";
-import maderas from "../data/maderas.json";
+import productosData from "../data/productos.json";
+import maderasData from "../data/maderas.json";
+
+// Interfaces
+interface Producto {
+  SKU: string;
+  NombreProducto: string;
+  Descripcion: string;
+  Precio: number;
+  Stock: number;
+  NivelReorden: number;
+  Descatalogado: string | null;
+  Tipo: string | null;
+  Imagen: string;
+}
+
+interface Madera {
+  id: string;
+  nombre: string;
+  origen: string;
+  img: string;
+}
+
+// Casting de JSON a tipos correctos
+const productos: Producto[] = productosData as Producto[];
+const maderas: Madera[] = maderasData as Madera[];
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);

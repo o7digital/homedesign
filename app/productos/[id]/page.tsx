@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function ProductoDetalle() {
   const { id } = useParams();
-  const producto = productos.find((p) => p.id === id);
+  const producto = productos.find((p) => p.SKU === id);
 
   if (!producto) {
     return (
@@ -27,7 +27,7 @@ export default function ProductoDetalle() {
       <header className="w-full bg-black text-white p-4">
         <div className="max-w-[1100px] mx-auto flex justify-between items-center">
           <Link href="/" className="font-bold text-lg">
-            Home Design Márquez
+            Home Design Marques
           </Link>
           <nav>
             <ul className="flex gap-6">
@@ -55,28 +55,34 @@ export default function ProductoDetalle() {
       <main className="max-w-[900px] mx-auto bg-[#fff2e6] mt-10 p-6 rounded-xl shadow-md">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
           <Image
-            src={producto.img ? producto.img : "/img/default.jpeg"}
-            alt={producto.nombre}
+            src={producto.Imagen || "/img/productos/default.jpeg"}
+            alt={producto.NombreProducto}
             width={400}
             height={300}
             className="rounded-lg shadow-md"
           />
           <div>
             <h1 className="text-3xl font-bold text-[#5d3b2d] mb-2">
-              {producto.nombre}
+              {producto.NombreProducto}
             </h1>
-            <p className="text-gray-600 mb-2">SKU: {producto.id}</p>
-            <p className="text-gray-600 mb-2">Categoría: {producto.categoria}</p>
-            <p className="mb-4">{producto.descripcion}</p>
-            <p className="text-2xl font-bold mb-4">{producto.precio}</p>
+            <p className="text-gray-600 mb-2">SKU: {producto.SKU}</p>
+            <p className="text-gray-600 mb-2">
+              Categoría: {producto.Tipo || "General"}
+            </p>
+            <p className="mb-4">{producto.Descripcion}</p>
+            <p className="text-2xl font-bold mb-4">
+              {producto.Precio > 0 ? `$${producto.Precio} MXN` : "Precio a cotizar"}
+            </p>
             <p
               className={`mb-4 ${
-                producto.stock > 10 ? "text-green-600" : "text-red-600"
+                producto.Stock > 10 ? "text-green-600" : "text-red-600"
               }`}
             >
-              Stock disponible: {producto.stock} unidades
+              {producto.Stock > 0
+                ? `Stock disponible: ${producto.Stock} unidades`
+                : "Agotado"}
             </p>
-            {producto.descatalogado && (
+            {producto.Descatalogado && (
               <p className="text-red-600 font-semibold">
                 🚫 Producto descatalogado
               </p>
@@ -94,8 +100,7 @@ export default function ProductoDetalle() {
       {/* Footer */}
       <footer className="bg-black text-white text-center py-6 mt-10">
         <p className="text-sm">
-          © {new Date().getFullYear()} Home Design Márquez. Todos los derechos
-          reservados.
+          © {new Date().getFullYear()} Home Design Marques. Todos los derechos reservados.
         </p>
         <Link href="/aviso-privacidad" className="underline hover:text-gray-300">
           Aviso de Privacidad

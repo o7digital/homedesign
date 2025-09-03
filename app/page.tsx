@@ -21,8 +21,7 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  // Tipos únicos desde productos.json (forzado a string[])
-  const tipos = ["Todos", ...Array.from(new Set(productos.map((p) => p.Tipo).filter(Boolean)))] as string[];
+  const tipos = ["Todos", ...Array.from(new Set(productos.map((p) => p.Tipo).filter(Boolean)))];
 
   const productosFiltrados =
     selectedTipo === "Todos"
@@ -236,10 +235,7 @@ export default function Home() {
           className="bg-[#fff2e6] p-8 rounded-xl shadow-md max-w-lg mx-auto space-y-6"
         >
           <div>
-            <label
-              className="block text-base font-semibold text-[#5d3b2d] mb-2"
-              htmlFor="nombre"
-            >
+            <label className="block text-base font-semibold text-[#5d3b2d] mb-2" htmlFor="nombre">
               Nombre
             </label>
             <input
@@ -253,10 +249,7 @@ export default function Home() {
           </div>
 
           <div>
-            <label
-              className="block text-base font-semibold text-[#5d3b2d] mb-2"
-              htmlFor="apellido"
-            >
+            <label className="block text-base font-semibold text-[#5d3b2d] mb-2" htmlFor="apellido">
               Apellido
             </label>
             <input
@@ -270,10 +263,7 @@ export default function Home() {
           </div>
 
           <div>
-            <label
-              className="block text-base font-semibold text-[#5d3b2d] mb-2"
-              htmlFor="telefono"
-            >
+            <label className="block text-base font-semibold text-[#5d3b2d] mb-2" htmlFor="telefono">
               Teléfono
             </label>
             <input
@@ -287,10 +277,7 @@ export default function Home() {
           </div>
 
           <div>
-            <label
-              className="block text-base font-semibold text-[#5d3b2d] mb-2"
-              htmlFor="email"
-            >
+            <label className="block text-base font-semibold text-[#5d3b2d] mb-2" htmlFor="email">
               Correo electrónico
             </label>
             <input
@@ -304,10 +291,7 @@ export default function Home() {
           </div>
 
           <div>
-            <label
-              className="block text-base font-semibold text-[#5d3b2d] mb-2"
-              htmlFor="comentarios"
-            >
+            <label className="block text-base font-semibold text-[#5d3b2d] mb-2" htmlFor="comentarios">
               Comentarios
             </label>
             <textarea
@@ -332,13 +316,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-black text-white text-center py-6 mt-10">
         <p className="text-sm">
-          © {new Date().getFullYear()} Home Design Marques. Todos los derechos
-          reservados.
+          © {new Date().getFullYear()} Home Design Marques. Todos los derechos reservados.
         </p>
-        <Link
-          href="/aviso-privacidad"
-          className="underline hover:text-gray-300"
-        >
+        <Link href="/aviso-privacidad" className="underline hover:text-gray-300">
           Aviso de Privacidad
         </Link>
       </footer>

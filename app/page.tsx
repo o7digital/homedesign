@@ -3,9 +3,9 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import productosData from "../data/productos.json";
-import maderasData from "../data/maderas.json";
+import maderas from "../data/maderas.json";
 
-// Interfaces
+// Definimos el tipo de producto para que TypeScript lo reconozca
 interface Producto {
   SKU: string;
   NombreProducto: string;
@@ -13,21 +13,13 @@ interface Producto {
   Precio: number;
   Stock: number;
   NivelReorden: number;
-  Descatalogado: string | null;
-  Tipo: string | null;
-  Imagen: string;
+  Descatalogado: boolean | null;
+  Tipo?: string | null;
+  Imagen?: string | null;
 }
 
-interface Madera {
-  id: string;
-  nombre: string;
-  origen: string;
-  img: string;
-}
-
-// Casting de JSON a tipos correctos
+// Cast explícito a Producto[]
 const productos: Producto[] = productosData as Producto[];
-const maderas: Madera[] = maderasData as Madera[];
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);

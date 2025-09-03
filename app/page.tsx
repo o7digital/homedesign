@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import productos from "../data/productos.json";
 import maderas from "../data/maderas.json";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,8 +21,9 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  // Filtrar productos por tipo
+  // Tipos únicos desde productos.json
   const tipos = ["Todos", ...Array.from(new Set(productos.map((p) => p.Tipo).filter(Boolean)))];
+
   const productosFiltrados =
     selectedTipo === "Todos"
       ? productos

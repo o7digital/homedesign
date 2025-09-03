@@ -54,28 +54,36 @@ export default function ProductoDetalle() {
       {/* Detalle producto */}
       <main className="max-w-[900px] mx-auto bg-[#fff2e6] mt-10 p-6 rounded-xl shadow-md">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-          <Image
-            src={producto.Imagen || "/img/productos/default.jpeg"}
-            alt={producto.NombreProducto}
-            width={400}
-            height={300}
-            className="rounded-lg shadow-md"
-          />
+          {producto.Imagen ? (
+            <Image
+              src={producto.Imagen}
+              alt={producto.NombreProducto}
+              width={400}
+              height={300}
+              className="rounded-lg shadow-md"
+            />
+          ) : (
+            <div className="w-[400px] h-[300px] flex items-center justify-center bg-gray-300 rounded-lg text-gray-700 text-sm">
+              Foto no disponible
+            </div>
+          )}
           <div>
             <h1 className="text-3xl font-bold text-[#5d3b2d] mb-2">
               {producto.NombreProducto}
             </h1>
             <p className="text-gray-600 mb-2">SKU: {producto.SKU}</p>
             <p className="text-gray-600 mb-2">
-              Categoría: {producto.Tipo || "General"}
+              Categoría: {producto.Tipo || "Sin categoría"}
             </p>
             <p className="mb-4">{producto.Descripcion}</p>
             <p className="text-2xl font-bold mb-4">
-              {producto.Precio > 0 ? `$${producto.Precio} MXN` : "Precio a cotizar"}
+              {producto.Precio > 0
+                ? `Precio: $${producto.Precio} MXN`
+                : "Precio: Por cotizar"}
             </p>
             <p
               className={`mb-4 ${
-                producto.Stock > 10 ? "text-green-600" : "text-red-600"
+                producto.Stock > 0 ? "text-green-600" : "text-red-600"
               }`}
             >
               {producto.Stock > 0
@@ -89,7 +97,7 @@ export default function ProductoDetalle() {
             )}
             <Link
               href="/#contacto"
-              className="mt-6 inline-block bg-[#5d3b2d] text-white px-6 py-3 rounded-lg"
+              className="mt-6 inline-block bg-[#5d3b2d] text-white px-6 py-3 rounded-lg hover:bg-[#4a2f23] transition"
             >
               📩 Solicitar información
             </Link>
@@ -100,7 +108,8 @@ export default function ProductoDetalle() {
       {/* Footer */}
       <footer className="bg-black text-white text-center py-6 mt-10">
         <p className="text-sm">
-          © {new Date().getFullYear()} Home Design Marques. Todos los derechos reservados.
+          © {new Date().getFullYear()} Home Design Marques. Todos los derechos
+          reservados.
         </p>
         <Link href="/aviso-privacidad" className="underline hover:text-gray-300">
           Aviso de Privacidad

@@ -169,8 +169,7 @@
     "Stock": 0,
     "Tipo": "Comedor",
     "Imagen": "/images/HDM67408.jpg"
-  }
-
+  },
   {
     "SKU": "HDM67409",
     "NombreProducto": "Silla de parota con acojinamiento para oficina",
@@ -350,9 +349,7 @@
     "Stock": 0,
     "Tipo": "Puertas",
     "Imagen": "/images/HDM67428.jpg"
-  }
-
-
+  },
   {
     "SKU": "HDM67429",
     "NombreProducto": "Terminado de",

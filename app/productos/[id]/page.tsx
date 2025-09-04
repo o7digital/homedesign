@@ -83,12 +83,12 @@ export default function ProductoDetalle() {
             </p>
             <p
               className={`mb-4 ${
-                producto.Stock > 0 ? "text-green-600" : "text-red-600"
+                producto.Stock > 0 ? "text-green-600" : "text-gray-600"
               }`}
             >
               {producto.Stock > 0
-                ? `Stock disponible: ${producto.Stock} unidades`
-                : "Agotado"}
+                ? `Disponible: ${producto.Stock} unidades`
+                : "Disponible bajo pedido"}
             </p>
             <Link
               href="/#contacto"

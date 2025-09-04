@@ -218,7 +218,9 @@ export default function Home() {
                   prod.Stock > 0 ? "text-green-600" : "text-red-600"
                 }`}
               >
-                {prod.Stock > 0 ? `Stock: ${prod.Stock} unidades` : "Agotado"}
+                {prod.Stock > 0
+                  ? `Stock: ${prod.Stock} unidades`
+                  : "Disponible bajo pedido"}
               </p>
               <Link
                 href={`/productos/${prod.SKU}`}

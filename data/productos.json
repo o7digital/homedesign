@@ -8,7 +8,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM6739.JPG"
+    "Imagen": "/images/HDM6739.jpg"
   },
   {
     "SKU": "HDM67391",
@@ -19,7 +19,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67391.JPG"
+    "Imagen": "/images/HDM67391.jpg"
   },
   {
     "SKU": "HDM67392",
@@ -30,7 +30,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67392.JPG"
+    "Imagen": "/images/HDM67392.jpg"
   },
   {
     "SKU": "HDM67393",
@@ -41,7 +41,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67393.JPG"
+    "Imagen": "/images/HDM67393.jpg"
   },
   {
     "SKU": "HDM67394",
@@ -52,7 +52,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67394.JPG"
+    "Imagen": "/images/HDM67394.jpg"
   },
   {
     "SKU": "HDM67395",
@@ -63,7 +63,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67395.JPG"
+    "Imagen": "/images/HDM67395.jpg"
   },
   {
     "SKU": "HDM67396",
@@ -74,7 +74,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67396.JPG"
+    "Imagen": "/images/HDM67396.jpg"
   },
   {
     "SKU": "HDM67397",
@@ -85,7 +85,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Varios",
-    "Imagen": "/images/HDM67397.JPG"
+    "Imagen": "/images/HDM67397.jpg"
   },
   {
     "SKU": "HDM67398",
@@ -96,7 +96,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Varios",
-    "Imagen": "/images/HDM67398.JPG"
+    "Imagen": "/images/HDM67398.jpg"
   },
   {
     "SKU": "HDM67399",
@@ -107,6 +107,6 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Varios",
-    "Imagen": "/images/HDM67399.JPG"
+    "Imagen": "/images/HDM67399.jpg"
   }
 ]

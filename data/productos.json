@@ -8,7 +8,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM6739.JPG"
+    "Imagen": "/images/hdm6739.jpg"
   },
   {
     "SKU": "HDM67391",
@@ -19,7 +19,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67391.JPG"
+    "Imagen": "/images/hdm67391.jpg"
   },
   {
     "SKU": "HDM67392",
@@ -30,7 +30,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67392.JPG"
+    "Imagen": "/images/hdm67392.jpg"
   },
   {
     "SKU": "HDM67393",
@@ -41,7 +41,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67393.JPG"
+    "Imagen": "/images/hdm67393.jpg"
   },
   {
     "SKU": "HDM67394",
@@ -52,7 +52,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67394.JPG"
+    "Imagen": "/images/hdm67394.jpg"
   },
   {
     "SKU": "HDM67395",
@@ -63,7 +63,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67395.JPG"
+    "Imagen": "/images/hdm67395.jpg"
   },
   {
     "SKU": "HDM67396",
@@ -74,7 +74,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Cabañas",
-    "Imagen": "/images/HDM67396.JPG"
+    "Imagen": "/images/hdm67396.jpg"
   },
   {
     "SKU": "HDM67397",
@@ -85,7 +85,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Varios",
-    "Imagen": "/images/HDM67397.JPG"
+    "Imagen": "/images/hdm67397.jpg"
   },
   {
     "SKU": "HDM67398",
@@ -96,7 +96,7 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Varios",
-    "Imagen": "/images/HDM67398.JPG"
+    "Imagen": "/images/hdm67398.jpg"
   },
   {
     "SKU": "HDM67399",
@@ -107,160 +107,6 @@
     "NivelReorden": 0,
     "Descatalogado": null,
     "Tipo": "Varios",
-    "Imagen": "/images/HDM67399.JPG"
-  },
-  {
-    "SKU": "HDM67400",
-    "NombreProducto": "Madera",
-    "Descripcion": "Fresno.",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Varios",
-    "Imagen": "/images/HDM67400.JPG"
-  },
-  {
-    "SKU": "HDM67401",
-    "NombreProducto": "Madera",
-    "Descripcion": "Nogal.",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Varios",
-    "Imagen": "/images/HDM67401.JPG"
-  },
-  {
-    "SKU": "HDM67402",
-    "NombreProducto": "Cocina moderna de gabinetes",
-    "Descripcion": "Cocina modular de gabinetes modernos.",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Cocina",
-    "Imagen": "/images/HDM67402.JPG"
-  },
-  {
-    "SKU": "HDM67403",
-    "NombreProducto": "Sala con integración de chimenea",
-    "Descripcion": "Sala con chimenea de cemento (opcional etanol).",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Varios",
-    "Imagen": "/images/HDM67403.JPG"
-  },
-  {
-    "SKU": "HDM67404",
-    "NombreProducto": "Comedor de pino para cabaña Ingles III",
-    "Descripcion": "Juego de comedor fabricado en madera de pino.",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Comedor",
-    "Imagen": "/images/HDM67404.JPG"
-  },
-  {
-    "SKU": "HDM67405",
-    "NombreProducto": "Cantina personalizada con logo",
-    "Descripcion": "Cantina de madera personalizada con logo a elección.",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Cantina",
-    "Imagen": "/images/HDM67405.JPG"
-  },
-  {
-    "SKU": "HDM67406",
-    "NombreProducto": "Comedor de parota grabado personalizado",
-    "Descripcion": "Juego de comedor en parota con grabado especial.",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Comedor",
-    "Imagen": "/images/HDM67406.JPG"
-  },
-  {
-    "SKU": "HDM67407",
-    "NombreProducto": "Esqueletos sillas de parota",
-    "Descripcion": "Estructuras de sillas en madera parota.",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Sillas",
-    "Imagen": "/images/HDM67407.JPG"
-  },
-  {
-    "SKU": "HDM67408",
-    "NombreProducto": "Muebles",
-    "Descripcion": "Varios tipos de sillas y mesas.",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Comedor",
-    "Imagen": "/images/HDM67408.JPG"
-  },
-  {
-    "SKU": "HDM67409",
-    "NombreProducto": "Silla de parota con acojinamiento para oficina",
-    "Descripcion": "Silla de parota con acojinamiento para oficina",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Sillas",
-    "Imagen": "/images/HDM67409.JPG"
-  },
-  {
-    "SKU": "HDM67410",
-    "NombreProducto": "Mueble muntifuncinal",
-    "Descripcion": "Mueble muntifuncinal",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Varios",
-    "Imagen": "/images/HDM67410.JPG"
-  },
-  {
-    "SKU": "HDM67411",
-    "NombreProducto": "DECORACION",
-    "Descripcion": "DECORACION",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Varios",
-    "Imagen": "/images/HDM67411.JPG"
-  },
-  {
-    "SKU": "HDM67412",
-    "NombreProducto": "Barricas de Roble planco para almacenar vino",
-    "Descripcion": "Barricas de Roble planco para almacenar vino",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Varios",
-    "Imagen": "/images/HDM67412.JPG"
-  },
-  {
-    "SKU": "HDM67413",
-    "NombreProducto": "comedor",
-    "Descripcion": "comedor",
-    "Precio": 0,
-    "Stock": 0,
-    "NivelReorden": 0,
-    "Descatalogado": null,
-    "Tipo": "Comedor",
-    "Imagen": "/images/HDM67413.JPG"
+    "Imagen": "/images/hdm67399.jpg"
   }
 ]

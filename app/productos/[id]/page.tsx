@@ -90,11 +90,6 @@ export default function ProductoDetalle() {
                 ? `Stock disponible: ${producto.Stock} unidades`
                 : "Agotado"}
             </p>
-            {producto.Descatalogado && (
-              <p className="text-red-600 font-semibold">
-                🚫 Producto descatalogado
-              </p>
-            )}
             <Link
               href="/#contacto"
               className="mt-6 inline-block bg-[#5d3b2d] text-white px-6 py-3 rounded-lg hover:bg-[#4a2f23] transition"

@@ -83,6 +83,15 @@ export default function Home() {
                   Contacto
                 </a>
               </li>
+              {/* Botón OFERTAS en el menú */}
+              <li className="md:ml-8 p-2 text-center">
+                <Link
+                  href="#ofertas"
+                  className="bg-yellow-400 text-black font-bold px-3 py-1 rounded hover:bg-yellow-500 transition"
+                >
+                  OFERTAS
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -101,6 +110,16 @@ export default function Home() {
             }`}
           />
         ))}
+
+        {/* Botón OFERTAS flotante en slider */}
+        <div className="absolute top-6 right-6 z-20">
+          <Link
+            href="#ofertas"
+            className="bg-yellow-400 text-black font-bold px-4 py-2 rounded shadow hover:bg-yellow-500 transition"
+          >
+            OFERTAS
+          </Link>
+        </div>
       </div>
 
       {/* Quiénes somos */}

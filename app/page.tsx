@@ -12,8 +12,6 @@ interface Producto {
   Descripcion: string;
   Precio: number;
   Stock: number;
-  NivelReorden: number;
-  Descatalogado: boolean | null;
   Tipo?: string | null;
   Imagen?: string | null;
 }
@@ -215,7 +213,7 @@ export default function Home() {
               </p>
               <p
                 className={`font-semibold mt-1 ${
-                  prod.Stock > 0 ? "text-green-600" : "text-red-600"
+                  prod.Stock > 0 ? "text-green-600" : "text-orange-600"
                 }`}
               >
                 {prod.Stock > 0

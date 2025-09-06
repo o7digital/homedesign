@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa"; // ✅ redes sociales
 import productosData from "../data/productos.json";
 import maderas from "../data/maderas.json";
 
@@ -361,14 +362,40 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white text-center py-6 mt-10">
+      <footer className="bg-black text-white text-center py-8 mt-10">
+        <div className="flex justify-center space-x-6 mb-4">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-400 text-xl"
+          >
+            <FaFacebookF />
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-400 text-xl"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://wa.me/5215512345678"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-400 text-xl"
+          >
+            <FaWhatsapp />
+          </a>
+        </div>
         <p className="text-sm">
           © {new Date().getFullYear()} Home Design Marques. Todos los derechos
           reservados.
         </p>
         <Link
           href="/aviso-privacidad"
-          className="underline hover:text-gray-300"
+          className="underline hover:text-gray-300 block mt-2"
         >
           Aviso de Privacidad
         </Link>

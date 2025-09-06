@@ -71,7 +71,7 @@ export default function Home() {
             <ul
               className={`${
                 menuOpen ? "flex" : "hidden"
-              } md:flex flex-col md:flex-row absolute md:static top-14 left-0 w-full md:w-auto bg-black md:bg-transparent`}
+              } md:flex flex-col md:flex-row absolute md:static top-14 left-0 w-full md:w-auto bg-black md:bg-transparent md:overflow-visible max-h-[80vh] overflow-y-auto`}
             >
               <li className="md:ml-8 p-2 text-center">
                 <a href="#tipos" className="hover:underline">

@@ -1,0 +1,453 @@
+[
+  {
+    "SKU": "HDM6739",
+    "NombreProducto": "Cabaña tipo Ingles I de tres habitaciones con chimenea de piedra",
+    "Descripcion": "Recamara principal con yacuzzi, espacio para cama king-size; dos recamaras con baño compartido; baño de servicio; dos niveles; cisterna, calentador solar, cocina porsche. Opcional cuarto de estudio o TV.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Cabañas",
+    "Imagen": "/images/HDM6739.jpg"
+  },
+  {
+    "SKU": "HDM67391",
+    "NombreProducto": "Cabaña tipo Ingles II de tres habitaciones con dos chimeneas de piedra",
+    "Descripcion": "Recamara principal con yacuzzi, espacio para cama king-size; dos recamaras con baño compartido; baño de servicio; dos niveles; cisterna, calentador solar, cocina porsche. Opcional cuarto de estudio o TV.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Cabañas",
+    "Imagen": "/images/HDM67391.jpg"
+  },
+  {
+    "SKU": "HDM67392",
+    "NombreProducto": "Cabaña tipo Ingles II de tres habitaciones con dos chimeneas de piedra",
+    "Descripcion": "Recamara principal con yacuzzi, espacio para cama king-size; dos recamaras con baño compartido; baño de servicio; dos niveles; cisterna, calentador solar, cocina porsche. Opcional cuarto de estudio o TV.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Cabañas",
+    "Imagen": "/images/HDM67392.jpg"
+  },
+  {
+    "SKU": "HDM67393",
+    "NombreProducto": "Cabaña tipo Ingles III de tres habitaciones con dos chimeneas de piedra",
+    "Descripcion": "Recamara principal con yacuzzi, espacio para cama king-size; dos recamaras con baño compartido; baño de servicio; dos niveles; cisterna, calentador solar, cocina porsche. Opcional cuarto de estudio o TV.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Cabañas",
+    "Imagen": "/images/HDM67393.jpg"
+  },
+  {
+    "SKU": "HDM67394",
+    "NombreProducto": "Cabaña tipo Ingles IV de tres habitaciones con dos chimeneas de piedra",
+    "Descripcion": "Recamara principal con yacuzzi, espacio para cama king-size; dos recamaras con baño compartido; baño de servicio; dos niveles; cisterna, calentador solar, cocina porsche. Opcional cuarto de estudio o TV.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Cabañas",
+    "Imagen": "/images/HDM67394.jpg"
+  },
+  {
+    "SKU": "HDM67395",
+    "NombreProducto": "Cabaña tipo Ingles V de tres habitaciones con dos chimeneas de piedra",
+    "Descripcion": "Recamara principal con yacuzzi, espacio para cama king-size; dos recamaras con baño compartido; baño de servicio; dos niveles; cisterna, calentador solar, cocina porsche. Opcional cuarto de estudio o TV.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Cabañas",
+    "Imagen": "/images/HDM67395.jpg"
+  },
+  {
+    "SKU": "HDM67396",
+    "NombreProducto": "Exclusivo Loft de una habitación",
+    "Descripcion": "Recamara King-size, baño tapanco y cocina.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Cabañas",
+    "Imagen": "/images/HDM67396.jpg"
+  },
+  {
+    "SKU": "HDM67397",
+    "NombreProducto": "Madera",
+    "Descripcion": "Cedro.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67397.jpg"
+  },
+  {
+    "SKU": "HDM67398",
+    "NombreProducto": "Base de madera para montar cristal o parota",
+    "Descripcion": "Base de madera para centro de comedor.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67398.jpg"
+  },
+  {
+    "SKU": "HDM67399",
+    "NombreProducto": "Estancia para mirador",
+    "Descripcion": "Espacio de madera para estancia/mirador.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67399.jpg"
+  },
+  {
+    "SKU": "HDM67400",
+    "NombreProducto": "Madera",
+    "Descripcion": "Fresno.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67400.jpg"
+  },
+  {
+    "SKU": "HDM67401",
+    "NombreProducto": "Madera",
+    "Descripcion": "Nogal.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67401.jpg"
+  },
+  {
+    "SKU": "HDM67402",
+    "NombreProducto": "Cocina moderna de gabinetes",
+    "Descripcion": "Cocina modular de gabinetes modernos.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Cocina",
+    "Imagen": "/images/HDM67402.jpg"
+  },
+  {
+    "SKU": "HDM67403",
+    "NombreProducto": "Sala con integración de chimenea",
+    "Descripcion": "Sala con chimenea de cemento (opcional etanol).",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67403.jpg"
+  },
+  {
+    "SKU": "HDM67404",
+    "NombreProducto": "Comedor de pino para cabaña Ingles III",
+    "Descripcion": "Juego de comedor fabricado en madera de pino.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Comedor",
+    "Imagen": "/images/HDM67404.jpg"
+  },
+  {
+    "SKU": "HDM67405",
+    "NombreProducto": "Cantina personalizada con logo",
+    "Descripcion": "Cantina de madera personalizada con logo a elección.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Cantina",
+    "Imagen": "/images/HDM67405.jpg"
+  },
+  {
+    "SKU": "HDM67406",
+    "NombreProducto": "Comedor de parota grabado personalizado",
+    "Descripcion": "Juego de comedor en parota con grabado especial.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Comedor",
+    "Imagen": "/images/HDM67406.jpg"
+  },
+  {
+    "SKU": "HDM67407",
+    "NombreProducto": "Esqueletos sillas de parota",
+    "Descripcion": "Estructuras de sillas en madera parota.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Sillas",
+    "Imagen": "/images/HDM67407.jpg"
+  },
+  {
+    "SKU": "HDM67408",
+    "NombreProducto": "Muebles",
+    "Descripcion": "Varios tipos de sillas y mesas.",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Comedor",
+    "Imagen": "/images/HDM67408.jpg"
+  },
+  {
+    "SKU": "HDM67409",
+    "NombreProducto": "Silla de parota con acojinamiento para oficina",
+    "Descripcion": "Silla de parota con acojinamiento para oficina",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Sillas",
+    "Imagen": "/images/HDM67409.jpg"
+  },
+  {
+    "SKU": "HDM67410",
+    "NombreProducto": "Mueble muntifuncinal",
+    "Descripcion": "Mueble muntifuncinal",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67410.jpg"
+  },
+  {
+    "SKU": "HDM67411",
+    "NombreProducto": "Decoración",
+    "Descripcion": "Decoración",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67411.jpg"
+  },
+  {
+    "SKU": "HDM67412",
+    "NombreProducto": "Barricas de Roble blanco para almacenar vino",
+    "Descripcion": "Barricas de Roble blanco para almacenar vino",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67412.jpg"
+  },
+  {
+    "SKU": "HDM67413",
+    "NombreProducto": "Comedor",
+    "Descripcion": "Comedor",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Comedor",
+    "Imagen": "/images/HDM67413.jpg"
+  },
+  {
+    "SKU": "HDM67414",
+    "NombreProducto": "Cocina moderna de gabinetes con mesa de granito y acabados de lujo",
+    "Descripcion": "Cocina moderna de gabinetes con mesa de granito y acabados de lujo",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Cocina",
+    "Imagen": "/images/HDM67414.jpg"
+  },
+  {
+    "SKU": "HDM67415",
+    "NombreProducto": "Piso y paredes con madera estufada tipo duela ideal para cabaña Ingles III",
+    "Descripcion": "Piso y paredes con madera estufada tipo duela ideal para cabaña Ingles III",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67415.jpg"
+  },
+  {
+    "SKU": "HDM67416",
+    "NombreProducto": "Hermosa mesa de parota centro",
+    "Descripcion": "Hermosa mesa de parota centro",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Comedor",
+    "Imagen": "/images/HDM67416.jpg"
+  },
+  {
+    "SKU": "HDM67417",
+    "NombreProducto": "Sala de Juntas para oficina 8 personas",
+    "Descripcion": "Sala de Juntas para oficina 8 personas",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67417.jpg"
+  },
+  {
+    "SKU": "HDM67418",
+    "NombreProducto": "Estancia",
+    "Descripcion": "Estancia",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67418.jpg"
+  },
+  {
+    "SKU": "HDM67419",
+    "NombreProducto": "Buró",
+    "Descripcion": "Buró",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67419.jpg"
+  },
+  {
+    "SKU": "HDM67420",
+    "NombreProducto": "Estancia con chimenea",
+    "Descripcion": "Estancia con chimenea",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67420.jpg"
+  },
+  {
+    "SKU": "HDM67421",
+    "NombreProducto": "Mesa de oficina estudio con biblioteca",
+    "Descripcion": "Mesa de oficina estudio con biblioteca",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67421.jpg"
+  },
+  {
+    "SKU": "HDM67422",
+    "NombreProducto": "Cuadro grabado",
+    "Descripcion": "Cuadro grabado",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67422.jpg"
+  },
+  {
+    "SKU": "HDM67423",
+    "NombreProducto": "Grabado Jesucristo",
+    "Descripcion": "Grabado Jesucristo",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67423.jpg"
+  },
+  {
+    "SKU": "HDM67424",
+    "NombreProducto": "Grabado imagen guadalupana",
+    "Descripcion": "Grabado imagen guadalupana",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67424.jpg"
+  },
+  {
+    "SKU": "HDM67425",
+    "NombreProducto": "Centro de mesa Azteca giratorio",
+    "Descripcion": "Centro de mesa Azteca giratorio",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67425.jpg"
+  },
+  {
+    "SKU": "HDM67426",
+    "NombreProducto": "Grabado de calendario Azteca para decoracion",
+    "Descripcion": "Grabado de calendario Azteca para decoracion",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67426.jpg"
+  },
+  {
+    "SKU": "HDM67427",
+    "NombreProducto": "Artículos para fiestas",
+    "Descripcion": "Artículos para fiestas",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67427.jpg"
+  },
+  {
+    "SKU": "HDM67428",
+    "NombreProducto": "Puerta exterior tipo Ingles con ventanas",
+    "Descripcion": "Puerta exterior tipo Ingles con ventanas",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Puertas",
+    "Imagen": "/images/HDM67428.jpg"
+  },
+  {
+    "SKU": "HDM67429",
+    "NombreProducto": "Terminado de",
+    "Descripcion": "Terminado de",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Puertas",
+    "Imagen": "/images/HDM67429.jpg"
+  },
+  {
+    "SKU": "HDM67430",
+    "NombreProducto": "Puerta de entrada con cristal 39",
+    "Descripcion": "Puerta de entrada con cristal 39",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Puertas",
+    "Imagen": "/images/HDM67430.jpg"
+  },
+  {
+    "SKU": "HDM67431",
+    "NombreProducto": "Puerta de entrada con cristal 40",
+    "Descripcion": "Puerta de entrada con cristal 40",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Puertas",
+    "Imagen": "/images/HDM67431.jpg"
+  },
+  {
+    "SKU": "HDM67432",
+    "NombreProducto": "Escalera",
+    "Descripcion": "Escalera",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67432.jpg"
+  },
+  {
+    "SKU": "HDM67433",
+    "NombreProducto": "Escalera con barandal",
+    "Descripcion": "Escalera con barandal",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67433.jpg"
+  },
+  {
+    "SKU": "HDM67434",
+    "NombreProducto": "Tipos de machimbrados",
+    "Descripcion": "Tipos de machimbrados",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67434.jpg"
+  },
+  {
+    "SKU": "HDM67435",
+    "NombreProducto": "Triplays",
+    "Descripcion": "Triplays",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67435.jpg"
+  },
+  {
+    "SKU": "HDM67436",
+    "NombreProducto": "Tipos de parotas",
+    "Descripcion": "Tipos de parotas",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67436.jpg"
+  },
+  {
+    "SKU": "HDM67437",
+    "NombreProducto": "Madera barnizada",
+    "Descripcion": "Madera barnizada",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67437.jpg"
+  },
+  {
+    "SKU": "HDM67438",
+    "NombreProducto": "Triplay",
+    "Descripcion": "Triplay",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67438.jpg"
+  },
+  {
+    "SKU": "HDM67439",
+    "NombreProducto": "Estufados",
+    "Descripcion": "Estufados",
+    "Precio": 0,
+    "Stock": 0,
+    "Tipo": "Varios",
+    "Imagen": "/images/HDM67439.jpg"
+  }
+]
+

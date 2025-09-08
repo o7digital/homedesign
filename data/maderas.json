@@ -1,0 +1,72 @@
+[
+  {
+    "id": "abedul",
+    "nombre": "Abedul",
+    "origen": "Del germánico “batilar”",
+    "descripcion": "Madera clara, grano fino, usada en ebanistería y muebles de calidad.",
+    "img": "/img/maderas/abedul.jpeg"
+  },
+  {
+    "id": "abeto",
+    "nombre": "Abeto",
+    "origen": "Abies alba",
+    "descripcion": "Madera blanca-amarillenta, ligera, usada en carpintería e instrumentos.",
+    "img": "/img/maderas/abeto.jpeg"
+  },
+  {
+    "id": "alamo",
+    "nombre": "Álamo",
+    "origen": "Populus alba",
+    "descripcion": "Blanda, económica, ideal para puertas y proyectos sencillos.",
+    "img": "/img/maderas/alamo.jpeg"
+  },
+  {
+    "id": "arce",
+    "nombre": "Arce",
+    "origen": "Del latín “acer”",
+    "descripcion": "Madera clara, dureza media, usada en muebles y construcción.",
+    "img": "/img/maderas/arce2.jpeg"
+  },
+  {
+    "id": "castano",
+    "nombre": "Castaño",
+    "origen": "Castanea sativa",
+    "descripcion": "Flexible y durable, vetas intensas, usada en tarimas y estructuras.",
+    "img": "/img/maderas/castano.jpeg"
+  },
+  {
+    "id": "fresno",
+    "nombre": "Fresno",
+    "origen": "Fraxinus",
+    "descripcion": "Madera resistente, usada en puertas y estructuras.",
+    "img": "/img/maderas/fresno.jpeg"
+  },
+  {
+    "id": "nogal",
+    "nombre": "Nogal",
+    "origen": "Juglans regia",
+    "descripcion": "Madera oscura y compacta, usada en muebles de lujo.",
+    "img": "/img/maderas/nogal.jpeg"
+  },
+  {
+    "id": "pino",
+    "nombre": "Pino",
+    "origen": "Pinus spp.",
+    "descripcion": "Madera blanda y económica, usada en carpintería general.",
+    "img": "/img/maderas/pino.jpeg"
+  },
+  {
+    "id": "teca",
+    "nombre": "Teca",
+    "origen": "Tectona grandis",
+    "descripcion": "Muy resistente, ideal para exteriores y muebles de lujo.",
+    "img": "/img/maderas/teca.jpeg"
+  },
+  {
+    "id": "parota",
+    "nombre": "Parota",
+    "origen": "Enterolobium cyclocarpum",
+    "descripcion": "Muy usada en México, resistente y duradera.",
+    "img": "/img/maderas/parota.png"
+  }
+]

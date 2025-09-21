@@ -12,7 +12,7 @@ export default function Suspendido() {
       textAlign: 'center'
     }}>
       <h1> out of service</h1>
-      <p>this website is not operatinf</p>
+      <p>this website is not operating</p>
     </main>
   )
 }

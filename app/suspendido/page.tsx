@@ -11,8 +11,8 @@ export default function Suspendido() {
       fontFamily: 'sans-serif',
       textAlign: 'center'
     }}>
-      <h1>🚫 Sitio Suspendido</h1>
-      <p>Este sitio ha sido suspendido temporalmente.</p>
+      <h1> out of service</h1>
+      <p>this website is not operatinf</p>
     </main>
   )
 }

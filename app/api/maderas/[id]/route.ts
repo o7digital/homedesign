@@ -16,8 +16,8 @@ type WoodQuery = {
 };
 
 const QUERY = /* GraphQL */ `
-  query WoodBySlug($slug: String) {
-    allTipoDeMaderas(filter: { slug: { eq: $slug } }, first: 1) {
+  query WoodBySlug($slug: String, $locale: SiteLocale) {
+    allTipoDeMaderas(filter: { slug: { eq: $slug } }, first: 1, locale: $locale) {
       slug
       nombreTipoMadera
       origen
@@ -37,7 +37,8 @@ export async function GET(
     }
 
     const { id } = await context.params;
-    const data = await datoRequest<WoodQuery>(QUERY, { slug: id });
+    const locale = process.env.DATOCMS_LOCALE || 'es';
+    const data = await datoRequest<WoodQuery>(QUERY, { slug: id, locale });
     const w = data.allTipoDeMaderas?.[0];
     if (!w) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 

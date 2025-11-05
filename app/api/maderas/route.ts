@@ -16,8 +16,8 @@ type WoodsQuery = {
 };
 
 const QUERY = /* GraphQL */ `
-  query AllWoods {
-    allTipoDeMaderas(orderBy: _createdAt_DESC, first: 200) {
+  query AllWoods($locale: SiteLocale) {
+    allTipoDeMaderas(orderBy: _createdAt_DESC, first: 200, locale: $locale) {
       slug
       nombreTipoMadera
       origen
@@ -33,7 +33,8 @@ export async function GET() {
       return NextResponse.json({ error: 'DATOCMS_API_TOKEN not configured' }, { status: 503 });
     }
 
-    const data = await datoRequest<WoodsQuery>(QUERY);
+    const locale = process.env.DATOCMS_LOCALE || 'es';
+    const data = await datoRequest<WoodsQuery>(QUERY, { locale });
     const items = data.allTipoDeMaderas.map((w) => ({
       id: w.slug ?? '',
       nombre: w.nombreTipoMadera ?? '',

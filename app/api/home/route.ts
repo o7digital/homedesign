@@ -21,8 +21,8 @@ type HomeQuery = {
 };
 
 const QUERY = /* GraphQL */ `
-  query HomeContent {
-    paginaHome {
+  query HomeContent($locale: SiteLocale) {
+    paginaHome(locale: $locale) {
       quienesSomos
       mision
       vision
@@ -30,7 +30,7 @@ const QUERY = /* GraphQL */ `
       nuestraHistoria
       slider { url }
     }
-    allPaginaHomes(first: 1) {
+    allPaginaHomes(first: 1, locale: $locale) {
       quienesSomos
       mision
       vision
@@ -47,7 +47,8 @@ export async function GET() {
       return NextResponse.json({ error: 'DATOCMS_API_TOKEN not configured' }, { status: 503 });
     }
 
-    const data = await datoRequest<HomeQuery>(QUERY);
+    const locale = process.env.DATOCMS_LOCALE || 'es';
+    const data = await datoRequest<HomeQuery>(QUERY, { locale });
     const src = data.paginaHome ?? data.allPaginaHomes?.[0];
     const title = src?.quienesSomos ?? '';
     const mision = src?.mision ?? '';

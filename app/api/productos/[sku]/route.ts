@@ -23,10 +23,11 @@ type ProductQuery = {
 };
 
 const QUERY = /* GraphQL */ `
-  query ProductByQ($q: String) {
+  query ProductByQ($q: String, $locale: SiteLocale) {
     allProductos(
       filter: { OR: [{ slug: { eq: $q } }, { sku: { eq: $q } }] },
-      first: 1
+      first: 1,
+      locale: $locale
     ) {
       titulo
       sku
@@ -56,7 +57,8 @@ export async function GET(
     }
 
     const { sku } = await context.params;
-    const data = await datoRequest<ProductQuery>(QUERY, { q: sku });
+    const locale = process.env.DATOCMS_LOCALE || 'es';
+    const data = await datoRequest<ProductQuery>(QUERY, { q: sku, locale });
     const p = data.allProductos?.[0];
     if (!p) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 

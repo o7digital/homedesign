@@ -23,8 +23,8 @@ type ProductsQuery = {
 };
 
 const QUERY = /* GraphQL */ `
-  query AllProductos {
-    allProductos(orderBy: fechaCreacion_DESC, first: 200) {
+  query AllProductos($locale: SiteLocale) {
+    allProductos(orderBy: fechaCreacion_DESC, first: 200, locale: $locale) {
       titulo
       sku
       slug
@@ -50,7 +50,8 @@ export async function GET() {
       return NextResponse.json({ error: 'DATOCMS_API_TOKEN not configured' }, { status: 503 });
     }
 
-    const data = await datoRequest<ProductsQuery>(QUERY);
+    const locale = process.env.DATOCMS_LOCALE || 'es';
+    const data = await datoRequest<ProductsQuery>(QUERY, { locale });
     // Map to legacy shape used in the app
     const items = data.allProductos.map((p) => {
       const firstCatName = (() => {

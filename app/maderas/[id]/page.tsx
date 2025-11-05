@@ -56,6 +56,11 @@ export default function DetalleMadera({ params }: { params: { id: string } }) {
           <nav>
             <ul className="flex space-x-6">
               <li>
+                <Link href="/#quienes-somos" className="hover:underline">
+                  Quiénes somos
+                </Link>
+              </li>
+              <li>
                 <Link href="/#tipos" className="hover:underline">
                   Tipos de Madera
                 </Link>

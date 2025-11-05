@@ -65,6 +65,11 @@ export default function ProductoDetalle() {
           <nav>
             <ul className="flex gap-6">
               <li>
+                <Link href="/#quienes-somos" className="hover:underline">
+                  Quiénes somos
+                </Link>
+              </li>
+              <li>
                 <Link href="/#tipos" className="hover:underline">
                   Tipos de Madera
                 </Link>

@@ -133,6 +133,11 @@ export default function Home() {
               } md:flex flex-col md:flex-row absolute md:static top-14 left-0 w-full md:w-auto bg-black md:bg-transparent`}
             >
               <li className="md:ml-8 p-2 text-center">
+                <a href="#quienes-somos" className="hover:underline">
+                  Quiénes somos
+                </a>
+              </li>
+              <li className="md:ml-8 p-2 text-center">
                 <a href="#tipos" className="hover:underline">
                   Tipos de Madera
                 </a>
@@ -176,7 +181,7 @@ export default function Home() {
       </div>
 
       {/* Quiénes somos */}
-      <section className="max-w-[1100px] mx-auto p-6">
+      <section id="quienes-somos" className="max-w-[1100px] mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4 text-[#5d3b2d]">{qsTitle || 'Quiénes somos'}</h2>
         {/* Mostramos campos desglosados desde Dato si existen; si no, fallback estático */}
         {useDato && (qsMision || qsVision || qsValores || qsHistoria) ? (

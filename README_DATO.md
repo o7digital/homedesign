@@ -43,3 +43,6 @@ DATOCMS_CMA_TOKEN=... npm run dato:import
 Notes:
 - L’import d’exemple (scripts) correspond à l’ancien schéma; inutile si ton projet Dato est déjà configuré.
 - Le site reste fonctionnel sans Dato (fallback JSON). Avec Dato actif, routes par slug: `/maderas/[slug]`, `/productos/[slug]`.
+
+Déploiement:
+- Assure-toi de déployer le dernier commit de `dev` (évite de relancer un ancien build).

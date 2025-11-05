@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "dato:setup": "tsx scripts/dato-setup.ts",
-    "dato:import": "tsx scripts/dato-import.ts"
+    "dato:import": "tsx scripts/dato-import.ts",
+    "deploy:hook:dev": "node scripts/trigger-vercel.mjs dev",
+    "deploy:hook:main": "node scripts/trigger-vercel.mjs main"
   },
   "dependencies": {
     "@datocms/cma-client-node": "^5.1.26",

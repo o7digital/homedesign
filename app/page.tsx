@@ -59,37 +59,57 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  // Cargar datos desde DatoCMS (intentamos siempre; si falla, usamos fallbacks)
+  // Cargar datos desde DatoCMS (intentamos siempre; si falla, usamos fallbacks por sección)
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      const [prodRes, woodRes, homeRes] = await Promise.allSettled([
+        fetch("/api/productos"),
+        fetch("/api/maderas"),
+        fetch("/api/home"),
+      ]);
+
+      // Productos
       try {
-        const [prodRes, woodRes, homeRes] = await Promise.all([
-          fetch("/api/productos"),
-          fetch("/api/maderas"),
-          fetch("/api/home"),
-        ]);
-        if (!prodRes.ok || !woodRes.ok) throw new Error("Data API error");
-        // home puede estar vacío si no configurado, no bloqueamos
-        const prodJson = await prodRes.json();
-        const woodJson = await woodRes.json();
-        const homeJson = homeRes.ok ? await homeRes.json() : null;
-        if (!cancelled) {
-          setProductos(prodJson.items as Producto[]);
-          setMaderas(woodJson.items as MaderaItem[]);
-          if (homeJson?.slides?.length) setSlides(homeJson.slides as string[]);
-          if (homeJson?.title) setQsTitle(homeJson.title as string);
-          if (homeJson?.mision) setQsMision(homeJson.mision as string);
-          if (homeJson?.vision) setQsVision(homeJson.vision as string);
-          if (homeJson?.valores) setQsValores(homeJson.valores as string);
-          if (homeJson?.nuestraHistoria) setQsHistoria(homeJson.nuestraHistoria as string);
-        }
-      } catch (_err) {
-        // Si falla, usamos los fallbacks locales
-        if (!cancelled) {
+        if (prodRes.status === "fulfilled" && prodRes.value.ok) {
+          const prodJson = await prodRes.value.json();
+          if (!cancelled) setProductos(prodJson.items as Producto[]);
+        } else if (!cancelled) {
           setProductos(productosFallback);
+        }
+      } catch {
+        if (!cancelled) setProductos(productosFallback);
+      }
+
+      // Maderas
+      try {
+        if (woodRes.status === "fulfilled" && woodRes.value.ok) {
+          const woodJson = await woodRes.value.json();
+          if (!cancelled) setMaderas(woodJson.items as MaderaItem[]);
+        } else if (!cancelled) {
           setMaderas(maderasFallback);
         }
+      } catch {
+        if (!cancelled) setMaderas(maderasFallback);
+      }
+
+      // Home (no bloqueo si falla)
+      try {
+        if (homeRes.status === "fulfilled" && homeRes.value.ok) {
+          const homeJson = await homeRes.value.json();
+          if (!cancelled) {
+            if (homeJson?.slides?.length)
+              setSlides(homeJson.slides as string[]);
+            if (homeJson?.title) setQsTitle(homeJson.title as string);
+            if (homeJson?.mision) setQsMision(homeJson.mision as string);
+            if (homeJson?.vision) setQsVision(homeJson.vision as string);
+            if (homeJson?.valores) setQsValores(homeJson.valores as string);
+            if (homeJson?.nuestraHistoria)
+              setQsHistoria(homeJson.nuestraHistoria as string);
+          }
+        }
+      } catch {
+        // no-op; mantenemos fallbacks existentes
       }
     })();
     return () => {

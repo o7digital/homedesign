@@ -43,7 +43,14 @@ export default function Home() {
   const [maderas, setMaderas] = useState<MaderaItem[]>(maderasFallback);
 
   const [slides, setSlides] = useState<string[]>(["/img/slider1.jpg", "/img/slider2.jpg", "/img/slider3.jpg"]);
+  // mantenido antes, ya no usado tras migración a campos separados
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [quienesSomos, setQuienesSomos] = useState<string>("");
+  const [qsTitle, setQsTitle] = useState<string>("");
+  const [qsMision, setQsMision] = useState<string>("");
+  const [qsVision, setQsVision] = useState<string>("");
+  const [qsValores, setQsValores] = useState<string>("");
+  const [qsHistoria, setQsHistoria] = useState<string>("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -73,7 +80,11 @@ export default function Home() {
           setProductos(prodJson.items as Producto[]);
           setMaderas(woodJson.items as MaderaItem[]);
           if (homeJson?.slides?.length) setSlides(homeJson.slides as string[]);
-          if (homeJson?.quienesSomos) setQuienesSomos(homeJson.quienesSomos as string);
+          if (homeJson?.title) setQsTitle(homeJson.title as string);
+          if (homeJson?.mision) setQsMision(homeJson.mision as string);
+          if (homeJson?.vision) setQsVision(homeJson.vision as string);
+          if (homeJson?.valores) setQsValores(homeJson.valores as string);
+          if (homeJson?.nuestraHistoria) setQsHistoria(homeJson.nuestraHistoria as string);
         }
       } catch (_err) {
         // Si falla, usamos los fallbacks locales
@@ -166,12 +177,23 @@ export default function Home() {
 
       {/* Quiénes somos */}
       <section className="max-w-[1100px] mx-auto p-6">
-        <h2 className="text-2xl font-bold mb-4 text-[#5d3b2d]">Quiénes somos</h2>
-        {/* Si Dato proporciona "quienesSomos", lo rendimos tal cual en un párrafo simple */}
-        {/* Para algo más rico podríamos parsear markdown si el campo lo permite */}
-        {/* Aquí mantenemos el contenido estático como fallback si no hay Dato */}
-        {useDato && quienesSomos ? (
-          <p className="text-gray-800 whitespace-pre-line">{quienesSomos}</p>
+        <h2 className="text-2xl font-bold mb-4 text-[#5d3b2d]">{qsTitle || 'Quiénes somos'}</h2>
+        {/* Mostramos campos desglosados desde Dato si existen; si no, fallback estático */}
+        {useDato && (qsMision || qsVision || qsValores || qsHistoria) ? (
+          <>
+            {qsMision ? (
+              <p className="text-gray-800"><strong>Misión:</strong> {qsMision}</p>
+            ) : null}
+            {qsVision ? (
+              <p className="text-gray-800"><strong>Visión:</strong> {qsVision}</p>
+            ) : null}
+            {qsValores ? (
+              <p className="text-gray-800"><strong>Valores:</strong> {qsValores}</p>
+            ) : null}
+            {qsHistoria ? (
+              <p className="text-gray-800"><strong>Nuestra historia:</strong> {qsHistoria}</p>
+            ) : null}
+          </>
         ) : (
           <>
             <p className="text-gray-800">

@@ -4,7 +4,12 @@ import { datoRequest } from '@/lib/datocms';
 type Asset = { url: string };
 
 type HomeSingleton = {
+  // Title field (quienes_somos) now used as title
   quienesSomos?: string | null;
+  mision?: string | null;
+  vision?: string | null;
+  valores?: string | null;
+  nuestraHistoria?: string | null;
   slider?: Asset[] | null;
 };
 
@@ -17,10 +22,18 @@ const QUERY = /* GraphQL */ `
   query HomeContent {
     paginaHome {
       quienesSomos
+      mision
+      vision
+      valores
+      nuestraHistoria
       slider { url }
     }
     allPaginaHomes(first: 1) {
       quienesSomos
+      mision
+      vision
+      valores
+      nuestraHistoria
       slider { url }
     }
   }
@@ -34,9 +47,14 @@ export async function GET() {
 
     const data = await datoRequest<HomeQuery>(QUERY);
     const src = data.paginaHome ?? data.allPaginaHomes?.[0];
-    const quienesSomos = src?.quienesSomos ?? '';
+    const title = src?.quienesSomos ?? '';
+    const mision = src?.mision ?? '';
+    const vision = src?.vision ?? '';
+    const valores = src?.valores ?? '';
+    const nuestraHistoria = src?.nuestraHistoria ?? '';
     const slides = (src?.slider ?? []).map((a) => a?.url).filter(Boolean) as string[];
-    return NextResponse.json({ quienesSomos, slides });
+    // keep quienesSomos for backward compat as alias of title
+    return NextResponse.json({ title, quienesSomos: title, mision, vision, valores, nuestraHistoria, slides });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Unknown error';
     return NextResponse.json({ error: message }, { status: 500 });

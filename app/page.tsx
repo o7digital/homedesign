@@ -37,7 +37,7 @@ export default function Home() {
 
   const [selectedTipo, setSelectedTipo] = useState("Todos");
   const [visibleCount, setVisibleCount] = useState(9);
-  const useDato = process.env.NEXT_PUBLIC_USE_DATO === "1";
+  // Nota: Antes teníamos un toggle NEXT_PUBLIC_USE_DATO; ahora intentamos siempre y hacemos fallback si falla
 
   const [productos, setProductos] = useState<Producto[]>(productosFallback);
   const [maderas, setMaderas] = useState<MaderaItem[]>(maderasFallback);
@@ -59,9 +59,8 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  // Cargar datos desde DatoCMS si está activado
+  // Cargar datos desde DatoCMS (intentamos siempre; si falla, usamos fallbacks)
   useEffect(() => {
-    if (!useDato) return;
     let cancelled = false;
     (async () => {
       try {
@@ -70,8 +69,7 @@ export default function Home() {
           fetch("/api/maderas"),
           fetch("/api/home"),
         ]);
-        if (!prodRes.ok) throw new Error("Productos API error");
-        if (!woodRes.ok) throw new Error("Maderas API error");
+        if (!prodRes.ok || !woodRes.ok) throw new Error("Data API error");
         // home puede estar vacío si no configurado, no bloqueamos
         const prodJson = await prodRes.json();
         const woodJson = await woodRes.json();
@@ -97,7 +95,7 @@ export default function Home() {
     return () => {
       cancelled = true;
     };
-  }, [useDato]);
+  }, []);
 
   // ✅ Aquí ya reconoce el campo "Tipo"
   const tipos = [
@@ -184,7 +182,7 @@ export default function Home() {
       <section id="quienes-somos" className="max-w-[1100px] mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4 text-[#5d3b2d]">{qsTitle || 'Quiénes somos'}</h2>
         {/* Mostramos campos desglosados desde Dato si existen; si no, fallback estático */}
-        {useDato && (qsMision || qsVision || qsValores || qsHistoria) ? (
+        {(qsMision || qsVision || qsValores || qsHistoria) ? (
           <>
             {qsMision ? (
               <p className="text-gray-800"><strong>Misión:</strong> {qsMision}</p>
@@ -318,7 +316,7 @@ export default function Home() {
                   : "Disponible bajo pedido"}
               </p>
               <Link
-                href={`/productos/${useDato ? (prod.Slug || prod.SKU) : prod.SKU}`}
+                href={`/productos/${prod.Slug || prod.SKU}`}
                 className="mt-3 inline-block bg-[#5d3b2d] text-white px-4 py-2 rounded-lg hover:bg-[#4a2f23] transition"
               >
                 Ver más

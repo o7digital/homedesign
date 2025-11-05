@@ -14,12 +14,18 @@ export async function datoRequest<T>(
 
   const url = options?.preview ? 'https://graphql.datocms.com/preview' : DATO_API_URL;
 
+  const environment = process.env.DATOCMS_ENVIRONMENT;
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  };
+  if (environment && environment.trim()) {
+    headers['X-Environment'] = environment.trim();
+  }
+
   const res = await fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
+    headers,
     body: JSON.stringify({ query, variables }),
     // Ensure this runs on server and can be cached/revalidated later
     cache: 'no-store',

@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { datoRequest } from '@/lib/datocms';
 
 type WoodRecord = {
@@ -26,15 +26,15 @@ const QUERY = /* GraphQL */ `
 `;
 
 export async function GET(
-  _req: Request,
-  context: { params: { id: string } }
+  _req: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     if (!process.env.DATOCMS_API_TOKEN) {
       return NextResponse.json({ error: 'DATOCMS_API_TOKEN not configured' }, { status: 503 });
     }
 
-    const { id } = context.params;
+    const { id } = await context.params;
     const data = await datoRequest<WoodQuery>(QUERY, { slug: id });
     const w = data.allTipoDeMaderas?.[0];
     if (!w) return NextResponse.json({ error: 'Not found' }, { status: 404 });

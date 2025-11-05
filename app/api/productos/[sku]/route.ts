@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { datoRequest } from '@/lib/datocms';
 
 type ProductRecord = {
@@ -45,15 +45,15 @@ const QUERY = /* GraphQL */ `
 `;
 
 export async function GET(
-  _req: Request,
-  context: { params: { sku: string } }
+  _req: NextRequest,
+  context: { params: Promise<{ sku: string }> }
 ) {
   try {
     if (!process.env.DATOCMS_API_TOKEN) {
       return NextResponse.json({ error: 'DATOCMS_API_TOKEN not configured' }, { status: 503 });
     }
 
-    const { sku } = context.params;
+    const { sku } = await context.params;
     const data = await datoRequest<ProductQuery>(QUERY, { q: sku });
     const p = data.allProductos?.[0];
     if (!p) return NextResponse.json({ error: 'Not found' }, { status: 404 });

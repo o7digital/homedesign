@@ -75,7 +75,7 @@ export default function Home() {
           if (homeJson?.slides?.length) setSlides(homeJson.slides as string[]);
           if (homeJson?.quienesSomos) setQuienesSomos(homeJson.quienesSomos as string);
         }
-      } catch (e) {
+      } catch (_err) {
         // Si falla, usamos los fallbacks locales
         if (!cancelled) {
           setProductos(productosFallback);

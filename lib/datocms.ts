@@ -2,7 +2,11 @@ import 'server-only';
 
 const DATO_API_URL = process.env.DATOCMS_API_URL || 'https://graphql.datocms.com/';
 
-export async function datoRequest<T>(query: string, variables?: Record<string, any>, options?: { preview?: boolean }) {
+export async function datoRequest<T>(
+  query: string,
+  variables?: Record<string, unknown>,
+  options?: { preview?: boolean }
+) {
   const token = process.env.DATOCMS_API_TOKEN;
   if (!token) {
     throw new Error('Missing DATOCMS_API_TOKEN');
@@ -26,11 +30,10 @@ export async function datoRequest<T>(query: string, variables?: Record<string, a
     throw new Error(`DatoCMS request failed: ${res.status} ${res.statusText} - ${text}`);
   }
 
-  const json = (await res.json()) as { data?: T; errors?: any };
+  const json = (await res.json()) as { data?: T; errors?: unknown };
   if (json.errors) {
     throw new Error(`DatoCMS GraphQL errors: ${JSON.stringify(json.errors)}`);
   }
 
   return json.data as T;
 }
-

@@ -5,11 +5,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+interface ProductoItem {
+  SKU: string;
+  Slug?: string | null;
+  NombreProducto: string;
+  Descripcion: string;
+  Precio: number;
+  Stock: number;
+  Tipo?: string | null;
+  Imagen?: string | null;
+}
+
 export default function ProductoDetalle() {
   const { id } = useParams();
   const useDato = process.env.NEXT_PUBLIC_USE_DATO === "1";
-  const [producto, setProducto] = useState<any>(() =>
-    (productosData as any[]).find((p) => p.SKU === id)
+  const [producto, setProducto] = useState<ProductoItem | undefined>(() =>
+    (productosData as ProductoItem[]).find((p) => p.SKU === id)
   );
 
   // Fetch from Dato if enabled
@@ -23,7 +34,7 @@ export default function ProductoDetalle() {
           const json = await res.json();
           if (!cancelled) setProducto(json.item);
         }
-      } catch (_) {}
+      } catch (_err) {}
     })();
     return () => {
       cancelled = true;

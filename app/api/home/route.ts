@@ -37,8 +37,8 @@ export async function GET() {
     const quienesSomos = src?.quienesSomos ?? '';
     const slides = (src?.slider ?? []).map((a) => a?.url).filter(Boolean) as string[];
     return NextResponse.json({ quienesSomos, slides });
-  } catch (err: any) {
-    return NextResponse.json({ error: err?.message || 'Unknown error' }, { status: 500 });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
-

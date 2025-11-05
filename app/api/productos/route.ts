@@ -51,7 +51,17 @@ export async function GET() {
     const data = await datoRequest<ProductsQuery>(QUERY);
     // Map to legacy shape used in the app
     const items = data.allProductos.map((p) => {
-      const firstCat = p.categoriaProducto?.find(Boolean) as any;
+      const firstCatName = (() => {
+        const arr = p.categoriaProducto;
+        if (!Array.isArray(arr)) return null;
+        for (const c of arr) {
+          if (c && typeof c === 'object' && 'nombreCategoria' in c) {
+            const obj = c as { nombreCategoria?: string | null };
+            return obj.nombreCategoria ?? null;
+          }
+        }
+        return null;
+      })();
       const firstImage = p.imagen?.[0]?.url ?? null;
       const priceNumber = p.precio ? Number(String(p.precio).replace(/[^0-9.,-]/g, '').replace(',', '.')) : 0;
       return {
@@ -61,13 +71,14 @@ export async function GET() {
         Descripcion: p.descripcion ?? '',
         Precio: isNaN(priceNumber) ? 0 : priceNumber,
         Stock: p.disponibilidad ? 1 : 0,
-        Tipo: firstCat?.nombreCategoria ?? null,
+        Tipo: firstCatName,
         Imagen: firstImage,
       };
     });
 
     return NextResponse.json({ items });
-  } catch (err: any) {
-    return NextResponse.json({ error: err?.message || 'Unknown error' }, { status: 500 });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

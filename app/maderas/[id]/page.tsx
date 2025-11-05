@@ -4,10 +4,18 @@ import Link from "next/link";
 import maderasData from "../../../data/maderas.json";
 import { useEffect, useState } from "react";
 
+interface MaderaItem {
+  id: string;
+  nombre: string;
+  origen: string;
+  descripcion: string;
+  img: string;
+}
+
 export default function DetalleMadera({ params }: { params: { id: string } }) {
   const useDato = process.env.NEXT_PUBLIC_USE_DATO === "1";
-  const [madera, setMadera] = useState<any>(() =>
-    (maderasData as any[]).find((m) => m.id === params.id)
+  const [madera, setMadera] = useState<MaderaItem | undefined>(() =>
+    (maderasData as MaderaItem[]).find((m) => m.id === params.id)
   );
 
   // Fetch desde Dato si está activo
@@ -21,7 +29,7 @@ export default function DetalleMadera({ params }: { params: { id: string } }) {
           const json = await res.json();
           if (!cancelled) setMadera(json.item);
         }
-      } catch (_) {}
+      } catch (_err) {}
     })();
     return () => {
       cancelled = true;

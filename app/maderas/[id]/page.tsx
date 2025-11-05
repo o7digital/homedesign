@@ -1,11 +1,32 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import maderas from "../../../data/maderas.json";
+import maderasData from "../../../data/maderas.json";
+import { useEffect, useState } from "react";
 
 export default function DetalleMadera({ params }: { params: { id: string } }) {
-  // Buscar la madera en el JSON por el id de la URL
-  const madera = maderas.find((m) => m.id === params.id);
+  const useDato = process.env.NEXT_PUBLIC_USE_DATO === "1";
+  const [madera, setMadera] = useState<any>(() =>
+    (maderasData as any[]).find((m) => m.id === params.id)
+  );
+
+  // Fetch desde Dato si está activo
+  useEffect(() => {
+    if (!useDato || !params?.id) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/maderas/${params.id}`);
+        if (res.ok) {
+          const json = await res.json();
+          if (!cancelled) setMadera(json.item);
+        }
+      } catch (_) {}
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [useDato, params?.id]);
 
   if (!madera) {
     return (

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa6"; // ✅ TikTok
 import productosData from "../data/productos.json";
-import maderas from "../data/maderas.json";
+import maderasData from "../data/maderas.json";
 
 // Definimos el tipo de producto
 interface Producto {
@@ -16,10 +16,20 @@ interface Producto {
   Stock: number;
   Tipo?: string | null;
   Imagen?: string | null;
+  Slug?: string | null;
 }
 
 // ✅ Forzamos el tipado del JSON
-const productos: Producto[] = productosData as unknown as Producto[];
+const productosFallback: Producto[] = productosData as unknown as Producto[];
+
+interface MaderaItem {
+  id: string;
+  nombre: string;
+  origen: string;
+  descripcion: string;
+  img: string;
+}
+const maderasFallback: MaderaItem[] = maderasData as unknown as MaderaItem[];
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,8 +37,13 @@ export default function Home() {
 
   const [selectedTipo, setSelectedTipo] = useState("Todos");
   const [visibleCount, setVisibleCount] = useState(9);
+  const useDato = process.env.NEXT_PUBLIC_USE_DATO === "1";
 
-  const slides = ["/img/slider1.jpg", "/img/slider2.jpg", "/img/slider3.jpg"];
+  const [productos, setProductos] = useState<Producto[]>(productosFallback);
+  const [maderas, setMaderas] = useState<MaderaItem[]>(maderasFallback);
+
+  const [slides, setSlides] = useState<string[]>(["/img/slider1.jpg", "/img/slider2.jpg", "/img/slider3.jpg"]);
+  const [quienesSomos, setQuienesSomos] = useState<string>("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -36,6 +51,42 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(interval);
   }, [slides.length]);
+
+  // Cargar datos desde DatoCMS si está activado
+  useEffect(() => {
+    if (!useDato) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const [prodRes, woodRes, homeRes] = await Promise.all([
+          fetch("/api/productos"),
+          fetch("/api/maderas"),
+          fetch("/api/home"),
+        ]);
+        if (!prodRes.ok) throw new Error("Productos API error");
+        if (!woodRes.ok) throw new Error("Maderas API error");
+        // home puede estar vacío si no configurado, no bloqueamos
+        const prodJson = await prodRes.json();
+        const woodJson = await woodRes.json();
+        const homeJson = homeRes.ok ? await homeRes.json() : null;
+        if (!cancelled) {
+          setProductos(prodJson.items as Producto[]);
+          setMaderas(woodJson.items as MaderaItem[]);
+          if (homeJson?.slides?.length) setSlides(homeJson.slides as string[]);
+          if (homeJson?.quienesSomos) setQuienesSomos(homeJson.quienesSomos as string);
+        }
+      } catch (e) {
+        // Si falla, usamos los fallbacks locales
+        if (!cancelled) {
+          setProductos(productosFallback);
+          setMaderas(maderasFallback);
+        }
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [useDato]);
 
   // ✅ Aquí ya reconoce el campo "Tipo"
   const tipos = [
@@ -116,23 +167,32 @@ export default function Home() {
       {/* Quiénes somos */}
       <section className="max-w-[1100px] mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4 text-[#5d3b2d]">Quiénes somos</h2>
-        <p className="text-gray-800">
-          <strong>Misión:</strong> Ofrecer viviendas de madera prefabricadas de
-          alta calidad, ecológicas y accesibles para familias mexicanas.
-        </p>
-        <p className="text-gray-800">
-          <strong>Visión:</strong> Ser líderes en el mercado nacional de casas
-          de madera, innovando en diseño y servicio al cliente.
-        </p>
-        <p className="text-gray-800">
-          <strong>Valores:</strong> Calidad · Sustentabilidad · Cercanía ·
-          Diseño innovador
-        </p>
-        <p className="text-gray-800">
-          <strong>Nuestra historia:</strong> Home Design Marques nace del sueño
-          de crear hogares accesibles y acogedores, con diseño moderno y
-          materiales naturales.
-        </p>
+        {/* Si Dato proporciona "quienesSomos", lo rendimos tal cual en un párrafo simple */}
+        {/* Para algo más rico podríamos parsear markdown si el campo lo permite */}
+        {/* Aquí mantenemos el contenido estático como fallback si no hay Dato */}
+        {useDato && quienesSomos ? (
+          <p className="text-gray-800 whitespace-pre-line">{quienesSomos}</p>
+        ) : (
+          <>
+            <p className="text-gray-800">
+              <strong>Misión:</strong> Ofrecer viviendas de madera prefabricadas de
+              alta calidad, ecológicas y accesibles para familias mexicanas.
+            </p>
+            <p className="text-gray-800">
+              <strong>Visión:</strong> Ser líderes en el mercado nacional de casas
+              de madera, innovando en diseño y servicio al cliente.
+            </p>
+            <p className="text-gray-800">
+              <strong>Valores:</strong> Calidad · Sustentabilidad · Cercanía ·
+              Diseño innovador
+            </p>
+            <p className="text-gray-800">
+              <strong>Nuestra historia:</strong> Home Design Marques nace del sueño
+              de crear hogares accesibles y acogedores, con diseño moderno y
+              materiales naturales.
+            </p>
+          </>
+        )}
       </section>
 
       {/* Tipos de Madera */}
@@ -231,7 +291,7 @@ export default function Home() {
                   : "Disponible bajo pedido"}
               </p>
               <Link
-                href={`/productos/${prod.SKU}`}
+                href={`/productos/${useDato ? (prod.Slug || prod.SKU) : prod.SKU}`}
                 className="mt-3 inline-block bg-[#5d3b2d] text-white px-4 py-2 rounded-lg hover:bg-[#4a2f23] transition"
               >
                 Ver más

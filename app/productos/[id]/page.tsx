@@ -1,12 +1,34 @@
 "use client";
 import { useParams } from "next/navigation";
-import productos from "../../../data/productos.json";
+import productosData from "../../../data/productos.json";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function ProductoDetalle() {
   const { id } = useParams();
-  const producto = productos.find((p) => p.SKU === id);
+  const useDato = process.env.NEXT_PUBLIC_USE_DATO === "1";
+  const [producto, setProducto] = useState<any>(() =>
+    (productosData as any[]).find((p) => p.SKU === id)
+  );
+
+  // Fetch from Dato if enabled
+  useEffect(() => {
+    if (!useDato || !id) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/productos/${id}`);
+        if (res.ok) {
+          const json = await res.json();
+          if (!cancelled) setProducto(json.item);
+        }
+      } catch (_) {}
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [useDato, id]);
 
   if (!producto) {
     return (

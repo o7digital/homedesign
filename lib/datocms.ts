@@ -2,6 +2,9 @@ import 'server-only';
 
 const DATO_API_URL = process.env.DATOCMS_API_URL || 'https://graphql.datocms.com/';
 
+// Hard-force environment to ensure we read exactly the sandbox being edited
+const FORCED_DATO_ENV = 'main-copy-2025-11-04';
+
 function buildDatoEndpoint(preview: boolean, env?: string) {
   const base = DATO_API_URL.replace(/\/$/, '');
   if (env && env.trim()) {
@@ -21,7 +24,7 @@ export async function datoRequest<T>(
   if (!token) {
     throw new Error('Missing DATOCMS_API_TOKEN');
   }
-  const env = process.env.DATOCMS_ENVIRONMENT;
+  const env = FORCED_DATO_ENV; // ignore env vars to remove ambiguity during debugging
   const url = buildDatoEndpoint(!!options?.preview, env);
 
   const environment = process.env.DATOCMS_ENVIRONMENT;

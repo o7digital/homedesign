@@ -57,7 +57,7 @@ export async function GET(
     }
 
     const { sku } = await context.params;
-    const locale = process.env.DATOCMS_LOCALE || null;
+    const locale: 'es' = 'es';
     const data = await datoRequest<ProductQuery>(QUERY, { q: sku, locale });
     const p = data.allProductos?.[0];
     if (!p) return NextResponse.json({ error: 'Not found' }, { status: 404 });
@@ -86,7 +86,7 @@ export async function GET(
       Imagen: firstImage,
     };
 
-    return NextResponse.json({ item, meta: { environment: process.env.DATOCMS_ENVIRONMENT || null, locale } });
+    return NextResponse.json({ item, meta: { environment: 'main-copy-2025-11-04', locale } });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Unknown error';
     return NextResponse.json({ error: message }, { status: 500 });

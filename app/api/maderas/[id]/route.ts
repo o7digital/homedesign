@@ -37,7 +37,7 @@ export async function GET(
     }
 
     const { id } = await context.params;
-    const locale = process.env.DATOCMS_LOCALE || null;
+    const locale: 'es' = 'es';
     const data = await datoRequest<WoodQuery>(QUERY, { slug: id, locale });
     const w = data.allTipoDeMaderas?.[0];
     if (!w) return NextResponse.json({ error: 'Not found' }, { status: 404 });
@@ -50,7 +50,7 @@ export async function GET(
       img: w.campoImagen?.url ?? '',
     };
 
-    return NextResponse.json({ item, meta: { environment: process.env.DATOCMS_ENVIRONMENT || null, locale } });
+    return NextResponse.json({ item, meta: { environment: 'main-copy-2025-11-04', locale } });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Unknown error';
     return NextResponse.json({ error: message }, { status: 500 });

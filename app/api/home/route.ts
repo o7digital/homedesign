@@ -47,7 +47,7 @@ export async function GET() {
       return NextResponse.json({ error: 'DATOCMS_API_TOKEN not configured' }, { status: 503 });
     }
 
-    const locale = process.env.DATOCMS_LOCALE || null;
+    const locale: 'es' = 'es';
     const data = await datoRequest<HomeQuery>(QUERY, { locale });
     const src = data.paginaHome ?? data.allPaginaHomes?.[0];
     const title = src?.quienesSomos ?? '';
@@ -57,7 +57,7 @@ export async function GET() {
     const nuestraHistoria = src?.nuestraHistoria ?? '';
     const slides = (src?.slider ?? []).map((a) => a?.url).filter(Boolean) as string[];
     // keep quienesSomos for backward compat as alias of title
-    return NextResponse.json({ title, quienesSomos: title, mision, vision, valores, nuestraHistoria, slides, meta: { environment: process.env.DATOCMS_ENVIRONMENT || null, locale } });
+    return NextResponse.json({ title, quienesSomos: title, mision, vision, valores, nuestraHistoria, slides, meta: { environment: 'main-copy-2025-11-04', locale } });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Unknown error';
     return NextResponse.json({ error: message }, { status: 500 });

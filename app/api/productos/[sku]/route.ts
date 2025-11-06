@@ -11,10 +11,10 @@ type ProductRecord = {
   precio: string | null;
   disponibilidad: boolean | null;
   imagen: { url: string }[] | null;
-  categoriaProducto?: Array<{
+  categoria_producto?: Array<{
     __typename: string;
     slug?: string | null;
-    nombreCategoria?: string | null;
+    nombre_categoria?: string | null;
   } | null> | null;
 };
 
@@ -57,13 +57,13 @@ export async function GET(
     }
 
     const { sku } = await context.params;
-    const locale: 'es' = 'es';
+    const locale = 'es' as const;
     const data = await datoRequest<ProductQuery>(QUERY, { q: sku, locale });
     const p = data.allProductos?.[0];
     if (!p) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
     const firstCatName = (() => {
-      const arr = (p as any).categoria_producto;
+      const arr = p.categoria_producto;
       if (!Array.isArray(arr)) return null;
       for (const c of arr) {
         if (c && typeof c === 'object' && 'nombre_categoria' in c) {

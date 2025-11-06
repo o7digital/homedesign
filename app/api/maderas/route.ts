@@ -5,10 +5,10 @@ import { datoRequest } from '@/lib/datocms';
 
 type WoodRecord = {
   slug: string | null;
-  nombreTipoMadera: string | null;
+  nombre_tipo_madera: string | null;
   origen: string | null;
-  descripcionDetallada: string | null;
-  campoImagen?: { url: string } | null;
+  descripcion_detallada: string | null;
+  campo_imagen?: { url: string } | null;
 };
 
 type WoodsQuery = {
@@ -33,9 +33,9 @@ export async function GET() {
       return NextResponse.json({ error: 'DATOCMS_API_TOKEN not configured' }, { status: 503 });
     }
 
-    const locale: 'es' = 'es';
+    const locale = 'es' as const;
     const data = await datoRequest<WoodsQuery>(QUERY, { locale });
-    const items = data.allTipoDeMaderas.map((w: any) => ({
+    const items = data.allTipoDeMaderas.map((w) => ({
       id: w.slug ?? '',
       nombre: w.nombre_tipo_madera ?? '',
       origen: w.origen ?? '',

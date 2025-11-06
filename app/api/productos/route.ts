@@ -8,13 +8,13 @@ type ProductRecord = {
   sku: string | null;
   slug: string | null;
   descripcion: string | null;
-  precio: string | null; // in schema it’s string
+  precio: string | null;
   disponibilidad: boolean | null;
-  imagen: { url: string }[] | null; // gallery
-  categoriaProducto?: Array<{
+  imagen: { url: string }[] | null;
+  categoria_producto?: Array<{
     __typename: string;
     slug?: string | null;
-    nombreCategoria?: string | null;
+    nombre_categoria?: string | null;
   } | null> | null;
 };
 

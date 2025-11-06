@@ -5,10 +5,10 @@ import { datoRequest } from '@/lib/datocms';
 
 type WoodRecord = {
   slug: string | null;
-  nombreTipoMadera: string | null;
+  nombre_tipo_madera: string | null;
   origen: string | null;
-  descripcionDetallada: string | null;
-  campoImagen?: { url: string } | null;
+  descripcion_detallada: string | null;
+  campo_imagen?: { url: string } | null;
 };
 
 type WoodQuery = {
@@ -37,17 +37,17 @@ export async function GET(
     }
 
     const { id } = await context.params;
-    const locale: 'es' = 'es';
+    const locale = 'es' as const;
     const data = await datoRequest<WoodQuery>(QUERY, { slug: id, locale });
     const w = data.allTipoDeMaderas?.[0];
     if (!w) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
     const item = {
-      id: (w as any).slug ?? '',
-      nombre: (w as any).nombre_tipo_madera ?? '',
-      origen: (w as any).origen ?? '',
-      descripcion: (w as any).descripcion_detallada ?? '',
-      img: (w as any).campo_imagen?.url ?? '',
+      id: w.slug ?? '',
+      nombre: w.nombre_tipo_madera ?? '',
+      origen: w.origen ?? '',
+      descripcion: w.descripcion_detallada ?? '',
+      img: w.campo_imagen?.url ?? '',
     };
 
     return NextResponse.json({ item, meta: { environment: 'main-copy-2025-11-04', locale } });

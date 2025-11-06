@@ -33,7 +33,7 @@ export async function GET() {
       return NextResponse.json({ error: 'DATOCMS_API_TOKEN not configured' }, { status: 503 });
     }
 
-    const locale = process.env.DATOCMS_LOCALE || 'es';
+    const locale = process.env.DATOCMS_LOCALE || null;
     const data = await datoRequest<WoodsQuery>(QUERY, { locale });
     const items = data.allTipoDeMaderas.map((w) => ({
       id: w.slug ?? '',
@@ -43,7 +43,7 @@ export async function GET() {
       img: w.campoImagen?.url ?? '',
     }));
 
-    return NextResponse.json({ items });
+    return NextResponse.json({ items, meta: { environment: process.env.DATOCMS_ENVIRONMENT || null, locale } });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Unknown error';
     return NextResponse.json({ error: message }, { status: 500 });

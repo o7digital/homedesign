@@ -73,7 +73,8 @@ export default function Home() {
       try {
         if (prodRes.status === "fulfilled" && prodRes.value.ok) {
           const prodJson = await prodRes.value.json();
-          if (!cancelled) setProductos(prodJson.items as Producto[]);
+          const arr = (prodJson.items as Producto[]) || [];
+          if (!cancelled) setProductos(arr.length ? arr : productosFallback);
         } else if (!cancelled) {
           setProductos(productosFallback);
         }
@@ -85,7 +86,8 @@ export default function Home() {
       try {
         if (woodRes.status === "fulfilled" && woodRes.value.ok) {
           const woodJson = await woodRes.value.json();
-          if (!cancelled) setMaderas(woodJson.items as MaderaItem[]);
+          const arr = (woodJson.items as MaderaItem[]) || [];
+          if (!cancelled) setMaderas(arr.length ? arr : maderasFallback);
         } else if (!cancelled) {
           setMaderas(maderasFallback);
         }

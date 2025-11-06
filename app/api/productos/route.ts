@@ -50,7 +50,7 @@ export async function GET() {
       return NextResponse.json({ error: 'DATOCMS_API_TOKEN not configured' }, { status: 503 });
     }
 
-    const locale = process.env.DATOCMS_LOCALE || 'es';
+    const locale = process.env.DATOCMS_LOCALE || null;
     const data = await datoRequest<ProductsQuery>(QUERY, { locale });
     // Map to legacy shape used in the app
     const items = data.allProductos.map((p) => {
@@ -79,7 +79,7 @@ export async function GET() {
       };
     });
 
-    return NextResponse.json({ items });
+    return NextResponse.json({ items, meta: { environment: process.env.DATOCMS_ENVIRONMENT || null, locale } });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Unknown error';
     return NextResponse.json({ error: message }, { status: 500 });

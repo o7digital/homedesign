@@ -44,8 +44,29 @@ export async function GET(
 
     const { sku } = await context.params;
     const locale = 'es' as const;
+    // 1) Try direct match via GraphQL filter
     const data = await datoRequest<ProductBaseQuery>(QUERY_BASE, { q: sku, locale });
-    const p = data.allProductos?.[0];
+    let p = data.allProductos?.[0];
+    // 2) If not found, fetch a wider list and match locally by normalized slug/SKU
+    if (!p) {
+      const LIST_BASE = /* GraphQL */ `
+        query ProductsListBase($locale: SiteLocale) {
+          allProductos(first: 500, locale: $locale) {
+            titulo
+            sku
+            slug
+            descripcion
+            precio
+            disponibilidad
+            imagen { url }
+          }
+        }
+      `;
+      const list = await datoRequest<ProductBaseQuery>(LIST_BASE, { locale });
+      const norm = (s: string | null | undefined) => (s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+      const target = norm(sku);
+      p = list.allProductos.find(it => norm(it.slug) === target || norm(it.sku) === target);
+    }
     if (!p) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
     const firstCatName = null;

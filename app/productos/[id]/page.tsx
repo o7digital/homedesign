@@ -115,7 +115,7 @@ export default function ProductoDetalle() {
             <p className="mb-4 whitespace-pre-line">{producto.Descripcion}</p>
             <p className="text-2xl font-bold mb-4">
               {producto.Precio > 0
-                ? `Precio: $${producto.Precio} MXN`
+                ? `Precio: $${producto.Precio.toFixed(2)} MXN`
                 : "Precio: Por cotizar"}
             </p>
             <p

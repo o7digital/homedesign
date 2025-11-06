@@ -344,7 +344,7 @@ export default function Home() {
               <p className="text-sm text-gray-700">{prod.Descripcion}</p>
               <p className="font-semibold mt-2">
                 {prod.Precio > 0
-                  ? `Precio: $${prod.Precio} MXN`
+                  ? `Precio: $${prod.Precio.toFixed(2)} MXN`
                   : "Precio: Por cotizar"}
               </p>
               <p

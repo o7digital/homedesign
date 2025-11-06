@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa6"; // ✅ TikTok
@@ -32,6 +33,8 @@ interface MaderaItem {
 const maderasFallback: MaderaItem[] = maderasData as unknown as MaderaItem[];
 
 export default function Home() {
+  const params = useSearchParams();
+  const debug = params?.get("debug") === "1";
   const [menuOpen, setMenuOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -51,6 +54,7 @@ export default function Home() {
   const [qsVision, setQsVision] = useState<string>("");
   const [qsValores, setQsValores] = useState<string>("");
   const [qsHistoria, setQsHistoria] = useState<string>("");
+  const [homeMeta, setHomeMeta] = useState<{ environment?: string | null; locale?: string | null } | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -108,6 +112,7 @@ export default function Home() {
             if (homeJson?.valores) setQsValores(homeJson.valores as string);
             if (homeJson?.nuestraHistoria)
               setQsHistoria(homeJson.nuestraHistoria as string);
+            if (homeJson?.meta) setHomeMeta(homeJson.meta as any);
           }
         }
       } catch {
@@ -468,6 +473,15 @@ export default function Home() {
           </button>
         </form>
       </section>
+
+      {debug && (
+        <div className="fixed bottom-4 right-4 bg-black/80 text-white text-xs p-3 rounded shadow-lg space-y-1 max-w-[320px] z-[60]">
+          <div>Debug: Dato Home</div>
+          <div>env: {homeMeta?.environment ?? "?"} | locale: {homeMeta?.locale ?? "?"}</div>
+          <div>title: {(qsTitle || "").slice(0, 50)}</div>
+          <div>mision: {(qsMision || "").slice(0, 80)}</div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="bg-black text-white text-center py-8 mt-10">

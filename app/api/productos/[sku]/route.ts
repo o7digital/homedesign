@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 import { datoRequest } from '@/lib/datocms';
 
-type ProductRecord = {
+type ProductSnake = {
   titulo: string | null;
   sku: string | null;
   slug: string | null;
@@ -17,13 +17,26 @@ type ProductRecord = {
     nombre_categoria?: string | null;
   } | null> | null;
 };
-
-type ProductQuery = {
-  allProductos: ProductRecord[];
+type ProductCamel = {
+  titulo: string | null;
+  sku: string | null;
+  slug: string | null;
+  descripcion: string | null;
+  precio: string | null;
+  disponibilidad: boolean | null;
+  imagen: { url: string }[] | null;
+  categoriaProducto?: Array<{
+    __typename: string;
+    slug?: string | null;
+    nombreCategoria?: string | null;
+  } | null> | null;
 };
 
-const QUERY = /* GraphQL */ `
-  query ProductByQ($q: String, $locale: SiteLocale) {
+type ProductSnakeQuery = { allProductos: ProductSnake[] };
+type ProductCamelQuery = { allProductos: ProductCamel[] };
+
+const QUERY_SNAKE = /* GraphQL */ `
+  query ProductByQSnake($q: String, $locale: SiteLocale) {
     allProductos(
       filter: { OR: [{ slug: { eq: $q } }, { sku: { eq: $q } }] },
       first: 1,
@@ -47,6 +60,31 @@ const QUERY = /* GraphQL */ `
   }
 `;
 
+const QUERY_CAMEL = /* GraphQL */ `
+  query ProductByQCamel($q: String, $locale: SiteLocale) {
+    allProductos(
+      filter: { OR: [{ slug: { eq: $q } }, { sku: { eq: $q } }] },
+      first: 1,
+      locale: $locale
+    ) {
+      titulo
+      sku
+      slug
+      descripcion
+      precio
+      disponibilidad
+      imagen { url }
+      categoriaProducto {
+        __typename
+        ... on CategoriaProductosRecord {
+          slug
+          nombreCategoria
+        }
+      }
+    }
+  }
+`;
+
 export async function GET(
   _req: NextRequest,
   context: { params: Promise<{ sku: string }> }
@@ -58,18 +96,23 @@ export async function GET(
 
     const { sku } = await context.params;
     const locale = 'es' as const;
-    const data = await datoRequest<ProductQuery>(QUERY, { q: sku, locale });
-    const p = data.allProductos?.[0];
+    let p: ProductSnake | ProductCamel | undefined;
+    try {
+      const data = await datoRequest<ProductSnakeQuery>(QUERY_SNAKE, { q: sku, locale });
+      p = data.allProductos?.[0];
+    } catch {
+      const data = await datoRequest<ProductCamelQuery>(QUERY_CAMEL, { q: sku, locale });
+      p = data.allProductos?.[0];
+    }
     if (!p) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
     const firstCatName = (() => {
-      const arr = p.categoria_producto;
+      const arr = 'categoria_producto' in p ? p.categoria_producto : p.categoriaProducto;
       if (!Array.isArray(arr)) return null;
       for (const c of arr) {
-        if (c && typeof c === 'object' && 'nombre_categoria' in c) {
-          const obj = c as { nombre_categoria?: string | null };
-          return obj.nombre_categoria ?? null;
-        }
+        if (!c) continue;
+        if ('nombre_categoria' in c) return (c as { nombre_categoria?: string | null }).nombre_categoria ?? null;
+        if ('nombreCategoria' in c) return (c as { nombreCategoria?: string | null }).nombreCategoria ?? null;
       }
       return null;
     })();

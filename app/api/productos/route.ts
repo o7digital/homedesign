@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 import { datoRequest } from '@/lib/datocms';
 
-type ProductRecord = {
+type ProductSnake = {
   titulo: string | null;
   sku: string | null;
   slug: string | null;
@@ -17,13 +17,26 @@ type ProductRecord = {
     nombre_categoria?: string | null;
   } | null> | null;
 };
-
-type ProductsQuery = {
-  allProductos: ProductRecord[];
+type ProductCamel = {
+  titulo: string | null;
+  sku: string | null;
+  slug: string | null;
+  descripcion: string | null;
+  precio: string | null;
+  disponibilidad: boolean | null;
+  imagen: { url: string }[] | null;
+  categoriaProducto?: Array<{
+    __typename: string;
+    slug?: string | null;
+    nombreCategoria?: string | null;
+  } | null> | null;
 };
 
-const QUERY = /* GraphQL */ `
-  query AllProductos($locale: SiteLocale) {
+type ProductsSnakeQuery = { allProductos: ProductSnake[] };
+type ProductsCamelQuery = { allProductos: ProductCamel[] };
+
+const QUERY_SNAKE = /* GraphQL */ `
+  query AllProductosSnake($locale: SiteLocale) {
     allProductos(first: 200, locale: $locale) {
       titulo
       sku
@@ -43,6 +56,27 @@ const QUERY = /* GraphQL */ `
   }
 `;
 
+const QUERY_CAMEL = /* GraphQL */ `
+  query AllProductosCamel($locale: SiteLocale) {
+    allProductos(first: 200, locale: $locale) {
+      titulo
+      sku
+      slug
+      descripcion
+      precio
+      disponibilidad
+      imagen { url }
+      categoriaProducto {
+        __typename
+        ... on CategoriaProductosRecord {
+          slug
+          nombreCategoria
+        }
+      }
+    }
+  }
+`;
+
 export async function GET() {
   try {
     // If token missing, tell client we are in fallback mode
@@ -51,17 +85,24 @@ export async function GET() {
     }
 
     const locale = 'es' as const;
-    const data = await datoRequest<ProductsQuery>(QUERY, { locale });
-    // Map to legacy shape used in the app
-    const items = data.allProductos.map((p: ProductRecord) => {
+    let products: Array<ProductSnake | ProductCamel> = [];
+    try {
+      const data = await datoRequest<ProductsSnakeQuery>(QUERY_SNAKE, { locale });
+      products = data.allProductos;
+    } catch {
+      const data = await datoRequest<ProductsCamelQuery>(QUERY_CAMEL, { locale });
+      products = data.allProductos;
+    }
+
+    const items = products.map((p) => {
+      const catArr = 'categoria_producto' in p ? p.categoria_producto : (p as ProductCamel).categoriaProducto;
       const firstCatName = (() => {
-        const arr = p.categoria_producto;
+        const arr = catArr;
         if (!Array.isArray(arr)) return null;
         for (const c of arr) {
-          if (c && typeof c === 'object' && 'nombre_categoria' in c) {
-            const obj = c as { nombre_categoria?: string | null };
-            return obj.nombre_categoria ?? null;
-          }
+          if (!c) continue;
+          if ('nombre_categoria' in c) return (c as { nombre_categoria?: string | null }).nombre_categoria ?? null;
+          if ('nombreCategoria' in c) return (c as { nombreCategoria?: string | null }).nombreCategoria ?? null;
         }
         return null;
       })();

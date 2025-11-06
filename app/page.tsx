@@ -112,7 +112,13 @@ export default function Home() {
             if (homeJson?.valores) setQsValores(homeJson.valores as string);
             if (homeJson?.nuestraHistoria)
               setQsHistoria(homeJson.nuestraHistoria as string);
-            if (homeJson?.meta) setHomeMeta(homeJson.meta as any);
+            if (homeJson?.meta) {
+              const meta = homeJson.meta as Partial<{ environment: string | null; locale: string | null }>;
+              setHomeMeta({
+                environment: typeof meta.environment === "string" || meta.environment === null ? meta.environment : null,
+                locale: typeof meta.locale === "string" || meta.locale === null ? meta.locale : null,
+              });
+            }
           }
         }
       } catch {

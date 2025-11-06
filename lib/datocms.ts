@@ -16,7 +16,8 @@ export async function datoRequest<T>(
   variables?: Record<string, unknown>,
   options?: { preview?: boolean }
 ) {
-  const token = process.env.DATOCMS_API_TOKEN;
+  // Accept both names to avoid config mismatch (API vs APT typo)
+  const token = process.env.DATOCMS_API_TOKEN || process.env.DATOCMS_APT_TOKEN;
   if (!token) {
     throw new Error('Missing DATOCMS_API_TOKEN');
   }

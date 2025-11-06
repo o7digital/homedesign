@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa6"; // ✅ TikTok
@@ -33,8 +32,7 @@ interface MaderaItem {
 const maderasFallback: MaderaItem[] = maderasData as unknown as MaderaItem[];
 
 export default function Home() {
-  const params = useSearchParams();
-  const debug = params?.get("debug") === "1";
+  const [debug, setDebug] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -55,6 +53,16 @@ export default function Home() {
   const [qsValores, setQsValores] = useState<string>("");
   const [qsHistoria, setQsHistoria] = useState<string>("");
   const [homeMeta, setHomeMeta] = useState<{ environment?: string | null; locale?: string | null } | null>(null);
+
+  // Read debug flag from URL on client without useSearchParams (avoids Suspense requirement)
+  useEffect(() => {
+    try {
+      if (typeof window !== "undefined") {
+        const p = new URLSearchParams(window.location.search);
+        setDebug(p.get("debug") === "1");
+      }
+    } catch {}
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {

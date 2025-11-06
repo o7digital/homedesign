@@ -19,10 +19,10 @@ const QUERY = /* GraphQL */ `
   query WoodBySlug($slug: String, $locale: SiteLocale) {
     allTipoDeMaderas(filter: { slug: { eq: $slug } }, first: 1, locale: $locale) {
       slug
-      nombreTipoMadera
+      nombre_tipo_madera
       origen
-      descripcionDetallada
-      campoImagen { url }
+      descripcion_detallada
+      campo_imagen { url }
     }
   }
 `;
@@ -43,11 +43,11 @@ export async function GET(
     if (!w) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
     const item = {
-      id: w.slug ?? '',
-      nombre: w.nombreTipoMadera ?? '',
-      origen: w.origen ?? '',
-      descripcion: w.descripcionDetallada ?? '',
-      img: w.campoImagen?.url ?? '',
+      id: (w as any).slug ?? '',
+      nombre: (w as any).nombre_tipo_madera ?? '',
+      origen: (w as any).origen ?? '',
+      descripcion: (w as any).descripcion_detallada ?? '',
+      img: (w as any).campo_imagen?.url ?? '',
     };
 
     return NextResponse.json({ item, meta: { environment: 'main-copy-2025-11-04', locale } });

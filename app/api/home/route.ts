@@ -23,19 +23,19 @@ type HomeQuery = {
 const QUERY = /* GraphQL */ `
   query HomeContent($locale: SiteLocale) {
     paginaHome(locale: $locale) {
-      quienesSomos
+      quienes_somos
       mision
       vision
       valores
-      nuestraHistoria
+      nuestra_historia
       slider { url }
     }
     allPaginaHomes(first: 1, locale: $locale) {
-      quienesSomos
+      quienes_somos
       mision
       vision
       valores
-      nuestraHistoria
+      nuestra_historia
       slider { url }
     }
   }
@@ -50,11 +50,11 @@ export async function GET() {
     const locale: 'es' = 'es';
     const data = await datoRequest<HomeQuery>(QUERY, { locale });
     const src = data.paginaHome ?? data.allPaginaHomes?.[0];
-    const title = src?.quienesSomos ?? '';
-    const mision = src?.mision ?? '';
-    const vision = src?.vision ?? '';
-    const valores = src?.valores ?? '';
-    const nuestraHistoria = src?.nuestraHistoria ?? '';
+    const title = (src as any)?.quienes_somos ?? '';
+    const mision = (src as any)?.mision ?? '';
+    const vision = (src as any)?.vision ?? '';
+    const valores = (src as any)?.valores ?? '';
+    const nuestraHistoria = (src as any)?.nuestra_historia ?? '';
     const slides = (src?.slider ?? []).map((a) => a?.url).filter(Boolean) as string[];
     // keep quienesSomos for backward compat as alias of title
     return NextResponse.json({ title, quienesSomos: title, mision, vision, valores, nuestraHistoria, slides, meta: { environment: 'main-copy-2025-11-04', locale } });

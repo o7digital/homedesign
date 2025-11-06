@@ -24,7 +24,7 @@ type ProductsQuery = {
 
 const QUERY = /* GraphQL */ `
   query AllProductos($locale: SiteLocale) {
-    allProductos(orderBy: fechaCreacion_DESC, first: 200, locale: $locale) {
+    allProductos(first: 200, locale: $locale) {
       titulo
       sku
       slug
@@ -32,11 +32,11 @@ const QUERY = /* GraphQL */ `
       precio
       disponibilidad
       imagen { url }
-      categoriaProducto {
+      categoria_producto {
         __typename
         ... on CategoriaProductosRecord {
           slug
-          nombreCategoria
+          nombre_categoria
         }
       }
     }
@@ -53,14 +53,14 @@ export async function GET() {
     const locale: 'es' = 'es';
     const data = await datoRequest<ProductsQuery>(QUERY, { locale });
     // Map to legacy shape used in the app
-    const items = data.allProductos.map((p) => {
+    const items = data.allProductos.map((p: any) => {
       const firstCatName = (() => {
-        const arr = p.categoriaProducto;
+        const arr = p.categoria_producto;
         if (!Array.isArray(arr)) return null;
         for (const c of arr) {
-          if (c && typeof c === 'object' && 'nombreCategoria' in c) {
-            const obj = c as { nombreCategoria?: string | null };
-            return obj.nombreCategoria ?? null;
+          if (c && typeof c === 'object' && 'nombre_categoria' in c) {
+            const obj = c as { nombre_categoria?: string | null };
+            return obj.nombre_categoria ?? null;
           }
         }
         return null;

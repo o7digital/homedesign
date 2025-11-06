@@ -36,11 +36,11 @@ const QUERY = /* GraphQL */ `
       precio
       disponibilidad
       imagen { url }
-      categoriaProducto {
+      categoria_producto {
         __typename
         ... on CategoriaProductosRecord {
           slug
-          nombreCategoria
+          nombre_categoria
         }
       }
     }
@@ -63,12 +63,12 @@ export async function GET(
     if (!p) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
     const firstCatName = (() => {
-      const arr = p.categoriaProducto;
+      const arr = (p as any).categoria_producto;
       if (!Array.isArray(arr)) return null;
       for (const c of arr) {
-        if (c && typeof c === 'object' && 'nombreCategoria' in c) {
-          const obj = c as { nombreCategoria?: string | null };
-          return obj.nombreCategoria ?? null;
+        if (c && typeof c === 'object' && 'nombre_categoria' in c) {
+          const obj = c as { nombre_categoria?: string | null };
+          return obj.nombre_categoria ?? null;
         }
       }
       return null;

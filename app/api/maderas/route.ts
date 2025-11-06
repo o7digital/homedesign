@@ -17,12 +17,12 @@ type WoodsQuery = {
 
 const QUERY = /* GraphQL */ `
   query AllWoods($locale: SiteLocale) {
-    allTipoDeMaderas(orderBy: _createdAt_DESC, first: 200, locale: $locale) {
+    allTipoDeMaderas(first: 200, locale: $locale) {
       slug
-      nombreTipoMadera
+      nombre_tipo_madera
       origen
-      descripcionDetallada
-      campoImagen { url }
+      descripcion_detallada
+      campo_imagen { url }
     }
   }
 `;
@@ -35,12 +35,12 @@ export async function GET() {
 
     const locale: 'es' = 'es';
     const data = await datoRequest<WoodsQuery>(QUERY, { locale });
-    const items = data.allTipoDeMaderas.map((w) => ({
+    const items = data.allTipoDeMaderas.map((w: any) => ({
       id: w.slug ?? '',
-      nombre: w.nombreTipoMadera ?? '',
+      nombre: w.nombre_tipo_madera ?? '',
       origen: w.origen ?? '',
-      descripcion: w.descripcionDetallada ?? '',
-      img: w.campoImagen?.url ?? '',
+      descripcion: w.descripcion_detallada ?? '',
+      img: w.campo_imagen?.url ?? '',
     }));
 
     return NextResponse.json({ items, meta: { environment: 'main-copy-2025-11-04', locale } });

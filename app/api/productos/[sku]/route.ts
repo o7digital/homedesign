@@ -107,7 +107,12 @@ export async function GET(
     if (!p) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
     const firstCatName = (() => {
-      const arr = 'categoria_producto' in p ? p.categoria_producto : p.categoriaProducto;
+      let arr: Array<{ [k: string]: string | null } | null> | null = null;
+      if ('categoria_producto' in p) {
+        arr = (p as ProductSnake).categoria_producto ?? null;
+      } else {
+        arr = (p as ProductCamel).categoriaProducto ?? null;
+      }
       if (!Array.isArray(arr)) return null;
       for (const c of arr) {
         if (!c) continue;

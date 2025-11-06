@@ -50,10 +50,10 @@ export async function GET() {
       return NextResponse.json({ error: 'DATOCMS_API_TOKEN not configured' }, { status: 503 });
     }
 
-    const locale: 'es' = 'es';
+    const locale = 'es' as const;
     const data = await datoRequest<ProductsQuery>(QUERY, { locale });
     // Map to legacy shape used in the app
-    const items = data.allProductos.map((p: any) => {
+    const items = data.allProductos.map((p: ProductRecord) => {
       const firstCatName = (() => {
         const arr = p.categoria_producto;
         if (!Array.isArray(arr)) return null;

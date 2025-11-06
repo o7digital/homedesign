@@ -3,26 +3,48 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 import { datoRequest } from '@/lib/datocms';
 
-type WoodRecord = {
+type WoodSnake = {
   slug: string | null;
-  nombre_tipo_madera: string | null;
-  origen: string | null;
-  descripcion_detallada: string | null;
+  nombre_tipo_madera?: string | null;
+  origen?: string | null;
+  descripcion_detallada?: string | null;
   campo_imagen?: { url: string } | null;
 };
-
-type WoodQuery = {
-  allTipoDeMaderas: WoodRecord[];
+type WoodCamel = {
+  slug: string | null;
+  nombreTipoMadera?: string | null;
+  origen?: string | null;
+  descripcionDetallada?: string | null;
+  campoImagen?: { url: string } | null;
 };
 
-const QUERY = /* GraphQL */ `
-  query WoodBySlug($slug: String, $locale: SiteLocale) {
+type WoodSnakeQuery = {
+  allTipoDeMaderas: WoodSnake[];
+};
+type WoodCamelQuery = {
+  allTipoDeMaderas: WoodCamel[];
+};
+
+const QUERY_SNAKE = /* GraphQL */ `
+  query WoodBySlugSnake($slug: String, $locale: SiteLocale) {
     allTipoDeMaderas(filter: { slug: { eq: $slug } }, first: 1, locale: $locale) {
       slug
       nombre_tipo_madera
       origen
       descripcion_detallada
       campo_imagen { url }
+    }
+  }
+`;
+
+const QUERY_CAMEL = /* GraphQL */ `
+  query WoodBySlugCamel($slug: String, $locale: SiteLocale) {
+    allTipoDeMaderas(filter: { slug: { eq: $slug } }, first: 1, locale: $locale) {
+      slug
+      nombreTipoMadera
+      origen
+      descripcionDetallada
+      campoImagen { url }
     }
   }
 `;
@@ -38,16 +60,22 @@ export async function GET(
 
     const { id } = await context.params;
     const locale = 'es' as const;
-    const data = await datoRequest<WoodQuery>(QUERY, { slug: id, locale });
-    const w = data.allTipoDeMaderas?.[0];
+    let w: WoodSnake | WoodCamel | undefined;
+    try {
+      const data = await datoRequest<WoodSnakeQuery>(QUERY_SNAKE, { slug: id, locale });
+      w = data.allTipoDeMaderas?.[0];
+    } catch {
+      const data = await datoRequest<WoodCamelQuery>(QUERY_CAMEL, { slug: id, locale });
+      w = data.allTipoDeMaderas?.[0];
+    }
     if (!w) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
     const item = {
       id: w.slug ?? '',
-      nombre: w.nombre_tipo_madera ?? '',
+      nombre: 'nombre_tipo_madera' in w ? (w.nombre_tipo_madera ?? '') : (w as WoodCamel).nombreTipoMadera ?? '',
       origen: w.origen ?? '',
-      descripcion: w.descripcion_detallada ?? '',
-      img: w.campo_imagen?.url ?? '',
+      descripcion: 'descripcion_detallada' in w ? (w.descripcion_detallada ?? '') : (w as WoodCamel).descripcionDetallada ?? '',
+      img: 'campo_imagen' in w ? (w.campo_imagen?.url ?? '') : (w as WoodCamel).campoImagen?.url ?? '',
     };
 
     return NextResponse.json({ item, meta: { environment: 'main-copy-2025-11-04', locale } });

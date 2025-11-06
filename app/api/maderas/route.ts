@@ -3,26 +3,49 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 import { datoRequest } from '@/lib/datocms';
 
-type WoodRecord = {
+type WoodSnake = {
   slug: string | null;
-  nombre_tipo_madera: string | null;
-  origen: string | null;
-  descripcion_detallada: string | null;
+  nombre_tipo_madera?: string | null;
+  origen?: string | null;
+  descripcion_detallada?: string | null;
   campo_imagen?: { url: string } | null;
 };
 
-type WoodsQuery = {
-  allTipoDeMaderas: WoodRecord[];
+type WoodCamel = {
+  slug: string | null;
+  nombreTipoMadera?: string | null;
+  origen?: string | null;
+  descripcionDetallada?: string | null;
+  campoImagen?: { url: string } | null;
 };
 
-const QUERY = /* GraphQL */ `
-  query AllWoods($locale: SiteLocale) {
+type WoodsSnakeQuery = {
+  allTipoDeMaderas: WoodSnake[];
+};
+type WoodsCamelQuery = {
+  allTipoDeMaderas: WoodCamel[];
+};
+
+const QUERY_SNAKE = /* GraphQL */ `
+  query AllWoodsSnake($locale: SiteLocale) {
     allTipoDeMaderas(first: 200, locale: $locale) {
       slug
       nombre_tipo_madera
       origen
       descripcion_detallada
       campo_imagen { url }
+    }
+  }
+`;
+
+const QUERY_CAMEL = /* GraphQL */ `
+  query AllWoodsCamel($locale: SiteLocale) {
+    allTipoDeMaderas(first: 200, locale: $locale) {
+      slug
+      nombreTipoMadera
+      origen
+      descripcionDetallada
+      campoImagen { url }
     }
   }
 `;
@@ -34,13 +57,21 @@ export async function GET() {
     }
 
     const locale = 'es' as const;
-    const data = await datoRequest<WoodsQuery>(QUERY, { locale });
-    const items = data.allTipoDeMaderas.map((w) => ({
+    let records: Array<WoodSnake | WoodCamel> = [];
+    try {
+      const data = await datoRequest<WoodsSnakeQuery>(QUERY_SNAKE, { locale });
+      records = data.allTipoDeMaderas;
+    } catch {
+      const data = await datoRequest<WoodsCamelQuery>(QUERY_CAMEL, { locale });
+      records = data.allTipoDeMaderas;
+    }
+
+    const items = records.map((w) => ({
       id: w.slug ?? '',
-      nombre: w.nombre_tipo_madera ?? '',
+      nombre: 'nombre_tipo_madera' in w ? (w.nombre_tipo_madera ?? '') : (w as WoodCamel).nombreTipoMadera ?? '',
       origen: w.origen ?? '',
-      descripcion: w.descripcion_detallada ?? '',
-      img: w.campo_imagen?.url ?? '',
+      descripcion: 'descripcion_detallada' in w ? (w.descripcion_detallada ?? '') : (w as WoodCamel).descripcionDetallada ?? '',
+      img: 'campo_imagen' in w ? (w.campo_imagen?.url ?? '') : (w as WoodCamel).campoImagen?.url ?? '',
     }));
 
     return NextResponse.json({ items, meta: { environment: 'main-copy-2025-11-04', locale } });

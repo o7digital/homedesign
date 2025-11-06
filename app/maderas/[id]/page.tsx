@@ -13,28 +13,27 @@ interface MaderaItem {
 }
 
 export default function DetalleMadera({ params }: { params: { id: string } }) {
-  const useDato = process.env.NEXT_PUBLIC_USE_DATO === "1";
   const [madera, setMadera] = useState<MaderaItem | undefined>(() =>
     (maderasData as MaderaItem[]).find((m) => m.id === params.id)
   );
 
-  // Fetch desde Dato si está activo
+  // Fetch desde Dato siempre; si falla, dejamos el fallback local
   useEffect(() => {
-    if (!useDato || !params?.id) return;
+    if (!params?.id) return;
     let cancelled = false;
     (async () => {
       try {
         const res = await fetch(`/api/maderas/${params.id}`);
         if (res.ok) {
           const json = await res.json();
-          if (!cancelled) setMadera(json.item);
+          if (!cancelled && json?.item) setMadera(json.item as MaderaItem);
         }
       } catch (_err) {}
     })();
     return () => {
       cancelled = true;
     };
-  }, [useDato, params?.id]);
+  }, [params?.id]);
 
   if (!madera) {
     return (
@@ -94,7 +93,7 @@ export default function DetalleMadera({ params }: { params: { id: string } }) {
           <p className="text-gray-700 mb-2">
             <strong>Origen:</strong> {madera.origen}
           </p>
-          <p className="mb-6">{madera.descripcion}</p>
+          <p className="mb-6 whitespace-pre-line">{madera.descripcion}</p>
           <Link href="/#tipos" className="text-[#5d3b2d] font-bold hover:underline">
             ← Volver al catálogo de maderas
           </Link>

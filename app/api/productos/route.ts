@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 import { datoRequest } from '@/lib/datocms';
 
-type ProductSnake = {
+type ProductBase = {
   titulo: string | null;
   sku: string | null;
   slug: string | null;
@@ -11,32 +11,11 @@ type ProductSnake = {
   precio: string | null;
   disponibilidad: boolean | null;
   imagen: { url: string }[] | null;
-  categoria_producto?: Array<{
-    __typename: string;
-    slug?: string | null;
-    nombre_categoria?: string | null;
-  } | null> | null;
 };
-type ProductCamel = {
-  titulo: string | null;
-  sku: string | null;
-  slug: string | null;
-  descripcion: string | null;
-  precio: string | null;
-  disponibilidad: boolean | null;
-  imagen: { url: string }[] | null;
-  categoriaProducto?: Array<{
-    __typename: string;
-    slug?: string | null;
-    nombreCategoria?: string | null;
-  } | null> | null;
-};
+type ProductsBaseQuery = { allProductos: ProductBase[] };
 
-type ProductsSnakeQuery = { allProductos: ProductSnake[] };
-type ProductsCamelQuery = { allProductos: ProductCamel[] };
-
-const QUERY_SNAKE = /* GraphQL */ `
-  query AllProductosSnake($locale: SiteLocale) {
+const QUERY_BASE = /* GraphQL */ `
+  query AllProductosBase($locale: SiteLocale) {
     allProductos(first: 200, locale: $locale) {
       titulo
       sku
@@ -45,34 +24,6 @@ const QUERY_SNAKE = /* GraphQL */ `
       precio
       disponibilidad
       imagen { url }
-      categoria_producto {
-        __typename
-        ... on CategoriaProductosRecord {
-          slug
-          nombre_categoria
-        }
-      }
-    }
-  }
-`;
-
-const QUERY_CAMEL = /* GraphQL */ `
-  query AllProductosCamel($locale: SiteLocale) {
-    allProductos(first: 200, locale: $locale) {
-      titulo
-      sku
-      slug
-      descripcion
-      precio
-      disponibilidad
-      imagen { url }
-      categoriaProducto {
-        __typename
-        ... on CategoriaProductosRecord {
-          slug
-          nombreCategoria
-        }
-      }
     }
   }
 `;
@@ -85,29 +36,13 @@ export async function GET() {
     }
 
     const locale = 'es' as const;
-    let products: Array<ProductSnake | ProductCamel> = [];
-    try {
-      const data = await datoRequest<ProductsSnakeQuery>(QUERY_SNAKE, { locale });
-      products = data.allProductos;
-    } catch {
-      const data = await datoRequest<ProductsCamelQuery>(QUERY_CAMEL, { locale });
-      products = data.allProductos;
-    }
+    const data = await datoRequest<ProductsBaseQuery>(QUERY_BASE, { locale });
+    const products = data.allProductos;
 
     const items = products.map((p) => {
-      const catArr = 'categoria_producto' in p ? p.categoria_producto : (p as ProductCamel).categoriaProducto;
-      const firstCatName = (() => {
-        const arr = catArr;
-        if (!Array.isArray(arr)) return null;
-        for (const c of arr) {
-          if (!c) continue;
-          if ('nombre_categoria' in c) return (c as { nombre_categoria?: string | null }).nombre_categoria ?? null;
-          if ('nombreCategoria' in c) return (c as { nombreCategoria?: string | null }).nombreCategoria ?? null;
-        }
-        return null;
-      })();
       const firstImage = p.imagen?.[0]?.url ?? null;
-      const priceNumber = p.precio ? Number(String(p.precio).replace(/[^0-9.,-]/g, '').replace(',', '.')) : 0;
+      const priceRaw = p.precio as string | null | undefined;
+      const priceNumber = priceRaw ? Number(String(priceRaw).replace(/[^0-9.,-]/g, '').replace(',', '.')) : 0;
       return {
         SKU: p.sku ?? '',
         Slug: p.slug ?? null,
@@ -115,7 +50,7 @@ export async function GET() {
         Descripcion: p.descripcion ?? '',
         Precio: isNaN(priceNumber) ? 0 : priceNumber,
         Stock: p.disponibilidad ? 1 : 0,
-        Tipo: firstCatName,
+        Tipo: null,
         Imagen: firstImage,
       };
     });

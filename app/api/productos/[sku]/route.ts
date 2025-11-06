@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 import { datoRequest } from '@/lib/datocms';
 
-type ProductSnake = {
+type ProductBase = {
   titulo: string | null;
   sku: string | null;
   slug: string | null;
@@ -11,32 +11,12 @@ type ProductSnake = {
   precio: string | null;
   disponibilidad: boolean | null;
   imagen: { url: string }[] | null;
-  categoria_producto?: Array<{
-    __typename: string;
-    slug?: string | null;
-    nombre_categoria?: string | null;
-  } | null> | null;
-};
-type ProductCamel = {
-  titulo: string | null;
-  sku: string | null;
-  slug: string | null;
-  descripcion: string | null;
-  precio: string | null;
-  disponibilidad: boolean | null;
-  imagen: { url: string }[] | null;
-  categoriaProducto?: Array<{
-    __typename: string;
-    slug?: string | null;
-    nombreCategoria?: string | null;
-  } | null> | null;
 };
 
-type ProductSnakeQuery = { allProductos: ProductSnake[] };
-type ProductCamelQuery = { allProductos: ProductCamel[] };
+type ProductBaseQuery = { allProductos: ProductBase[] };
 
-const QUERY_SNAKE = /* GraphQL */ `
-  query ProductByQSnake($q: String, $locale: SiteLocale) {
+const QUERY_BASE = /* GraphQL */ `
+  query ProductByQBase($q: String, $locale: SiteLocale) {
     allProductos(
       filter: { OR: [{ slug: { eq: $q } }, { sku: { eq: $q } }] },
       first: 1,
@@ -49,38 +29,6 @@ const QUERY_SNAKE = /* GraphQL */ `
       precio
       disponibilidad
       imagen { url }
-      categoria_producto {
-        __typename
-        ... on CategoriaProductosRecord {
-          slug
-          nombre_categoria
-        }
-      }
-    }
-  }
-`;
-
-const QUERY_CAMEL = /* GraphQL */ `
-  query ProductByQCamel($q: String, $locale: SiteLocale) {
-    allProductos(
-      filter: { OR: [{ slug: { eq: $q } }, { sku: { eq: $q } }] },
-      first: 1,
-      locale: $locale
-    ) {
-      titulo
-      sku
-      slug
-      descripcion
-      precio
-      disponibilidad
-      imagen { url }
-      categoriaProducto {
-        __typename
-        ... on CategoriaProductosRecord {
-          slug
-          nombreCategoria
-        }
-      }
     }
   }
 `;
@@ -96,31 +44,11 @@ export async function GET(
 
     const { sku } = await context.params;
     const locale = 'es' as const;
-    let p: ProductSnake | ProductCamel | undefined;
-    try {
-      const data = await datoRequest<ProductSnakeQuery>(QUERY_SNAKE, { q: sku, locale });
-      p = data.allProductos?.[0];
-    } catch {
-      const data = await datoRequest<ProductCamelQuery>(QUERY_CAMEL, { q: sku, locale });
-      p = data.allProductos?.[0];
-    }
+    const data = await datoRequest<ProductBaseQuery>(QUERY_BASE, { q: sku, locale });
+    const p = data.allProductos?.[0];
     if (!p) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-    const firstCatName = (() => {
-      let arr: Array<{ [k: string]: string | null } | null> | null = null;
-      if ('categoria_producto' in p) {
-        arr = (p as ProductSnake).categoria_producto ?? null;
-      } else {
-        arr = (p as ProductCamel).categoriaProducto ?? null;
-      }
-      if (!Array.isArray(arr)) return null;
-      for (const c of arr) {
-        if (!c) continue;
-        if ('nombre_categoria' in c) return (c as { nombre_categoria?: string | null }).nombre_categoria ?? null;
-        if ('nombreCategoria' in c) return (c as { nombreCategoria?: string | null }).nombreCategoria ?? null;
-      }
-      return null;
-    })();
+    const firstCatName = null;
     const firstImage = p.imagen?.[0]?.url ?? null;
     const priceNumber = p.precio ? Number(String(p.precio).replace(/[^0-9.,-]/g, '').replace(',', '.')) : 0;
     const item = {

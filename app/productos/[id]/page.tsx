@@ -18,14 +18,13 @@ interface ProductoItem {
 
 export default function ProductoDetalle() {
   const { id } = useParams();
-  const useDato = process.env.NEXT_PUBLIC_USE_DATO === "1";
   const [producto, setProducto] = useState<ProductoItem | undefined>(() =>
     (productosData as ProductoItem[]).find((p) => p.SKU === id)
   );
 
-  // Fetch from Dato if enabled
+  // Fetch from Dato siempre; si falla, mantenemos el fallback del JSON local
   useEffect(() => {
-    if (!useDato || !id) return;
+    if (!id) return;
     let cancelled = false;
     (async () => {
       try {
@@ -39,7 +38,7 @@ export default function ProductoDetalle() {
     return () => {
       cancelled = true;
     };
-  }, [useDato, id]);
+  }, [id]);
 
   if (!producto) {
     return (
@@ -113,7 +112,7 @@ export default function ProductoDetalle() {
             <p className="text-gray-600 mb-2">
               Categoría: {producto.Tipo || "Sin categoría"}
             </p>
-            <p className="mb-4">{producto.Descripcion}</p>
+            <p className="mb-4 whitespace-pre-line">{producto.Descripcion}</p>
             <p className="text-2xl font-bold mb-4">
               {producto.Precio > 0
                 ? `Precio: $${producto.Precio} MXN`

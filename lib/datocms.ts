@@ -2,8 +2,11 @@ import 'server-only';
 
 const DATO_API_URL = process.env.DATOCMS_API_URL || 'https://graphql.datocms.com/';
 
-// Hard-force environment to ensure we read exactly the sandbox being edited
-const FORCED_DATO_ENV = 'main-copy-2025-11-04';
+// Environment configuration:
+// - Production (branch main): uses primary environment (main)
+// - Development (branch dev): uses sandbox for testing (main-copy-2025-11-04)
+const FORCED_DATO_ENV = process.env.DATOCMS_ENVIRONMENT || 
+  (process.env.VERCEL_ENV === 'production' ? undefined : 'main-copy-2025-11-04');
 
 function buildDatoEndpoint(preview: boolean, env?: string) {
   const base = DATO_API_URL.replace(/\/$/, '');

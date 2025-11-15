@@ -49,21 +49,98 @@ Configuración para motores de búsqueda:
 
 ---
 
-## 🎯 Palabras Clave Implementadas
+## 🎯 Palabras Clave Implementadas (OPTIMIZADAS)
 
-### Principales:
-- casas de madera
-- casas prefabricadas México
-- viviendas de madera
-- construcción sustentable
+### **Categoría 1: Casas Prefabricadas (Intención Comercial)**
+- ✅ venta casas de madera México
+- ✅ fabricación casas prefabricadas
+- ✅ casas de madera prefabricadas México
+- ✅ construcción casas de madera CDMX
+- ✅ venta casas ecológicas México
+- ✅ casas modulares de madera
+
+**Rationale:** Captura usuarios con intención de compra + localización précisa
+
+### **Categoría 2: Mobiliario y Muebles (Comercial + Local)**
+- ✅ venta mobiliario madera CDMX
+- ✅ fabricación muebles de madera México
+- ✅ muebles madera para oficinas
+- ✅ mobiliario de madera para casas
+- ✅ carpintería fina México
+
+**Rationale:** Cible le marché B2B et B2C pour mobilier
+
+### **Categoría 3: Productos Específicos (Long-tail Keywords)**
+- ✅ venta puertas de madera México
+- ✅ fabricación puertas madera CDMX
+- ✅ pisos de madera natural
+- ✅ venta triplay México
+- ✅ madera barnizada
+- ✅ escaleras de madera
+
+**Rationale:** Keywords de niche avec moins de compétition, forte conversion
+
+### **Categoría 4: Tipos de Madera (Produits Premium)**
+- ✅ madera de pino México
+- ✅ madera de cedro CDMX
+- ✅ madera de encino
+- ✅ madera de nogal
+- ✅ productos madera premium
+
+**Rationale:** Capture clients cherchant des essences spécifiques
+
+### **Categoría 5: Services et Valeurs (Différenciation)**
+- ✅ construcción sustentable México
+- ✅ viviendas ecológicas
+- ✅ diseño casas modernas madera
+- ✅ carpintería a medida CDMX
+
+**Rationale:** Positionne la marque sur valeurs écologiques et qualité
+
+### **Categoría 6: Branding**
+- ✅ Home Design Marques
+- ✅ Home Design Marques México
+
+**Rationale:** Renforcement de la marque
+
+---
+
+## 📊 Stratégie de Mots-Clés
+
+### **Volume de Recherche Estimé:**
+```
+HAUTE COMPÉTITION (Volume élevé):
+- casas de madera México: ~5,000/mois
+- muebles de madera: ~8,000/mois
+- puertas de madera: ~3,500/mois
+
+MOYENNE COMPÉTITION (Volume moyen):
+- venta casas prefabricadas: ~1,200/mois
+- mobiliario madera CDMX: ~800/mois
+- fabricación puertas madera: ~600/mois
+
+FAIBLE COMPÉTITION (Niche - Forte conversion):
+- casas modulares madera México: ~300/mois
+- carpintería fina CDMX: ~200/mois
+- venta triplay México: ~400/mois
+```
+
+### **Intention de Recherche:**
+
+**Transactionnelle (Achat immédiat):**
+- venta [producto]
+- fabricación [producto]
+- comprar [producto]
+
+**Informationnelle (Recherche):**
+- tipos de madera
 - casas ecológicas
+- diseño moderno
 
-### Secundarias:
-- madera pino
-- madera cedro
-- productos madera México
-- Home Design Marques
-- diseño casas madera
+**Locale (Géographique):**
+- CDMX
+- México
+- Ciudad de México
 
 ---
 

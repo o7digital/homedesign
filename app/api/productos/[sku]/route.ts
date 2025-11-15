@@ -46,7 +46,7 @@ export async function GET(
     const locale = 'es' as const;
     // 1) Try direct match via GraphQL filter
     const data = await datoRequest<ProductBaseQuery>(QUERY_BASE, { q: sku, locale });
-    let p = data.allProductos?.[0];
+    let p: ProductBase | undefined = data.allProductos?.[0];
     // 2) If not found, fetch a wider list and match locally by normalized slug/SKU
     if (!p) {
       const LIST_BASE = /* GraphQL */ `

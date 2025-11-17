@@ -33,7 +33,9 @@ export default function ProductoDetalle() {
           const json = await res.json();
           if (!cancelled) setProducto(json.item);
         }
-      } catch (_err) {}
+      } catch {
+        // Ignoramos errores y dejamos el fallback local
+      }
     })();
     return () => {
       cancelled = true;

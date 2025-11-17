@@ -28,7 +28,9 @@ export default function DetalleMadera({ params }: { params: { id: string } }) {
           const json = await res.json();
           if (!cancelled && json?.item) setMadera(json.item as MaderaItem);
         }
-      } catch (_err) {}
+      } catch {
+        // Ignoramos errores y dejamos el fallback local
+      }
     })();
     return () => {
       cancelled = true;

@@ -52,7 +52,7 @@ export async function GET(
     
     // Essayer de récupérer depuis DatoCMS
     try {
-      const data = await datoRequest<{ ofertaHomedesign: DatoOffre | null }>( | null }>(
+      const data = await datoRequest<{ ofertaHomedesign: DatoOffre | null }>(
         OFFRE_QUERY,
         { slug: id }
       );

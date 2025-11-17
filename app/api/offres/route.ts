@@ -47,9 +47,9 @@ export async function GET() {
   try {
     // Essayer de récupérer depuis DatoCMS
     try {
-      const data = await datoRequest<{ allOfertaHomedesigns: DatoOffre[] }>(OFFRES_QUERY);RES_QUERY);
+      const data = await datoRequest<{ allOfertaHomedesigns: DatoOffre[] }>(OFFRES_QUERY);
       
-      if (data?.allOfertaHomedesigns && data.allOfertaHomedesigns.length > 0) {edesigns.length > 0) {
+      if (data?.allOfertaHomedesigns && data.allOfertaHomedesigns.length > 0) {
         // Transformer les données DatoCMS au format attendu
         const offres: Offre[] = data.allOfertaHomedesigns.map((offre) => ({
           id: offre.id,

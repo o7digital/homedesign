@@ -125,7 +125,7 @@ export default function OffresPage() {
               return (
                 <div
                   key={offre.id}
-                  className={`bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow ${
+                  className={`bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col ${
                     offre.misEnAvant ? "ring-2 ring-[#5d3b2d]" : ""
                   }`}
                 >
@@ -159,7 +159,7 @@ export default function OffresPage() {
                   </div>
 
                   {/* Contenu */}
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-grow">
                     <h2 className="text-2xl font-bold text-[#5d3b2d] mb-3">
                       {offre.titre}
                     </h2>
@@ -195,10 +195,10 @@ export default function OffresPage() {
                       )}
                     </div>
 
-                    {/* Botón */}
+                    {/* Botón - poussé vers le bas avec mt-auto */}
                     <Link
                       href={`/offres/${offre.slug}`}
-                      className={`block text-center px-6 py-3 rounded-lg transition ${
+                      className={`block text-center px-6 py-3 rounded-lg transition mt-auto ${
                         valide
                           ? "bg-[#5d3b2d] text-white hover:bg-[#4a2f23]"
                           : "bg-gray-400 text-white cursor-not-allowed"

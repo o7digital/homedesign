@@ -161,7 +161,7 @@ export default function Home() {
           <div className="font-bold text-lg">
             <Image 
               src="/logo-transparent.png" 
-              alt="Home Design Marques" 
+              alt="Home Design Marques - Venta y Fabricación de Casas de Madera Prefabricadas México" 
               width={600} 
               height={160}
               className="h-40 w-auto"
@@ -218,7 +218,7 @@ export default function Home() {
           <Image
             key={i}
             src={src}
-            alt={`Slider ${i + 1}`}
+            alt={`Casas de madera prefabricadas México - Home Design Marques ${i + 1}`}
             fill
             className={`object-cover transition-opacity duration-1000 ${
               i === slideIndex ? "opacity-100" : "opacity-0"
@@ -280,7 +280,7 @@ export default function Home() {
               <div className="bg-[#fff2e6] rounded-xl shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer">
                 <Image
                   src={madera.img}
-                  alt={madera.nombre}
+                  alt={`Madera de ${madera.nombre} - ${madera.origen} - Home Design Marques`}
                   width={400}
                   height={250}
                   className="w-full h-[180px] object-cover"
@@ -335,7 +335,7 @@ export default function Home() {
               {prod.Imagen ? (
                 <Image
                   src={prod.Imagen}
-                  alt={prod.NombreProducto}
+                  alt={`${prod.NombreProducto} - ${prod.Descripcion} - Home Design Marques México`}
                   width={250}
                   height={200}
                   className="rounded-lg mx-auto mb-4"
@@ -552,9 +552,9 @@ export default function Home() {
           Aviso de Privacidad
         </Link>
         
-        {/* SEO Keywords - Discreto */}
-        <div className="mt-6 text-[10px] text-gray-700 max-w-4xl mx-auto leading-relaxed opacity-50">
-          <p>
+        {/* SEO Keywords - Visibles */}
+        <div className="mt-8 text-xs text-gray-700 max-w-4xl mx-auto leading-relaxed px-4">
+          <p className="text-center">
             venta casas de madera México • fabricación casas prefabricadas • casas de madera prefabricadas México • 
             construcción casas de madera CDMX • venta casas ecológicas México • casas modulares de madera • 
             venta mobiliario madera CDMX • fabricación muebles de madera México • muebles madera para oficinas • 

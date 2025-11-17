@@ -193,8 +193,8 @@ export default function Home() {
               </li>
               <li className="md:ml-8 p-2 text-center">
                 <a
-                  href="#ofertas"
-                  className="bg-yellow-400 text-black font-bold px-4 py-2 rounded hover:bg-yellow-500 transition"
+                  href="/offres"
+                  className="ofertas-flash bg-yellow-400 text-black font-bold px-4 py-2 rounded hover:bg-yellow-500 transition"
                 >
                   OFERTAS
                 </a>

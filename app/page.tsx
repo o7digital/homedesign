@@ -551,6 +551,20 @@ export default function Home() {
         >
           Aviso de Privacidad
         </Link>
+        
+        {/* SEO Keywords - Discreto */}
+        <div className="mt-6 text-[10px] text-gray-700 max-w-4xl mx-auto leading-relaxed opacity-50">
+          <p>
+            venta casas de madera México • fabricación casas prefabricadas • casas de madera prefabricadas México • 
+            construcción casas de madera CDMX • venta casas ecológicas México • casas modulares de madera • 
+            venta mobiliario madera CDMX • fabricación muebles de madera México • muebles madera para oficinas • 
+            mobiliario de madera para casas • carpintería fina México • venta puertas de madera México • 
+            fabricación puertas madera CDMX • pisos de madera natural • venta triplay México • madera barnizada • 
+            escaleras de madera • madera de pino México • madera de cedro CDMX • madera de encino • 
+            madera de nogal • productos madera premium • construcción sustentable México • viviendas ecológicas • 
+            diseño casas modernas madera • carpintería a medida CDMX
+          </p>
+        </div>
       </footer>
     </div>
   );

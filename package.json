@@ -11,6 +11,7 @@
     "dato:import": "tsx scripts/dato-import.ts",
     "dato:promote": "tsx scripts/promote-sandbox-to-main.ts",
     "dato:copy-to-main": "tsx scripts/copy-sandbox-to-main.ts",
+    "dato:setup-offres": "tsx scripts/setup-offres-model.ts",
     "deploy:hook:dev": "node scripts/trigger-vercel.mjs dev",
     "deploy:hook:main": "node scripts/trigger-vercel.mjs main"
   },

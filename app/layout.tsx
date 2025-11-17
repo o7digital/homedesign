@@ -15,6 +15,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Home Design Marques | Venta y Fabricación de Casas de Madera Prefabricadas México",
   description: "Venta y fabricación de casas de madera prefabricadas en México. Muebles y mobiliario de madera para casas y oficinas. Puertas, pisos, triplay. Servicio en CDMX y toda la República Mexicana. Diseño moderno y sustentable.",
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png' },
+    ],
+  },
   keywords: [
     // Casas prefabricadas - Intención comercial
     "venta casas de madera México",

@@ -48,7 +48,13 @@ export default function OffresPage() {
       <header className="w-full bg-black text-white p-4">
         <div className="max-w-[1100px] mx-auto flex justify-between items-center">
           <Link href="/" className="font-bold text-lg">
-            Home Design Marques
+            <Image 
+              src="/logo-transparent.png" 
+              alt="Home Design Marques" 
+              width={600} 
+              height={160}
+              className="h-40 w-auto"
+            />
           </Link>
           <nav>
             <ul className="flex gap-6">

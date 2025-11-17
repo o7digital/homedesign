@@ -192,12 +192,12 @@ export default function Home() {
                 </a>
               </li>
               <li className="md:ml-8 p-2 text-center">
-                <a
+                <Link
                   href="/offres"
                   className="ofertas-flash bg-yellow-400 text-black font-bold px-4 py-2 rounded hover:bg-yellow-500 transition"
                 >
                   OFERTAS
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

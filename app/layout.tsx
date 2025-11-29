@@ -236,16 +236,17 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        {/* Google tag (gtag.js) */}
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-FSLRBPBP0P"
+          src="https://www.googletagmanager.com/gtag/js?id=G-D8TVGTDV9P"
         />
         <Script id="gtag-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-FSLRBPBP0P');
+            gtag('config', 'G-D8TVGTDV9P');
           `}
         </Script>
         <script

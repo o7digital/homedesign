@@ -12,15 +12,16 @@ const COPY = {
     open: "Abrir chat",
     close: "Cerrar chat",
     welcome: "Hola, soy Olivia AI Assistant. Puedo ayudarte con casas de madera, muebles y cotizaciones.",
-    leadIntro: "Antes de empezar, deja tus datos para que un asesor pueda contactarte si necesitas cotizacion.",
+    leadIntro: "Si quieres que un asesor te contacte para una cotizacion, deja tus datos.",
     firstName: "Nombre",
     lastName: "Apellido",
     email: "Email",
     phone: "Telefono",
     submitLead: "Enviar datos",
-    leadThanks: "Gracias. Tus datos fueron enviados. Ahora puedes preguntarme sobre tu proyecto.",
+    leadThanks: "Gracias. Tus datos fueron enviados y un asesor podra darte seguimiento.",
     placeholder: "Escribe tu pregunta...",
     send: "Enviar",
+    shareContact: "Quiero que me contacten",
     error: "No pude enviar el mensaje. Intenta de nuevo o usa el formulario de contacto.",
   },
   en: {
@@ -31,15 +32,16 @@ const COPY = {
     open: "Open chat",
     close: "Close chat",
     welcome: "Hello, I am Olivia AI Assistant. I can help with wooden houses, furniture, and quotes.",
-    leadIntro: "Before we start, please leave your details so an advisor can contact you if you need a quote.",
+    leadIntro: "If you want an advisor to contact you for a quote, leave your details.",
     firstName: "First name",
     lastName: "Last name",
     email: "Email",
     phone: "Phone",
     submitLead: "Send details",
-    leadThanks: "Thanks. Your details were sent. You can now ask me about your project.",
+    leadThanks: "Thanks. Your details were sent and an advisor can follow up.",
     placeholder: "Write your question...",
     send: "Send",
+    shareContact: "I want to be contacted",
     error: "I could not send the message. Please try again or use the contact form.",
   },
 };
@@ -59,12 +61,14 @@ export default function OliviaChat() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [leadSent, setLeadSent] = useState(false);
+  const [showLeadForm, setShowLeadForm] = useState(false);
   const [lead, setLead] = useState({ firstName: "", lastName: "", email: "", phone: "" });
   const [messages, setMessages] = useState<ChatMessage[]>([{ role: "assistant", content: copy.welcome }]);
 
   useEffect(() => {
     setInput("");
     setLeadSent(false);
+    setShowLeadForm(false);
     setMessages([{ role: "assistant", content: copy.welcome }]);
   }, [language, copy.welcome]);
 
@@ -90,6 +94,7 @@ export default function OliviaChat() {
       });
       if (!response.ok) throw new Error("Lead delivery failed");
       setLeadSent(true);
+      setShowLeadForm(false);
       setMessages((prev) => [...prev, { role: "assistant", content: copy.leadThanks }]);
     } catch {
       setMessages((prev) => [...prev, { role: "assistant", content: copy.error }]);
@@ -100,7 +105,7 @@ export default function OliviaChat() {
 
   const handleSend = async () => {
     const message = input.trim();
-    if (!message || isLoading || !leadSent) return;
+    if (!message || isLoading) return;
 
     setInput("");
     setMessages((prev) => [...prev, { role: "user", content: message }]);
@@ -113,7 +118,12 @@ export default function OliviaChat() {
         body: JSON.stringify({ message, language, siteCode: "homedesign", lead }),
       });
       const data = await response.json();
-      setMessages((prev) => [...prev, { role: "assistant", content: data.reply || copy.error }]);
+      setMessages((prev) => {
+        const nextMessages: ChatMessage[] = [...prev, { role: "assistant", content: data.reply || copy.error }];
+        const userMessages = nextMessages.filter((item) => item.role === "user").length;
+        if (!leadSent && userMessages >= 2) setShowLeadForm(true);
+        return nextMessages;
+      });
     } catch {
       setMessages((prev) => [...prev, { role: "assistant", content: copy.error }]);
     } finally {
@@ -146,7 +156,15 @@ export default function OliviaChat() {
             {isLoading && <div className="olivia-message assistant">...</div>}
           </div>
 
-          {!leadSent && (
+          {!leadSent && !showLeadForm && (
+            <div className="olivia-lead-prompt">
+              <button type="button" onClick={() => setShowLeadForm(true)}>
+                {copy.shareContact}
+              </button>
+            </div>
+          )}
+
+          {!leadSent && showLeadForm && (
             <form className="olivia-lead" onSubmit={handleLeadSubmit}>
               <p>{copy.leadIntro}</p>
               <input required placeholder={copy.firstName} value={lead.firstName} onChange={(event) => setLead((prev) => ({ ...prev, firstName: event.target.value }))} />
@@ -160,8 +178,8 @@ export default function OliviaChat() {
           )}
 
           <div className="olivia-composer">
-            <input value={input} onChange={(event) => setInput(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") handleSend(); }} disabled={!leadSent || isLoading} placeholder={copy.placeholder} />
-            <button type="button" onClick={handleSend} disabled={isLoading || !leadSent} aria-label={copy.send}>
+            <input value={input} onChange={(event) => setInput(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") handleSend(); }} disabled={isLoading} placeholder={copy.placeholder} />
+            <button type="button" onClick={handleSend} disabled={isLoading} aria-label={copy.send}>
               {">"}
             </button>
           </div>

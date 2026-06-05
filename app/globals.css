@@ -151,6 +151,25 @@ body {
   border-top: 1px solid rgba(93, 59, 45, 0.18);
 }
 
+.olivia-lead-prompt {
+  padding: 12px 14px;
+  background: #fff8f3;
+  border-top: 1px solid rgba(93, 59, 45, 0.12);
+}
+
+.olivia-lead-prompt button {
+  width: 100%;
+  border: 1px solid rgba(93, 59, 45, 0.22);
+  border-radius: 14px;
+  background: white;
+  color: #5d3b2d;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 11px 13px;
+}
+
 .olivia-lead p,
 .olivia-lead button {
   grid-column: 1 / -1;

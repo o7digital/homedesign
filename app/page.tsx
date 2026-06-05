@@ -31,11 +31,87 @@ interface MaderaItem {
 }
 const maderasFallback: MaderaItem[] = maderasData as unknown as MaderaItem[];
 
-export default function Home() {
+type Locale = "es" | "en";
+
+const copy = {
+  es: {
+    all: "Todos",
+    uncategorized: "Sin categoría",
+    about: "Quiénes somos",
+    mission: "Misión:",
+    vision: "Visión:",
+    values: "Valores:",
+    history: "Nuestra historia:",
+    fallbackMission: "Ofrecer viviendas de madera prefabricadas de alta calidad, ecológicas y accesibles para familias mexicanas.",
+    fallbackVision: "Ser líderes en el mercado nacional de casas de madera, innovando en diseño y servicio al cliente.",
+    fallbackValues: "Calidad · Sustentabilidad · Cercanía · Diseño innovador",
+    fallbackHistory: "Home Design Marques nace del sueño de crear hogares accesibles y acogedores, con diseño moderno y materiales naturales.",
+    woodTypes: "Tipos de Madera",
+    origin: "Origen:",
+    products: "Nuestros Productos",
+    noPhoto: "Foto no disponible",
+    price: "Precio:",
+    quote: "Por cotizar",
+    stock: "Stock:",
+    units: "unidades",
+    byRequest: "Disponible bajo pedido",
+    seeMore: "Ver más",
+    seeMoreProducts: "Ver más productos",
+    contactTitle: "Contáctanos",
+    contactIntro: "Completa el siguiente formulario y nuestro equipo se pondrá en contacto contigo lo antes posible.",
+    firstName: "Nombre",
+    lastName: "Apellido",
+    phone: "Teléfono",
+    email: "Correo electrónico",
+    comments: "Comentarios",
+    namePlaceholder: "Escribe tu nombre",
+    lastNamePlaceholder: "Escribe tu apellido",
+    commentsPlaceholder: "Cuéntanos cómo podemos ayudarte...",
+    send: "Enviar mensaje",
+  },
+  en: {
+    all: "All",
+    uncategorized: "Uncategorized",
+    about: "About us",
+    mission: "Mission:",
+    vision: "Vision:",
+    values: "Values:",
+    history: "Our story:",
+    fallbackMission: "To offer high-quality, eco-conscious and accessible prefabricated wooden homes for families and projects in Mexico.",
+    fallbackVision: "To become a national reference for wooden homes, custom furniture and thoughtful wood design.",
+    fallbackValues: "Quality · Sustainability · Proximity · Innovative design",
+    fallbackHistory: "Home Design Marques was born from the idea of creating warm, accessible spaces with modern design and natural materials.",
+    woodTypes: "Wood Types",
+    origin: "Origin:",
+    products: "Our Products",
+    noPhoto: "Photo not available",
+    price: "Price:",
+    quote: "Upon request",
+    stock: "Stock:",
+    units: "units",
+    byRequest: "Available by request",
+    seeMore: "View more",
+    seeMoreProducts: "View more products",
+    contactTitle: "Contact us",
+    contactIntro: "Complete the form and our team will contact you as soon as possible.",
+    firstName: "First name",
+    lastName: "Last name",
+    phone: "Phone",
+    email: "Email",
+    comments: "Comments",
+    namePlaceholder: "Enter your first name",
+    lastNamePlaceholder: "Enter your last name",
+    commentsPlaceholder: "Tell us how we can help...",
+    send: "Send message",
+  },
+};
+
+export function HomeContent({ locale = "es" }: { locale?: Locale }) {
+  const t = copy[locale];
   const [debug, setDebug] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const [selectedTipo, setSelectedTipo] = useState("Todos");
+  const [selectedTipo, setSelectedTipo] = useState(t.all);
   const [visibleCount, setVisibleCount] = useState(9);
   // Nota: Antes teníamos un toggle NEXT_PUBLIC_USE_DATO; ahora intentamos siempre y hacemos fallback si falla
 
@@ -139,22 +215,22 @@ export default function Home() {
 
   // ✅ Aquí ya reconoce el campo "Tipo"
   const tipos = [
-    "Todos",
+    t.all,
     ...Array.from(
-      new Set(productos.map((p) => (p.Tipo ? p.Tipo : "Sin categoría")))
+      new Set(productos.map((p) => (p.Tipo ? p.Tipo : t.uncategorized)))
     ),
   ];
 
   const productosFiltrados =
-    selectedTipo === "Todos"
+    selectedTipo === t.all
       ? productos
-      : selectedTipo === "Sin categoría"
+      : selectedTipo === t.uncategorized
       ? productos.filter((p) => !p.Tipo)
       : productos.filter((p) => p.Tipo === selectedTipo);
 
   return (
     <div className="bg-[#fefaf3] font-sans flex flex-col min-h-screen">
-      <SiteHeader />
+      <SiteHeader locale={locale} />
 
       {/* Slider */}
       <div className="h-screen mt-[60px] relative overflow-hidden">
@@ -173,41 +249,36 @@ export default function Home() {
 
       {/* Quiénes somos */}
       <section id="quienes-somos" className="max-w-[1100px] mx-auto p-6">
-        <h2 className="text-2xl font-bold mb-4 text-[#5d3b2d]">{qsTitle || 'Quiénes somos'}</h2>
+        <h2 className="text-2xl font-bold mb-4 text-[#5d3b2d]">{locale === "es" && qsTitle ? qsTitle : t.about}</h2>
         {/* Mostramos campos desglosados desde Dato si existen; si no, fallback estático */}
         {(qsMision || qsVision || qsValores || qsHistoria) ? (
           <>
             {qsMision ? (
-              <p className="text-gray-800"><strong>Misión:</strong> {qsMision}</p>
+              <p className="text-gray-800"><strong>{t.mission}</strong> {qsMision}</p>
             ) : null}
             {qsVision ? (
-              <p className="text-gray-800"><strong>Visión:</strong> {qsVision}</p>
+              <p className="text-gray-800"><strong>{t.vision}</strong> {qsVision}</p>
             ) : null}
             {qsValores ? (
-              <p className="text-gray-800"><strong>Valores:</strong> {qsValores}</p>
+              <p className="text-gray-800"><strong>{t.values}</strong> {qsValores}</p>
             ) : null}
             {qsHistoria ? (
-              <p className="text-gray-800"><strong>Nuestra historia:</strong> {qsHistoria}</p>
+              <p className="text-gray-800"><strong>{t.history}</strong> {qsHistoria}</p>
             ) : null}
           </>
         ) : (
           <>
             <p className="text-gray-800">
-              <strong>Misión:</strong> Ofrecer viviendas de madera prefabricadas de
-              alta calidad, ecológicas y accesibles para familias mexicanas.
+              <strong>{t.mission}</strong> {t.fallbackMission}
             </p>
             <p className="text-gray-800">
-              <strong>Visión:</strong> Ser líderes en el mercado nacional de casas
-              de madera, innovando en diseño y servicio al cliente.
+              <strong>{t.vision}</strong> {t.fallbackVision}
             </p>
             <p className="text-gray-800">
-              <strong>Valores:</strong> Calidad · Sustentabilidad · Cercanía ·
-              Diseño innovador
+              <strong>{t.values}</strong> {t.fallbackValues}
             </p>
             <p className="text-gray-800">
-              <strong>Nuestra historia:</strong> Home Design Marques nace del sueño
-              de crear hogares accesibles y acogedores, con diseño moderno y
-              materiales naturales.
+              <strong>{t.history}</strong> {t.fallbackHistory}
             </p>
           </>
         )}
@@ -216,7 +287,7 @@ export default function Home() {
       {/* Tipos de Madera */}
       <section id="tipos" className="max-w-[1100px] mx-auto p-6">
         <h2 className="text-3xl font-bold mb-6 text-center text-[#5d3b2d]">
-          Tipos de Madera
+          {t.woodTypes}
         </h2>
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {maderas.map((madera) => (
@@ -234,7 +305,7 @@ export default function Home() {
                     {madera.nombre}
                   </h3>
                   <p className="text-sm text-gray-700">
-                    <strong>Origen:</strong> {madera.origen}
+                    <strong>{t.origin}</strong> {madera.origen}
                   </p>
                 </div>
               </div>
@@ -246,7 +317,7 @@ export default function Home() {
       {/* Productos */}
       <section id="productos" className="max-w-[1100px] mx-auto p-6 w-full">
         <h2 className="text-3xl font-bold mb-8 text-center text-[#5d3b2d]">
-          Nuestros Productos
+          {t.products}
         </h2>
 
         {/* Filtro */}
@@ -286,7 +357,7 @@ export default function Home() {
                 />
               ) : (
                 <div className="w-[250px] h-[200px] flex items-center justify-center bg-gray-300 rounded-lg mx-auto mb-4 text-gray-700 text-sm">
-                  Foto no disponible
+                  {t.noPhoto}
                 </div>
               )}
               <div className="text-sm text-gray-600 mb-2">{prod.SKU}</div>
@@ -296,8 +367,8 @@ export default function Home() {
               <p className="text-sm text-gray-700">{prod.Descripcion}</p>
               <p className="font-semibold mt-2">
                 {prod.Precio > 0
-                  ? `Precio: $${prod.Precio.toFixed(2)} MXN`
-                  : "Precio: Por cotizar"}
+                  ? `${t.price} $${prod.Precio.toFixed(2)} MXN`
+                  : `${t.price} ${t.quote}`}
               </p>
               <p
                 className={`font-semibold mt-1 ${
@@ -305,14 +376,14 @@ export default function Home() {
                 }`}
               >
                 {prod.Stock > 0
-                  ? `Stock: ${prod.Stock} unidades`
-                  : "Disponible bajo pedido"}
+                  ? `${t.stock} ${prod.Stock} ${t.units}`
+                  : t.byRequest}
               </p>
               <Link
                 href={`/productos/${prod.Slug || prod.SKU}`}
                 className="mt-3 inline-block bg-[#5d3b2d] text-white px-4 py-2 rounded-lg hover:bg-[#4a2f23] transition"
               >
-                Ver más
+                {t.seeMore}
               </Link>
             </div>
           ))}
@@ -325,7 +396,7 @@ export default function Home() {
               onClick={() => setVisibleCount((prev) => prev + 9)}
               className="bg-[#5d3b2d] text-white px-6 py-3 rounded-lg hover:bg-[#4a2f23] transition"
             >
-              Ver más productos
+              {t.seeMoreProducts}
             </button>
           </div>
         )}
@@ -334,11 +405,10 @@ export default function Home() {
       {/* Contacto */}
       <section id="contacto" className="max-w-[1100px] mx-auto p-6">
         <h2 className="text-3xl font-bold mb-4 text-center text-[#5d3b2d]">
-          Contáctanos
+          {t.contactTitle}
         </h2>
         <p className="mb-8 text-center text-gray-700 max-w-2xl mx-auto">
-          Completa el siguiente formulario y nuestro equipo se pondrá en
-          contacto contigo lo antes posible.
+          {t.contactIntro}
         </p>
 
         <form
@@ -351,13 +421,13 @@ export default function Home() {
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
               htmlFor="nombre"
             >
-              Nombre
+              {t.firstName}
             </label>
             <input
               type="text"
               id="nombre"
               name="nombre"
-              placeholder="Escribe tu nombre"
+              placeholder={t.namePlaceholder}
               required
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
@@ -368,13 +438,13 @@ export default function Home() {
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
               htmlFor="apellido"
             >
-              Apellido
+              {t.lastName}
             </label>
             <input
               type="text"
               id="apellido"
               name="apellido"
-              placeholder="Escribe tu apellido"
+              placeholder={t.lastNamePlaceholder}
               required
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
@@ -385,7 +455,7 @@ export default function Home() {
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
               htmlFor="telefono"
             >
-              Teléfono
+              {t.phone}
             </label>
             <input
               type="tel"
@@ -402,7 +472,7 @@ export default function Home() {
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
               htmlFor="email"
             >
-              Correo electrónico
+              {t.email}
             </label>
             <input
               type="email"
@@ -419,13 +489,13 @@ export default function Home() {
               className="block text-base font-semibold text-[#5d3b2d] mb-2"
               htmlFor="comentarios"
             >
-              Comentarios
+              {t.comments}
             </label>
             <textarea
               id="comentarios"
               name="comentarios"
               rows={5}
-              placeholder="Cuéntanos cómo podemos ayudarte..."
+              placeholder={t.commentsPlaceholder}
               required
               className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             ></textarea>
@@ -435,7 +505,7 @@ export default function Home() {
             type="submit"
             className="w-full bg-[#5d3b2d] text-white py-3 rounded-lg font-bold hover:bg-[#4a2f23] transition"
           >
-            📩 Enviar mensaje
+            {t.send}
           </button>
         </form>
       </section>
@@ -452,4 +522,8 @@ export default function Home() {
       <SiteFooter />
     </div>
   );
+}
+
+export default function Home() {
+  return <HomeContent locale="es" />;
 }

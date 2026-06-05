@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const COPY = {
   es: {
@@ -46,20 +47,13 @@ const COPY = {
 type Language = keyof typeof COPY;
 type ChatMessage = { role: "assistant" | "user"; content: string };
 
-function getLanguage(): Language {
-  if (typeof document !== "undefined" && document.documentElement.lang?.startsWith("en")) return "en";
-  return "es";
-}
-
-function detectMessageLanguage(message: string, fallbackLanguage: Language): Language {
-  const value = message.toLowerCase();
-  if (/\b(hello|thanks|price|quote|wood|house|furniture|door|floor|delivery)\b/.test(value)) return "en";
-  if (/\b(hola|gracias|precio|cotizacion|madera|casa|mueble|puerta|piso|entrega)\b/.test(value)) return "es";
-  return fallbackLanguage;
+function getLanguage(pathname: string | null): Language {
+  return pathname?.split("/").filter(Boolean)[0] === "en" ? "en" : "es";
 }
 
 export default function OliviaChat() {
-  const language = getLanguage();
+  const pathname = usePathname();
+  const language = getLanguage(pathname);
   const copy = COPY[language];
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -69,12 +63,10 @@ export default function OliviaChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([{ role: "assistant", content: copy.welcome }]);
 
   useEffect(() => {
-    setMessages((prev) => {
-      if (prev.length !== 1 || prev[0]?.role !== "assistant") return prev;
-      if (prev[0].content === copy.welcome) return prev;
-      return [{ role: "assistant", content: copy.welcome }];
-    });
-  }, [copy.welcome]);
+    setInput("");
+    setLeadSent(false);
+    setMessages([{ role: "assistant", content: copy.welcome }]);
+  }, [language, copy.welcome]);
 
   const transcript = useMemo(
     () => messages.map((message) => `${message.role}: ${message.content}`).join("\n"),
@@ -109,7 +101,6 @@ export default function OliviaChat() {
   const handleSend = async () => {
     const message = input.trim();
     if (!message || isLoading || !leadSent) return;
-    const messageLanguage = detectMessageLanguage(message, language);
 
     setInput("");
     setMessages((prev) => [...prev, { role: "user", content: message }]);
@@ -119,7 +110,7 @@ export default function OliviaChat() {
       const response = await fetch("/api/o7-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message, language: messageLanguage, siteCode: "homedesign", lead }),
+        body: JSON.stringify({ message, language, siteCode: "homedesign", lead }),
       });
       const data = await response.json();
       setMessages((prev) => [...prev, { role: "assistant", content: data.reply || copy.error }]);

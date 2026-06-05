@@ -56,7 +56,7 @@ export default function SiteHeader() {
               </Link>
               <Link
                 href="/preguntas"
-                className="block text-xs uppercase tracking-wide text-gray-300 hover:text-white hover:underline"
+                className="mt-2 block text-xs uppercase tracking-wide text-gray-300 hover:text-white hover:underline"
               >
                 Preguntas frecuentes
               </Link>

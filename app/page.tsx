@@ -251,7 +251,7 @@ export function HomeContent({ locale = "es" }: { locale?: Locale }) {
       <section id="quienes-somos" className="max-w-[1100px] mx-auto p-6">
         <h2 className="text-2xl font-bold mb-4 text-[#5d3b2d]">{locale === "es" && qsTitle ? qsTitle : t.about}</h2>
         {/* Mostramos campos desglosados desde Dato si existen; si no, fallback estático */}
-        {(qsMision || qsVision || qsValores || qsHistoria) ? (
+        {locale === "es" && (qsMision || qsVision || qsValores || qsHistoria) ? (
           <>
             {qsMision ? (
               <p className="text-gray-800"><strong>{t.mission}</strong> {qsMision}</p>

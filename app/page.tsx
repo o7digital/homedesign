@@ -519,7 +519,7 @@ export function HomeContent({ locale = "es" }: { locale?: Locale }) {
         </div>
       )}
 
-      <SiteFooter />
+      <SiteFooter locale={locale} />
     </div>
   );
 }

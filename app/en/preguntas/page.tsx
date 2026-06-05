@@ -61,7 +61,7 @@ export default function EnglishQuestionsPage() {
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter locale="en" />
     </div>
   );
 }

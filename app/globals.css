@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbf7ff;
+  --foreground: #271c2f;
 }
 
 @theme inline {
@@ -12,17 +12,26 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #d8b4fe;
+  color: #150f1b;
+}
+
+.olivia-ai-skin {
+  background:
+    radial-gradient(circle at top left, rgba(192, 132, 252, 0.2), transparent 32rem),
+    linear-gradient(180deg, #fbf7ff 0%, #f7f1ee 48%, #fffaf4 100%);
+  color: #271c2f;
 }
 
 /* Animation flash pour le bouton OFERTAS */

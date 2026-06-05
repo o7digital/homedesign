@@ -31,13 +31,13 @@ export async function POST(request: Request) {
         apellido: lastName,
         _replyto: email,
         telefono: phone,
-        comentarios: `Lead Olivia AI Home Design Marques (${language})\n\n${message}`,
+        comentarios: `Lead Vanessa AI Home Design Marques (${language})\n\n${message}`,
       }),
     });
 
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("Olivia lead error:", error);
+    console.error("Vanessa lead error:", error);
     return NextResponse.json({ ok: true });
   }
 }

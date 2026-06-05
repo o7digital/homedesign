@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
-import OliviaChat from "@/components/OliviaChat";
+import VanessaChat from "@/components/VanessaChat";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -259,7 +259,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <OliviaChat />
+        <VanessaChat />
       </body>
     </html>
   );

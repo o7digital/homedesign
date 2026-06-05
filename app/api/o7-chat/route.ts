@@ -99,7 +99,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         model: process.env.OPENAI_MODEL || "gpt-4o-mini",
         instructions: `
-You are Olivia AI Assistant for Home Design Marques.
+You are Vanessa AI Assistant for Home Design Marques.
 Answer only in ${LANGUAGE_NAMES[lang]}.
 
 Business context:
@@ -134,7 +134,7 @@ Rules:
     const data = await response.json();
     return NextResponse.json({ reply: getResponseText(data) || fallbackReply, mode: "openai" });
   } catch (error) {
-    console.error("Olivia chat error:", error);
+    console.error("Vanessa chat error:", error);
     return NextResponse.json({ reply: FALLBACK_REPLIES.es }, { status: 200 });
   }
 }

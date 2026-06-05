@@ -5,13 +5,13 @@ import { usePathname } from "next/navigation";
 
 const COPY = {
   es: {
-    title: "Olivia AI Assistant",
+    title: "Vanessa AI Assistant",
     status: "Asistente Home Design Marques",
     online: "En linea",
-    teaser: "Olivia puede ayudarte",
+    teaser: "Vanessa puede ayudarte",
     open: "Abrir chat",
     close: "Cerrar chat",
-    welcome: "Hola, soy Olivia AI Assistant. Puedo ayudarte con casas de madera, muebles y cotizaciones.",
+    welcome: "Hola, soy Vanessa AI Assistant. Puedo ayudarte con casas de madera, muebles y cotizaciones.",
     leadIntro: "Si quieres que un asesor te contacte para una cotizacion, deja tus datos.",
     firstName: "Nombre",
     lastName: "Apellido",
@@ -25,13 +25,13 @@ const COPY = {
     error: "No pude enviar el mensaje. Intenta de nuevo o usa el formulario de contacto.",
   },
   en: {
-    title: "Olivia AI Assistant",
+    title: "Vanessa AI Assistant",
     status: "Home Design Marques Assistant",
     online: "Online",
-    teaser: "Olivia can help",
+    teaser: "Vanessa can help",
     open: "Open chat",
     close: "Close chat",
-    welcome: "Hello, I am Olivia AI Assistant. I can help with wooden houses, furniture, and quotes.",
+    welcome: "Hello, I am Vanessa AI Assistant. I can help with wooden houses, furniture, and quotes.",
     leadIntro: "If you want an advisor to contact you for a quote, leave your details.",
     firstName: "First name",
     lastName: "Last name",
@@ -53,7 +53,7 @@ function getLanguage(pathname: string | null): Language {
   return pathname?.split("/").filter(Boolean)[0] === "en" ? "en" : "es";
 }
 
-export default function OliviaChat() {
+export default function VanessaChat() {
   const pathname = usePathname();
   const language = getLanguage(pathname);
   const copy = COPY[language];
@@ -89,7 +89,7 @@ export default function OliviaChat() {
         body: JSON.stringify({
           ...lead,
           language,
-          message: `Lead Chat Olivia AI Home Design Marques (${language})\n\n${transcript}`,
+          message: `Lead Chat Vanessa AI Home Design Marques (${language})\n\n${transcript}`,
         }),
       });
       if (!response.ok) throw new Error("Lead delivery failed");
@@ -132,32 +132,32 @@ export default function OliviaChat() {
   };
 
   return (
-    <div className="olivia-chat">
+    <div className="vanessa-chat">
       {isOpen && (
-        <section className="olivia-panel" aria-label={copy.status}>
-          <header className="olivia-header">
+        <section className="vanessa-panel" aria-label={copy.status}>
+          <header className="vanessa-header">
             <div>
-              <p className="olivia-title">{copy.title}</p>
-              <p className="olivia-status">
+              <p className="vanessa-title">{copy.title}</p>
+              <p className="vanessa-status">
                 {copy.status} · {copy.online}
               </p>
             </div>
-            <button type="button" className="olivia-close" onClick={() => setIsOpen(false)} aria-label={copy.close}>
+            <button type="button" className="vanessa-close" onClick={() => setIsOpen(false)} aria-label={copy.close}>
               x
             </button>
           </header>
 
-          <div className="olivia-messages">
+          <div className="vanessa-messages">
             {messages.map((message, index) => (
-              <div key={`${message.role}-${index}`} className={`olivia-message ${message.role}`}>
+              <div key={`${message.role}-${index}`} className={`vanessa-message ${message.role}`}>
                 {message.content}
               </div>
             ))}
-            {isLoading && <div className="olivia-message assistant">...</div>}
+            {isLoading && <div className="vanessa-message assistant">...</div>}
           </div>
 
           {!leadSent && !showLeadForm && (
-            <div className="olivia-lead-prompt">
+            <div className="vanessa-lead-prompt">
               <button type="button" onClick={() => setShowLeadForm(true)}>
                 {copy.shareContact}
               </button>
@@ -165,7 +165,7 @@ export default function OliviaChat() {
           )}
 
           {!leadSent && showLeadForm && (
-            <form className="olivia-lead" onSubmit={handleLeadSubmit}>
+            <form className="vanessa-lead" onSubmit={handleLeadSubmit}>
               <p>{copy.leadIntro}</p>
               <input required placeholder={copy.firstName} value={lead.firstName} onChange={(event) => setLead((prev) => ({ ...prev, firstName: event.target.value }))} />
               <input required placeholder={copy.lastName} value={lead.lastName} onChange={(event) => setLead((prev) => ({ ...prev, lastName: event.target.value }))} />
@@ -177,7 +177,7 @@ export default function OliviaChat() {
             </form>
           )}
 
-          <div className="olivia-composer">
+          <div className="vanessa-composer">
             <input value={input} onChange={(event) => setInput(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") handleSend(); }} disabled={isLoading} placeholder={copy.placeholder} />
             <button type="button" onClick={handleSend} disabled={isLoading} aria-label={copy.send}>
               {">"}
@@ -186,13 +186,13 @@ export default function OliviaChat() {
         </section>
       )}
 
-      <div className="olivia-closed">
+      <div className="vanessa-closed">
         {!isOpen && (
-          <button type="button" className="olivia-teaser" onClick={() => setIsOpen(true)}>
+          <button type="button" className="vanessa-teaser" onClick={() => setIsOpen(true)}>
             {copy.teaser}
           </button>
         )}
-        <button type="button" className="olivia-toggle" onClick={() => setIsOpen((value) => !value)} aria-label={isOpen ? copy.close : copy.open}>
+        <button type="button" className="vanessa-toggle" onClick={() => setIsOpen((value) => !value)} aria-label={isOpen ? copy.close : copy.open}>
           {isOpen ? "x" : "IA"}
         </button>
       </div>

@@ -1,3 +1,5 @@
 import OffresPage from "../../offres/page";
 
-export default OffresPage;
+export default function EnglishOffersPage() {
+  return <OffresPage locale="en" />;
+}

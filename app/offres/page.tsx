@@ -4,9 +4,92 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Offre } from "@/types/offre";
 
-export default function OffresPage() {
+type Locale = "es" | "en";
+
+const offerTranslations: Record<string, Pick<Offre, "titre" | "descriptionCourte">> = {
+  "promo-cabanas-noviembre": {
+    titre: "Special Wood Cabin Promotion",
+    descriptionCourte: "Up to 30% off three-bedroom English-style cabins",
+  },
+  "oferta-cabana-chimenea-diciembre": {
+    titre: "December Offer - Cabin with Stone Fireplace",
+    descriptionCourte: "Cabin with two stone fireplaces - Perfect for winter",
+  },
+  "fin-ano-cabanas": {
+    titre: "Year-End Special - Premium Cabins",
+    descriptionCourte: "Last chance of the year - Premium English-style cabins",
+  },
+  "pack-familiar-noviembre": {
+    titre: "Family Package - English-Style Cabin",
+    descriptionCourte: "Complete family package - Cabin with stone fireplace",
+  },
+};
+
+const copy = {
+  es: {
+    navAbout: "Quiénes somos",
+    navWood: "Tipos de Madera",
+    navProducts: "Productos",
+    navOffers: "Offres",
+    navContact: "Contacto",
+    heroTitle: "Nuestras Ofertas Especiales",
+    heroSubtitle: "Aprovecha nuestras promociones exclusivas en cabañas de madera",
+    loading: "Cargando ofertas...",
+    empty: "No hay ofertas disponibles en este momento.",
+    backHome: "← Volver al inicio",
+    featured: "⭐ Oferta Destacada",
+    noImage: "Sin imagen",
+    validFrom: "📅 Válida del",
+    validTo: "al",
+    expiredWarning: "⚠️ Oferta expirada",
+    viewOffer: "Ver oferta",
+    expiredOffer: "Oferta expirada",
+    footerRights: "Todos los derechos reservados.",
+    privacy: "Aviso de Privacidad",
+    dateLocale: "es-MX",
+    homeHref: "/",
+    aboutHref: "/#quienes-somos",
+    woodHref: "/#tipos",
+    productsHref: "/#productos",
+    offersHref: "/offres",
+    contactHref: "/#contacto",
+    privacyHref: "/aviso-privacidad",
+  },
+  en: {
+    navAbout: "About us",
+    navWood: "Wood Types",
+    navProducts: "Products",
+    navOffers: "Offers",
+    navContact: "Contact",
+    heroTitle: "Our Special Offers",
+    heroSubtitle: "Take advantage of our exclusive promotions on wood cabins",
+    loading: "Loading offers...",
+    empty: "No offers are available at the moment.",
+    backHome: "← Back to home",
+    featured: "⭐ Featured Offer",
+    noImage: "No image",
+    validFrom: "📅 Valid from",
+    validTo: "to",
+    expiredWarning: "⚠️ Offer expired",
+    viewOffer: "View offer",
+    expiredOffer: "Offer expired",
+    footerRights: "All rights reserved.",
+    privacy: "Privacy Notice",
+    dateLocale: "en-US",
+    homeHref: "/en",
+    aboutHref: "/en#quienes-somos",
+    woodHref: "/en#tipos",
+    productsHref: "/en#productos",
+    offersHref: "/en/offers",
+    contactHref: "/en#contacto",
+    privacyHref: "/en/privacy",
+  },
+} as const;
+
+export default function OffresPage({ locale = "es" }: { locale?: Locale }) {
   const [offres, setOffres] = useState<Offre[]>([]);
   const [loading, setLoading] = useState(true);
+  const t = copy[locale];
 
   useEffect(() => {
     async function fetchOffres() {
@@ -28,7 +111,7 @@ export default function OffresPage() {
   // Función para formatear las fechas
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
-    return date.toLocaleDateString("es-MX", {
+    return date.toLocaleDateString(t.dateLocale, {
       day: "numeric",
       month: "long",
       year: "numeric",
@@ -59,28 +142,28 @@ export default function OffresPage() {
           <nav>
             <ul className="flex gap-6">
               <li>
-                <Link href="/#quienes-somos" className="hover:underline">
-                  Quiénes somos
+                <Link href={t.aboutHref} className="hover:underline">
+                  {t.navAbout}
                 </Link>
               </li>
               <li>
-                <Link href="/#tipos" className="hover:underline">
-                  Tipos de Madera
+                <Link href={t.woodHref} className="hover:underline">
+                  {t.navWood}
                 </Link>
               </li>
               <li>
-                <Link href="/#productos" className="hover:underline">
-                  Productos
+                <Link href={t.productsHref} className="hover:underline">
+                  {t.navProducts}
                 </Link>
               </li>
               <li>
-                <Link href="/offres" className="hover:underline font-bold">
-                  Offres
+                <Link href={t.offersHref} className="hover:underline font-bold">
+                  {t.navOffers}
                 </Link>
               </li>
               <li>
-                <Link href="/#contacto" className="hover:underline">
-                  Contacto
+                <Link href={t.contactHref} className="hover:underline">
+                  {t.navContact}
                 </Link>
               </li>
             </ul>
@@ -92,10 +175,10 @@ export default function OffresPage() {
       <div className="bg-gradient-to-r from-[#5d3b2d] to-[#8b5a3c] text-white py-16">
         <div className="max-w-[1100px] mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Nuestras Ofertas Especiales
+            {t.heroTitle}
           </h1>
           <p className="text-xl opacity-90">
-            Aprovecha nuestras promociones exclusivas en cabañas de madera
+            {t.heroSubtitle}
           </p>
         </div>
       </div>
@@ -104,24 +187,28 @@ export default function OffresPage() {
       <main className="max-w-[1100px] mx-auto px-6 py-12">
         {loading ? (
           <div className="text-center py-12">
-            <p className="text-xl text-gray-600">Cargando ofertas...</p>
+            <p className="text-xl text-gray-600">{t.loading}</p>
           </div>
         ) : offres.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-xl text-gray-600">
-              No hay ofertas disponibles en este momento.
+              {t.empty}
             </p>
             <Link
-              href="/"
+              href={t.homeHref}
               className="mt-6 inline-block text-[#5d3b2d] underline hover:text-[#4a2f23]"
             >
-              ← Volver al inicio
+              {t.backHome}
             </Link>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {offres.map((offre) => {
               const valide = isOffreValide(offre);
+              const translatedOffer =
+                locale === "en" && offerTranslations[offre.slug]
+                  ? { ...offre, ...offerTranslations[offre.slug] }
+                  : offre;
               return (
                 <div
                   key={offre.id}
@@ -132,7 +219,7 @@ export default function OffresPage() {
                   {/* Badge destacado */}
                   {offre.misEnAvant && (
                     <div className="bg-[#5d3b2d] text-white px-4 py-2 text-sm font-bold">
-                      ⭐ Oferta Destacada
+                      {t.featured}
                     </div>
                   )}
 
@@ -147,7 +234,7 @@ export default function OffresPage() {
                       />
                     ) : (
                       <div className="h-full flex items-center justify-center text-gray-400">
-                        Sin imagen
+                        {t.noImage}
                       </div>
                     )}
                     {/* Badge réduction */}
@@ -161,11 +248,11 @@ export default function OffresPage() {
                   {/* Contenu */}
                   <div className="p-6 flex flex-col flex-grow">
                     <h2 className="text-2xl font-bold text-[#5d3b2d] mb-3">
-                      {offre.titre}
+                      {translatedOffer.titre}
                     </h2>
                     
                     <p className="text-gray-700 mb-4 line-clamp-3">
-                      {offre.descriptionCourte}
+                      {translatedOffer.descriptionCourte}
                     </p>
 
                     {/* Prix */}
@@ -185,26 +272,26 @@ export default function OffresPage() {
                     {/* Fechas */}
                     <div className="mb-4 text-sm">
                       <p className="text-gray-600">
-                        📅 Válida del {formatDate(offre.dateDebut)} al{" "}
+                        {t.validFrom} {formatDate(offre.dateDebut)} {t.validTo}{" "}
                         {formatDate(offre.dateFin)}
                       </p>
                       {!valide && (
                         <p className="text-red-600 font-bold mt-2">
-                          ⚠️ Oferta expirada
+                          {t.expiredWarning}
                         </p>
                       )}
                     </div>
 
                     {/* Botón - poussé vers le bas avec mt-auto */}
                     <Link
-                      href={`/offres/${offre.slug}`}
+                      href={`${t.offersHref}/${offre.slug}`}
                       className={`block text-center px-6 py-3 rounded-lg transition mt-auto ${
                         valide
                           ? "bg-[#5d3b2d] text-white hover:bg-[#4a2f23]"
                           : "bg-gray-400 text-white cursor-not-allowed"
                       }`}
                     >
-                      {valide ? "Ver oferta" : "Oferta expirada"}
+                      {valide ? t.viewOffer : t.expiredOffer}
                     </Link>
                   </div>
                 </div>
@@ -217,14 +304,13 @@ export default function OffresPage() {
       {/* Footer */}
       <footer className="bg-black text-white text-center py-6 mt-10">
         <p className="text-sm">
-          © {new Date().getFullYear()} Home Design Marques. Todos los derechos
-          reservados.
+          © {new Date().getFullYear()} Home Design Marques. {t.footerRights}
         </p>
         <Link
-          href="/aviso-privacidad"
+          href={t.privacyHref}
           className="underline hover:text-gray-300"
         >
-          Aviso de Privacidad
+          {t.privacy}
         </Link>
       </footer>
     </div>

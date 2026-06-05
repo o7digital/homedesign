@@ -291,7 +291,7 @@ export function HomeContent({ locale = "es" }: { locale?: Locale }) {
         </h2>
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {maderas.map((madera) => (
-            <Link key={madera.id} href={`/maderas/${madera.id}`}>
+            <Link key={madera.id} href={locale === "en" ? `/en/wood/${madera.id}` : `/maderas/${madera.id}`}>
               <div className="bg-[#fff2e6] rounded-xl shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer">
                 <Image
                   src={madera.img}
@@ -380,7 +380,7 @@ export function HomeContent({ locale = "es" }: { locale?: Locale }) {
                   : t.byRequest}
               </p>
               <Link
-                href={`/productos/${prod.Slug || prod.SKU}`}
+                href={locale === "en" ? `/en/products/${prod.Slug || prod.SKU}` : `/productos/${prod.Slug || prod.SKU}`}
                 className="mt-3 inline-block bg-[#5d3b2d] text-white px-4 py-2 rounded-lg hover:bg-[#4a2f23] transition"
               >
                 {t.seeMore}

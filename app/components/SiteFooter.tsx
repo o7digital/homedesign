@@ -10,6 +10,8 @@ const keywords = {
 };
 
 export default function SiteFooter({ locale = "es" }: { locale?: Locale }) {
+  const isEn = locale === "en";
+
   return (
     <footer className="bg-black text-white text-center py-8 mt-10">
       <div className="flex justify-center space-x-6 mb-4">
@@ -51,15 +53,25 @@ export default function SiteFooter({ locale = "es" }: { locale?: Locale }) {
         </a>
       </div>
       <p className="text-sm">
-        © {new Date().getFullYear()} Home Design Marques. Todos los derechos
-        reservados.
+        © {new Date().getFullYear()} Home Design Marques. {isEn ? "All rights reserved." : "Todos los derechos reservados."}
       </p>
       <Link
-        href="/aviso-privacidad"
+        href={isEn ? "/en/privacy" : "/aviso-privacidad"}
         className="underline hover:text-gray-300 block mt-2"
       >
-        Aviso de Privacidad
+        {isEn ? "Privacy Notice" : "Aviso de Privacidad"}
       </Link>
+      <p className="text-sm mt-3 text-gray-300">
+        {isEn ? "Made by " : "Realizado por "}
+        <a
+          href={isEn ? "https://www.o7digital.com/en" : "https://www.o7digital.com/"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-white"
+        >
+          o7 digital
+        </a>
+      </p>
 
       <div className="mt-8 text-sm text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
         <p className="text-center">{keywords[locale]}</p>

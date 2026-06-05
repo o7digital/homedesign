@@ -154,17 +154,17 @@ export default function Home() {
       : productos.filter((p) => p.Tipo === selectedTipo);
 
   return (
-    <div className="olivia-ai-skin font-sans flex flex-col min-h-screen">
+    <div className="bg-[#fefaf3] font-sans flex flex-col min-h-screen">
       {/* Header */}
-      <header className="fixed top-0 w-full border-b border-white/10 bg-[#15110f]/90 text-white z-50 backdrop-blur-xl">
-        <div className="max-w-[1180px] mx-auto flex justify-between items-center px-4 py-3">
+      <header className="fixed top-0 w-full bg-black text-white z-50">
+        <div className="max-w-[1100px] mx-auto flex justify-between items-center p-4">
           <div className="font-bold text-lg">
             <Image 
               src="/logo-transparent.png" 
               alt="Home Design Marques - Venta y Fabricación de Casas de Madera Prefabricadas México" 
               width={600} 
               height={160}
-              className="h-24 md:h-28 w-auto"
+              className="h-40 w-auto"
             />
           </div>
           <div
@@ -177,32 +177,32 @@ export default function Home() {
             <ul
               className={`${
                 menuOpen ? "flex" : "hidden"
-              } md:flex flex-col md:flex-row absolute md:static top-24 left-0 w-full md:w-auto bg-[#15110f] md:bg-transparent`}
+              } md:flex flex-col md:flex-row absolute md:static top-14 left-0 w-full md:w-auto bg-black md:bg-transparent`}
             >
               <li className="md:ml-8 p-2 text-center">
-                <a href="#quienes-somos" className="hover:text-[#d8b4fe] transition">
+                <a href="#quienes-somos" className="hover:underline">
                   Quiénes somos
                 </a>
               </li>
               <li className="md:ml-8 p-2 text-center">
-                <a href="#tipos" className="hover:text-[#d8b4fe] transition">
+                <a href="#tipos" className="hover:underline">
                   Tipos de Madera
                 </a>
               </li>
               <li className="md:ml-8 p-2 text-center">
-                <a href="#productos" className="hover:text-[#d8b4fe] transition">
+                <a href="#productos" className="hover:underline">
                   Productos
                 </a>
               </li>
               <li className="md:ml-8 p-2 text-center">
-                <a href="#contacto" className="hover:text-[#d8b4fe] transition">
+                <a href="#contacto" className="hover:underline">
                   Contacto
                 </a>
               </li>
               <li className="md:ml-8 p-2 text-center">
                 <Link
                   href="/offres"
-                  className="ofertas-flash bg-[#f7d046] text-[#17110d] font-bold px-4 py-2 rounded-md hover:bg-[#ffe073] transition"
+                  className="ofertas-flash bg-yellow-400 text-black font-bold px-4 py-2 rounded hover:bg-yellow-500 transition"
                 >
                   OFERTAS
                 </Link>
@@ -213,7 +213,7 @@ export default function Home() {
       </header>
 
       {/* Slider */}
-      <div className="h-screen min-h-[620px] relative overflow-hidden">
+      <div className="h-screen mt-[60px] relative overflow-hidden">
         {slides.map((src, i) => (
           <Image
             key={i}
@@ -225,66 +225,42 @@ export default function Home() {
             }`}
           />
         ))}
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(21,17,15,0.88),rgba(42,31,52,0.42),rgba(21,17,15,0.28))]" />
-        <div className="absolute inset-0 flex items-end md:items-center">
-          <div className="max-w-[1180px] mx-auto w-full px-6 pb-14 md:pb-0 pt-32">
-            <div className="max-w-3xl text-white">
-              <p className="mb-4 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold tracking-wide text-[#f2e9ff] backdrop-blur">
-                Olivia AI skin
-              </p>
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Casas de madera con diseño inteligente y acabado premium
-              </h1>
-              <p className="mt-5 max-w-2xl text-base md:text-lg text-white/85">
-                Fabricamos espacios cálidos, duraderos y personalizados con una experiencia visual más clara, moderna y asistida por IA.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#productos" className="rounded-md bg-[#c084fc] px-5 py-3 font-bold text-[#150f1b] transition hover:bg-[#d8b4fe]">
-                  Ver productos
-                </a>
-                <a href="#contacto" className="rounded-md border border-white/30 bg-white/10 px-5 py-3 font-bold text-white backdrop-blur transition hover:bg-white/20">
-                  Solicitar cotización
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Quiénes somos */}
-      <section id="quienes-somos" className="max-w-[1180px] mx-auto p-6 py-16">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#271c2f]">{qsTitle || 'Quiénes somos'}</h2>
+      <section id="quienes-somos" className="max-w-[1100px] mx-auto p-6">
+        <h2 className="text-2xl font-bold mb-4 text-[#5d3b2d]">{qsTitle || 'Quiénes somos'}</h2>
         {/* Mostramos campos desglosados desde Dato si existen; si no, fallback estático */}
         {(qsMision || qsVision || qsValores || qsHistoria) ? (
           <>
             {qsMision ? (
-              <p className="text-[#3d3542]"><strong>Misión:</strong> {qsMision}</p>
+              <p className="text-gray-800"><strong>Misión:</strong> {qsMision}</p>
             ) : null}
             {qsVision ? (
-              <p className="text-[#3d3542]"><strong>Visión:</strong> {qsVision}</p>
+              <p className="text-gray-800"><strong>Visión:</strong> {qsVision}</p>
             ) : null}
             {qsValores ? (
-              <p className="text-[#3d3542]"><strong>Valores:</strong> {qsValores}</p>
+              <p className="text-gray-800"><strong>Valores:</strong> {qsValores}</p>
             ) : null}
             {qsHistoria ? (
-              <p className="text-[#3d3542]"><strong>Nuestra historia:</strong> {qsHistoria}</p>
+              <p className="text-gray-800"><strong>Nuestra historia:</strong> {qsHistoria}</p>
             ) : null}
           </>
         ) : (
           <>
-            <p className="text-[#3d3542]">
+            <p className="text-gray-800">
               <strong>Misión:</strong> Ofrecer viviendas de madera prefabricadas de
               alta calidad, ecológicas y accesibles para familias mexicanas.
             </p>
-            <p className="text-[#3d3542]">
+            <p className="text-gray-800">
               <strong>Visión:</strong> Ser líderes en el mercado nacional de casas
               de madera, innovando en diseño y servicio al cliente.
             </p>
-            <p className="text-[#3d3542]">
+            <p className="text-gray-800">
               <strong>Valores:</strong> Calidad · Sustentabilidad · Cercanía ·
               Diseño innovador
             </p>
-            <p className="text-[#3d3542]">
+            <p className="text-gray-800">
               <strong>Nuestra historia:</strong> Home Design Marques nace del sueño
               de crear hogares accesibles y acogedores, con diseño moderno y
               materiales naturales.
@@ -294,14 +270,14 @@ export default function Home() {
       </section>
 
       {/* Tipos de Madera */}
-      <section id="tipos" className="max-w-[1180px] mx-auto p-6 py-16">
-        <h2 className="text-3xl font-bold mb-6 text-center text-[#271c2f]">
+      <section id="tipos" className="max-w-[1100px] mx-auto p-6">
+        <h2 className="text-3xl font-bold mb-6 text-center text-[#5d3b2d]">
           Tipos de Madera
         </h2>
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {maderas.map((madera) => (
             <Link key={madera.id} href={`/maderas/${madera.id}`}>
-              <div className="rounded-lg border border-[#e8dff0] bg-white shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-xl transition cursor-pointer">
+              <div className="bg-[#fff2e6] rounded-xl shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer">
                 <Image
                   src={madera.img}
                   alt={`Madera de ${madera.nombre} - ${madera.origen} - Home Design Marques`}
@@ -310,10 +286,10 @@ export default function Home() {
                   className="w-full h-[180px] object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="font-bold text-lg text-[#271c2f]">
+                  <h3 className="font-bold text-lg text-[#5d3b2d]">
                     {madera.nombre}
                   </h3>
-                  <p className="text-sm text-[#5b5360]">
+                  <p className="text-sm text-gray-700">
                     <strong>Origen:</strong> {madera.origen}
                   </p>
                 </div>
@@ -324,8 +300,8 @@ export default function Home() {
       </section>
 
       {/* Productos */}
-      <section id="productos" className="max-w-[1180px] mx-auto p-6 py-16 w-full">
-        <h2 className="text-3xl font-bold mb-8 text-center text-[#271c2f]">
+      <section id="productos" className="max-w-[1100px] mx-auto p-6 w-full">
+        <h2 className="text-3xl font-bold mb-8 text-center text-[#5d3b2d]">
           Nuestros Productos
         </h2>
 
@@ -338,10 +314,10 @@ export default function Home() {
                 setSelectedTipo(tipo);
                 setVisibleCount(9);
               }}
-              className={`px-4 py-2 rounded-md font-semibold transition ${
+              className={`px-4 py-2 rounded-lg font-semibold ${
                 selectedTipo === tipo
-                  ? "bg-[#6d28d9] text-white"
-                  : "bg-white text-[#453a4d] border border-[#e8dff0] hover:border-[#c084fc]"
+                  ? "bg-[#5d3b2d] text-white"
+                  : "bg-gray-200 text-gray-700"
               }`}
             >
               {tipo}
@@ -354,7 +330,7 @@ export default function Home() {
           {productosFiltrados.slice(0, visibleCount).map((prod) => (
             <div
               key={prod.SKU}
-              className="bg-white p-4 rounded-lg text-center border border-[#e8dff0] shadow-sm hover:-translate-y-1 hover:shadow-xl transition"
+              className="bg-[#fff2e6] p-4 rounded-xl text-center shadow-md hover:shadow-lg transition"
             >
               {prod.Imagen ? (
                 <Image
@@ -362,18 +338,18 @@ export default function Home() {
                   alt={`${prod.NombreProducto} - ${prod.Descripcion} - Home Design Marques México`}
                   width={250}
                   height={200}
-                  className="rounded-md mx-auto mb-4"
+                  className="rounded-lg mx-auto mb-4"
                 />
               ) : (
-                <div className="w-[250px] h-[200px] flex items-center justify-center bg-[#eee8f4] rounded-md mx-auto mb-4 text-[#5b5360] text-sm">
+                <div className="w-[250px] h-[200px] flex items-center justify-center bg-gray-300 rounded-lg mx-auto mb-4 text-gray-700 text-sm">
                   Foto no disponible
                 </div>
               )}
-              <div className="text-sm text-[#766d7d] mb-2">{prod.SKU}</div>
-              <h3 className="font-bold text-lg text-[#271c2f]">
+              <div className="text-sm text-gray-600 mb-2">{prod.SKU}</div>
+              <h3 className="font-bold text-lg text-[#5d3b2d]">
                 {prod.NombreProducto}
               </h3>
-              <p className="text-sm text-[#5b5360]">{prod.Descripcion}</p>
+              <p className="text-sm text-gray-700">{prod.Descripcion}</p>
               <p className="font-semibold mt-2">
                 {prod.Precio > 0
                   ? `Precio: $${prod.Precio.toFixed(2)} MXN`
@@ -390,7 +366,7 @@ export default function Home() {
               </p>
               <Link
                 href={`/productos/${prod.Slug || prod.SKU}`}
-                className="mt-3 inline-block bg-[#6d28d9] text-white px-4 py-2 rounded-md hover:bg-[#5b21b6] transition"
+                className="mt-3 inline-block bg-[#5d3b2d] text-white px-4 py-2 rounded-lg hover:bg-[#4a2f23] transition"
               >
                 Ver más
               </Link>
@@ -403,7 +379,7 @@ export default function Home() {
           <div className="flex justify-center mt-8">
             <button
               onClick={() => setVisibleCount((prev) => prev + 9)}
-              className="bg-[#271c2f] text-white px-6 py-3 rounded-md hover:bg-[#3f2d4d] transition"
+              className="bg-[#5d3b2d] text-white px-6 py-3 rounded-lg hover:bg-[#4a2f23] transition"
             >
               Ver más productos
             </button>
@@ -412,11 +388,11 @@ export default function Home() {
       </section>
 
       {/* Contacto */}
-      <section id="contacto" className="max-w-[1180px] mx-auto p-6 py-16">
-        <h2 className="text-3xl font-bold mb-4 text-center text-[#271c2f]">
+      <section id="contacto" className="max-w-[1100px] mx-auto p-6">
+        <h2 className="text-3xl font-bold mb-4 text-center text-[#5d3b2d]">
           Contáctanos
         </h2>
-        <p className="mb-8 text-center text-[#5b5360] max-w-2xl mx-auto">
+        <p className="mb-8 text-center text-gray-700 max-w-2xl mx-auto">
           Completa el siguiente formulario y nuestro equipo se pondrá en
           contacto contigo lo antes posible.
         </p>
@@ -424,11 +400,11 @@ export default function Home() {
         <form
           action="https://formspree.io/f/xqadzpgz"
           method="POST"
-          className="bg-white p-8 rounded-lg border border-[#e8dff0] shadow-xl max-w-lg mx-auto space-y-6"
+          className="bg-[#fff2e6] p-8 rounded-xl shadow-md max-w-lg mx-auto space-y-6"
         >
           <div>
             <label
-              className="block text-base font-semibold text-[#271c2f] mb-2"
+              className="block text-base font-semibold text-[#5d3b2d] mb-2"
               htmlFor="nombre"
             >
               Nombre
@@ -439,13 +415,13 @@ export default function Home() {
               name="nombre"
               placeholder="Escribe tu nombre"
               required
-              className="w-full px-4 py-2 border border-[#d8cfe0] rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c084fc]"
+              className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
 
           <div>
             <label
-              className="block text-base font-semibold text-[#271c2f] mb-2"
+              className="block text-base font-semibold text-[#5d3b2d] mb-2"
               htmlFor="apellido"
             >
               Apellido
@@ -456,13 +432,13 @@ export default function Home() {
               name="apellido"
               placeholder="Escribe tu apellido"
               required
-              className="w-full px-4 py-2 border border-[#d8cfe0] rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c084fc]"
+              className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
 
           <div>
             <label
-              className="block text-base font-semibold text-[#271c2f] mb-2"
+              className="block text-base font-semibold text-[#5d3b2d] mb-2"
               htmlFor="telefono"
             >
               Teléfono
@@ -473,13 +449,13 @@ export default function Home() {
               name="telefono"
               placeholder="+52 55 1234 5678"
               required
-              className="w-full px-4 py-2 border border-[#d8cfe0] rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c084fc]"
+              className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
 
           <div>
             <label
-              className="block text-base font-semibold text-[#271c2f] mb-2"
+              className="block text-base font-semibold text-[#5d3b2d] mb-2"
               htmlFor="email"
             >
               Correo electrónico
@@ -490,13 +466,13 @@ export default function Home() {
               name="_replyto"
               placeholder="tucorreo@ejemplo.com"
               required
-              className="w-full px-4 py-2 border border-[#d8cfe0] rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c084fc]"
+              className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             />
           </div>
 
           <div>
             <label
-              className="block text-base font-semibold text-[#271c2f] mb-2"
+              className="block text-base font-semibold text-[#5d3b2d] mb-2"
               htmlFor="comentarios"
             >
               Comentarios
@@ -507,13 +483,13 @@ export default function Home() {
               rows={5}
               placeholder="Cuéntanos cómo podemos ayudarte..."
               required
-              className="w-full px-4 py-2 border border-[#d8cfe0] rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c084fc]"
+              className="w-full px-4 py-2 border rounded-md placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5d3b2d]"
             ></textarea>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-[#6d28d9] text-white py-3 rounded-md font-bold hover:bg-[#5b21b6] transition"
+            className="w-full bg-[#5d3b2d] text-white py-3 rounded-lg font-bold hover:bg-[#4a2f23] transition"
           >
             📩 Enviar mensaje
           </button>
@@ -530,13 +506,13 @@ export default function Home() {
       )}
 
       {/* Footer */}
-      <footer className="bg-[#15110f] text-white text-center py-8 mt-10">
+      <footer className="bg-black text-white text-center py-8 mt-10">
         <div className="flex justify-center space-x-6 mb-4">
           <a
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#d8b4fe] text-xl"
+            className="hover:text-gray-400 text-xl"
           >
             <FaFacebookF />
           </a>
@@ -544,7 +520,7 @@ export default function Home() {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#d8b4fe] text-xl"
+            className="hover:text-gray-400 text-xl"
           >
             <FaInstagram />
           </a>
@@ -552,7 +528,7 @@ export default function Home() {
             href="https://wa.me/5215512345678"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#d8b4fe] text-xl"
+            className="hover:text-gray-400 text-xl"
           >
             <FaWhatsapp />
           </a>
@@ -560,7 +536,7 @@ export default function Home() {
             href="https://www.tiktok.com/@TU_USUARIO"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#d8b4fe] text-xl"
+            className="hover:text-gray-400 text-xl"
           >
             <FaTiktok />
           </a>

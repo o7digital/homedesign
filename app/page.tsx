@@ -118,7 +118,7 @@ export function HomeContent({ locale = "es" }: { locale?: Locale }) {
   const [productos, setProductos] = useState<Producto[]>(productosFallback);
   const [maderas, setMaderas] = useState<MaderaItem[]>(maderasFallback);
 
-  const [slides, setSlides] = useState<string[]>(["/img/slider1.jpg", "/img/slider2.jpg", "/img/slider3.jpg"]);
+  const [slides, setSlides] = useState<string[]>(["/img/slider1.webp", "/img/slider2.webp", "/img/slider3.webp"]);
   // mantenido antes, ya no usado tras migración a campos separados
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [quienesSomos, setQuienesSomos] = useState<string>("");
@@ -234,12 +234,19 @@ export function HomeContent({ locale = "es" }: { locale?: Locale }) {
 
       {/* Slider */}
       <div className="h-screen mt-[60px] relative overflow-hidden">
+        <h1 className="sr-only">
+          {locale === "en"
+            ? "Prefabricated wooden homes and custom furniture in Mexico"
+            : "Casas de madera prefabricadas y muebles a medida en México"}
+        </h1>
         {slides.map((src, i) => (
           <Image
             key={i}
             src={src}
             alt={`Casas de madera prefabricadas México - Home Design Marques ${i + 1}`}
             fill
+            sizes="100vw"
+            priority={i === 0}
             className={`object-cover transition-opacity duration-1000 ${
               i === slideIndex ? "opacity-100" : "opacity-0"
             }`}
@@ -519,7 +526,7 @@ export function HomeContent({ locale = "es" }: { locale?: Locale }) {
         </div>
       )}
 
-      <SiteFooter />
+      <SiteFooter locale={locale} />
     </div>
   );
 }

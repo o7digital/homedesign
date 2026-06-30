@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://homedesignmarques.com"),
   title: "Home Design Marques | Venta y Fabricación de Casas de Madera Prefabricadas México",
   description: "Venta y fabricación de casas de madera prefabricadas en México. Muebles y mobiliario de madera para casas y oficinas. Puertas, pisos, triplay. Servicio en CDMX y toda la República Mexicana. Diseño moderno y sustentable.",
   keywords: [
@@ -58,17 +59,27 @@ export const metadata: Metadata = {
     "Home Design Marques México",
   ],
   authors: [{ name: "Home Design Marques" }],
+  alternates: {
+    canonical: "/",
+    languages: {
+      "es-MX": "/",
+      "en": "/en",
+    },
+  },
   openGraph: {
     title: "Home Design Marques | Venta y Fabricación de Casas de Madera México",
     description: "Fabricación y venta de casas prefabricadas de madera, mobiliario y productos de madera en México. Servicio en CDMX y toda la República.",
     type: "website",
     locale: "es_MX",
     siteName: "Home Design Marques",
+    url: "/",
+    images: [{ url: "/logo-transparent.png", alt: "Home Design Marques" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Home Design Marques | Casas y Muebles de Madera México",
     description: "Venta y fabricación de casas prefabricadas, mobiliario y productos de madera en CDMX y México",
+    images: ["/logo-transparent.png"],
   },
 };
 
@@ -79,58 +90,18 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "Organization",
     "name": "Home Design Marques",
     "image": "https://homedesignmarques.com/logo-transparent.png",
     "@id": "https://homedesignmarques.com",
     "url": "https://homedesignmarques.com",
-    "telephone": "+52-55-1234-5678",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "",
-      "addressLocality": "Ciudad de México",
-      "addressRegion": "CDMX",
-      "postalCode": "",
-      "addressCountry": "MX"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 19.4326,
-      "longitude": -99.1332
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
-      ],
-      "opens": "09:00",
-      "closes": "18:00"
-    },
     "sameAs": [
       "https://www.facebook.com/homedesignmarques",
       "https://www.instagram.com/homedesignmarques",
       "https://www.tiktok.com/@homedesignmarques"
     ],
     "description": "Venta y fabricación de casas de madera prefabricadas en México. Muebles y mobiliario de madera para casas y oficinas. Puertas, pisos, triplay. Servicio en CDMX y toda la República Mexicana.",
-    "areaServed": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates",
-        "latitude": 19.4326,
-        "longitude": -99.1332
-      },
-      "geoRadius": "500000"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "127"
-    },
+    "areaServed": "Mexico",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Catálogo de Productos de Madera",

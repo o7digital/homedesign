@@ -4,69 +4,69 @@
     "nombre": "Abedul",
     "origen": "Del germánico “batilar”",
     "descripcion": "Madera clara, grano fino, usada en ebanistería y muebles de calidad.",
-    "img": "/img/maderas/abedul.jpeg"
+    "img": "/img/maderas/abedul.webp"
   },
   {
     "id": "abeto",
     "nombre": "Abeto",
     "origen": "Abies alba",
     "descripcion": "Madera blanca-amarillenta, ligera, usada en carpintería e instrumentos.",
-    "img": "/img/maderas/abeto.jpeg"
+    "img": "/img/maderas/abeto.webp"
   },
   {
     "id": "alamo",
     "nombre": "Álamo",
     "origen": "Populus alba",
     "descripcion": "Blanda, económica, ideal para puertas y proyectos sencillos.",
-    "img": "/img/maderas/alamo.jpeg"
+    "img": "/img/maderas/alamo.webp"
   },
   {
     "id": "arce",
     "nombre": "Arce",
     "origen": "Del latín “acer”",
     "descripcion": "Madera clara, dureza media, usada en muebles y construcción.",
-    "img": "/img/maderas/arce2.jpeg"
+    "img": "/img/maderas/arce2.webp"
   },
   {
     "id": "castano",
     "nombre": "Castaño",
     "origen": "Castanea sativa",
     "descripcion": "Flexible y durable, vetas intensas, usada en tarimas y estructuras.",
-    "img": "/img/maderas/castano.jpeg"
+    "img": "/img/maderas/castano.webp"
   },
   {
     "id": "fresno",
     "nombre": "Fresno",
     "origen": "Fraxinus",
     "descripcion": "Madera resistente, usada en puertas y estructuras.",
-    "img": "/img/maderas/fresno.jpeg"
+    "img": "/img/maderas/fresno.webp"
   },
   {
     "id": "nogal",
     "nombre": "Nogal",
     "origen": "Juglans regia",
     "descripcion": "Madera oscura y compacta, usada en muebles de lujo.",
-    "img": "/img/maderas/nogal.jpeg"
+    "img": "/img/maderas/nogal.webp"
   },
   {
     "id": "pino",
     "nombre": "Pino",
     "origen": "Pinus spp.",
     "descripcion": "Madera blanda y económica, usada en carpintería general.",
-    "img": "/img/maderas/pino.jpeg"
+    "img": "/img/maderas/pino.webp"
   },
   {
     "id": "teca",
     "nombre": "Teca",
     "origen": "Tectona grandis",
     "descripcion": "Muy resistente, ideal para exteriores y muebles de lujo.",
-    "img": "/img/maderas/teca.jpeg"
+    "img": "/img/maderas/teca.webp"
   },
   {
     "id": "parota",
     "nombre": "Parota",
     "origen": "Enterolobium cyclocarpum",
     "descripcion": "Muy usada en México, resistente y duradera.",
-    "img": "/img/maderas/parota.png"
+    "img": "/img/maderas/parota.webp"
   }
 ]

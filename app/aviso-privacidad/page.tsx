@@ -1,5 +1,17 @@
-"use client";
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Aviso de Privacidad | Home Design Marques",
+  description: "Conoce cómo Home Design Marques recopila, utiliza y protege tus datos personales.",
+  alternates: {
+    canonical: "/aviso-privacidad",
+    languages: {
+      "es-MX": "/aviso-privacidad",
+      "en": "/en/privacy",
+    },
+  },
+};
 
 export default function AvisoPrivacidad() {
   return (

@@ -32,6 +32,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
+      url: `${baseUrl}/en`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          es: baseUrl,
+          en: `${baseUrl}/en`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}/en/privacy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/preguntas`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/en/preguntas`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
       url: `${baseUrl}/offres`,
       lastModified: new Date(),
       changeFrequency: 'daily',

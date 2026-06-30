@@ -2,7 +2,42 @@ import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa6";
 
-export default function SiteFooter() {
+type Locale = "es" | "en";
+
+const footerCopy = {
+  es: {
+    rights: "Todos los derechos reservados.",
+    privacy: "Aviso de Privacidad",
+    keywords: [
+      "Casas de madera prefabricadas en México",
+      "Fabricación de casas prefabricadas",
+      "Casas modulares de madera",
+      "Construcción sustentable en México",
+      "Muebles de madera a medida",
+      "Carpintería fina en CDMX",
+      "Puertas y pisos de madera",
+      "Maderas premium",
+    ],
+  },
+  en: {
+    rights: "All rights reserved.",
+    privacy: "Privacy Notice",
+    keywords: [
+      "Prefabricated wooden homes in Mexico",
+      "Custom wooden home construction",
+      "Modular wooden houses",
+      "Sustainable construction in Mexico",
+      "Custom wood furniture",
+      "Fine woodworking in Mexico City",
+      "Wooden doors and flooring",
+      "Premium wood products",
+    ],
+  },
+} satisfies Record<Locale, { rights: string; privacy: string; keywords: string[] }>;
+
+export default function SiteFooter({ locale = "es" }: { locale?: Locale }) {
+  const content = footerCopy[locale];
+
   return (
     <footer className="bg-black text-white text-center py-8 mt-10">
       <div className="flex justify-center space-x-6 mb-4">
@@ -44,28 +79,25 @@ export default function SiteFooter() {
         </a>
       </div>
       <p className="text-sm">
-        © {new Date().getFullYear()} Home Design Marques. Todos los derechos
-        reservados.
+        © {new Date().getFullYear()} Home Design Marques. {content.rights}
       </p>
       <Link
-        href="/aviso-privacidad"
+        href={locale === "en" ? "/en/privacy" : "/aviso-privacidad"}
         className="underline hover:text-gray-300 block mt-2"
       >
-        Aviso de Privacidad
+        {content.privacy}
       </Link>
 
-      <div className="mt-8 text-xs text-gray-700 max-w-4xl mx-auto leading-relaxed px-4">
-        <p className="text-center">
-          venta casas de madera México • fabricación casas prefabricadas • casas de madera prefabricadas México •
-          construcción casas de madera CDMX • venta casas ecológicas México • casas modulares de madera •
-          venta mobiliario madera CDMX • fabricación muebles de madera México • muebles madera para oficinas •
-          mobiliario de madera para casas • carpintería fina México • venta puertas de madera México •
-          fabricación puertas madera CDMX • pisos de madera natural • venta triplay México • madera barnizada •
-          escaleras de madera • madera de pino México • madera de cedro CDMX • madera de encino •
-          madera de nogal • productos madera premium • construcción sustentable México • viviendas ecológicas •
-          diseño casas modernas madera • carpintería a medida CDMX
-        </p>
-      </div>
+      <nav
+        aria-label={locale === "en" ? "Services" : "Servicios"}
+        className="mt-7 max-w-4xl mx-auto px-4"
+      >
+        <ul className="flex flex-wrap justify-center gap-x-3 gap-y-2 text-sm text-gray-300">
+          {content.keywords.map((keyword) => (
+            <li key={keyword}>{keyword}</li>
+          ))}
+        </ul>
+      </nav>
     </footer>
   );
 }

@@ -174,7 +174,13 @@ export function HomeContent({ locale = "es" }: { locale?: Locale }) {
         if (woodRes.status === "fulfilled" && woodRes.value.ok) {
           const woodJson = await woodRes.value.json();
           const arr = (woodJson.items as MaderaItem[]) || [];
-          if (!cancelled) setMaderas(arr.length ? arr : maderasFallback);
+          const merged = new Map(
+            maderasFallback.map((madera) => [madera.id, madera])
+          );
+          arr.forEach((madera) => {
+            if (madera.id) merged.set(madera.id, madera);
+          });
+          if (!cancelled) setMaderas(Array.from(merged.values()));
         } else if (!cancelled) {
           setMaderas(maderasFallback);
         }

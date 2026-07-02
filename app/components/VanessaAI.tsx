@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const API = "https://suitesmine-kni3rmip5-olivier-steineur.vercel.app/api";
 const CLIENT = "homedesignmarques";
@@ -14,24 +15,26 @@ export default function VanessaAI() {
   const [checked, setChecked] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isEnglish, setIsEnglish] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const visitorId = useRef("");
   const contact = useRef<Contact>({});
+  const pathname = usePathname();
+  const isEnglish = pathname.startsWith("/en");
 
   useEffect(() => {
-    const english = window.location.pathname.startsWith("/en");
-    setIsEnglish(english);
     const consent = localStorage.getItem(`vanessaConsent:${CLIENT}`) === "accepted";
     setAccepted(consent);
     visitorId.current = localStorage.getItem(`vanessaVisitor:${CLIENT}`) || crypto.randomUUID();
     localStorage.setItem(`vanessaVisitor:${CLIENT}`, visitorId.current);
     try { contact.current = JSON.parse(localStorage.getItem(`vanessaContact:${visitorId.current}`) || "{}"); } catch { contact.current = {}; }
-    setMessages([
-      { role: "assistant", content: english ? "Hello, I am Vanessa AI." : "Hola, soy Vanessa AI." },
-      { role: "assistant", content: english ? "I am Home Design Marques’ digital advisor. How can I help with your project?" : "Soy la asesora digital de Home Design Marques. ¿Cómo puedo ayudarle con su proyecto?" },
-    ]);
   }, []);
+
+  useEffect(() => {
+    setMessages([
+      { role: "assistant", content: isEnglish ? "Hello, I am Vanessa AI." : "Hola, soy Vanessa AI." },
+      { role: "assistant", content: isEnglish ? "I am Home Design Marques’ digital advisor. How can I help with your project?" : "Soy la asesora digital de Home Design Marques. ¿Cómo puedo ayudarle con su proyecto?" },
+    ]);
+  }, [isEnglish]);
 
   const rememberContact = (text: string) => {
     const email = text.match(/[^\s@]+@[^\s@]+\.[^\s@,.;]+/)?.[0] || contact.current.email;

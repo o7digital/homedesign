@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SiteFooter from "../../components/SiteFooter";
+import SiteHeader from "../../components/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Privacy Notice | Home Design Marques",
@@ -14,10 +15,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PrivacyNotice() {
+export default function PrivacyNoticePage() {
   return (
-    <>
-      <main className="bg-[#fefaf3] min-h-screen p-8">
+    <div className="bg-[#fefaf3] font-sans min-h-screen">
+      <SiteHeader locale="en" />
+      <main className="p-8 pt-[230px]">
         <article className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-md text-gray-800">
           <h1 className="text-3xl font-bold text-[#5d3b2d] mb-6">Privacy Notice</h1>
           <p className="mb-4">
@@ -59,6 +61,6 @@ export default function PrivacyNotice() {
         </article>
       </main>
       <SiteFooter locale="en" />
-    </>
+    </div>
   );
 }

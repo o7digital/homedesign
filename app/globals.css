@@ -40,3 +40,242 @@ body {
 .ofertas-flash {
   animation: pulse-glow 2s ease-in-out infinite;
 }
+
+.vanessa-chat {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 2147483646;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.vanessa-chat * {
+  box-sizing: border-box;
+}
+
+.vanessa-panel {
+  width: min(400px, calc(100vw - 28px));
+  height: min(660px, calc(100vh - 110px));
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(93, 59, 45, 0.32);
+  border-radius: 24px;
+  background: #fffaf6;
+  color: #2f211c;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+}
+
+.vanessa-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px;
+  background: linear-gradient(135deg, #201713, #5d3b2d);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.vanessa-title {
+  margin: 0;
+  color: #f7d046;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.vanessa-status {
+  margin: 5px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+}
+
+.vanessa-close,
+.vanessa-toggle,
+.vanessa-teaser,
+.vanessa-lead button,
+.vanessa-composer button {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.vanessa-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+  font-weight: 900;
+}
+
+.vanessa-messages {
+  flex: 1;
+  min-height: 180px;
+  overflow-y: auto;
+  padding: 16px;
+  background: linear-gradient(rgba(93, 59, 45, 0.06) 1px, transparent 1px), #fffdfb;
+  background-size: 100% 42px;
+}
+
+.vanessa-message {
+  width: fit-content;
+  max-width: 88%;
+  margin: 0 0 10px;
+  padding: 11px 13px;
+  border-radius: 17px;
+  font-size: 14px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.vanessa-message.assistant {
+  background: #f0e5da;
+  color: #2f211c;
+}
+
+.vanessa-message.user {
+  margin-left: auto;
+  background: #5d3b2d;
+  color: #fffaf6;
+}
+
+.vanessa-lead {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  padding: 14px;
+  background: #fff8f3;
+  border-top: 1px solid rgba(93, 59, 45, 0.18);
+}
+
+.vanessa-lead-prompt {
+  padding: 12px 14px;
+  background: #fff8f3;
+  border-top: 1px solid rgba(93, 59, 45, 0.12);
+}
+
+.vanessa-lead-prompt button {
+  width: 100%;
+  border: 1px solid rgba(93, 59, 45, 0.22);
+  border-radius: 14px;
+  background: white;
+  color: #5d3b2d;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 11px 13px;
+}
+
+.vanessa-lead p,
+.vanessa-lead button {
+  grid-column: 1 / -1;
+}
+
+.vanessa-lead p {
+  margin: 0;
+  color: rgba(47, 33, 28, 0.72);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.vanessa-lead input,
+.vanessa-composer input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(93, 59, 45, 0.22);
+  border-radius: 14px;
+  background: white;
+  color: #2f211c;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+.vanessa-lead input {
+  padding: 11px;
+}
+
+.vanessa-lead input::placeholder,
+.vanessa-composer input::placeholder {
+  color: rgba(47, 33, 28, 0.48);
+}
+
+.vanessa-lead button,
+.vanessa-composer button,
+.vanessa-toggle {
+  background: #5d3b2d;
+  color: #fffaf6;
+  font-weight: 800;
+}
+
+.vanessa-lead button {
+  padding: 12px 14px;
+  border-radius: 14px;
+}
+
+.vanessa-composer {
+  display: grid;
+  grid-template-columns: 1fr 52px;
+  gap: 9px;
+  padding: 14px;
+  background: #fffaf6;
+  border-top: 1px solid rgba(93, 59, 45, 0.18);
+}
+
+.vanessa-composer input {
+  padding: 12px 13px;
+}
+
+.vanessa-composer button {
+  border-radius: 14px;
+  font-size: 20px;
+}
+
+.vanessa-composer button:disabled,
+.vanessa-lead button:disabled,
+.vanessa-composer input:disabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+}
+
+.vanessa-closed {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.vanessa-teaser {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid rgba(93, 59, 45, 0.28);
+  border-radius: 999px;
+  background: white;
+  color: #2f211c;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+  font-weight: 800;
+}
+
+.vanessa-toggle {
+  min-width: 72px;
+  height: 62px;
+  padding: 0 16px;
+  border-radius: 18px;
+  box-shadow: 0 16px 44px rgba(93, 59, 45, 0.28);
+}
+
+@media (max-width: 560px) {
+  .vanessa-chat {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .vanessa-lead {
+    grid-template-columns: 1fr;
+  }
+}

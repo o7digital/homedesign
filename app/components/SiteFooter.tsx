@@ -73,6 +73,7 @@ const footerCopy = {
 
 export default function SiteFooter({ locale = "es" }: { locale?: Locale }) {
   const content = footerCopy[locale];
+  const isEn = locale === "en";
 
   return (
     <footer className="bg-black text-white text-center py-8 mt-10">
@@ -123,6 +124,17 @@ export default function SiteFooter({ locale = "es" }: { locale?: Locale }) {
       >
         {content.privacy}
       </Link>
+      <p className="text-sm mt-3 text-gray-300">
+        {isEn ? "Made by " : "Realizado por "}
+        <a
+          href={isEn ? "https://www.o7digital.com/en" : "https://www.o7digital.com/"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-white"
+        >
+          o7 digital
+        </a>
+      </p>
 
       <nav
         aria-label={locale === "en" ? "Services" : "Servicios"}

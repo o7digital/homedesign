@@ -15,6 +15,7 @@ export default function SiteHeader({ locale = "es" }: { locale?: Locale }) {
         about: "About us",
         wood: "Wood Types",
         products: "Products",
+        news: "News",
         contact: "Contact",
         faq: "Frequently asked questions",
         offers: "OFFERS",
@@ -23,6 +24,7 @@ export default function SiteHeader({ locale = "es" }: { locale?: Locale }) {
         about: "Quiénes somos",
         wood: "Tipos de Madera",
         products: "Productos",
+        news: "Noticias",
         contact: "Contacto",
         faq: "Preguntas frecuentes",
         offers: "OFERTAS",
@@ -69,6 +71,11 @@ export default function SiteHeader({ locale = "es" }: { locale?: Locale }) {
             <li className="md:ml-8 p-2 text-center">
               <Link href={`${base}/#productos`} className="hover:underline">
                 {labels.products}
+              </Link>
+            </li>
+            <li className="md:ml-8 p-2 text-center">
+              <Link href={isEn ? "/en/news" : "/noticias"} className="hover:underline">
+                {labels.news}
               </Link>
             </li>
             <li className="md:ml-8 p-2 text-center">

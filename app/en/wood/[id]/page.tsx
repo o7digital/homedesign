@@ -1,10 +1,6 @@
-"use client";
-
-import Image from "next/image";
-import Link from "next/link";
+import type { Metadata } from "next";
 import maderasData from "../../../../data/maderas.json";
-import SiteFooter from "../../../components/SiteFooter";
-import SiteHeader from "../../../components/SiteHeader";
+import { WoodDetailContent } from "../../../maderas/[id]/WoodDetailClient";
 
 interface MaderaItem {
   id: string;
@@ -14,43 +10,49 @@ interface MaderaItem {
   img: string;
 }
 
-export default function EnglishWoodDetail({ params }: { params: { id: string } }) {
-  const madera = (maderasData as MaderaItem[]).find((m) => m.id === params.id);
+const maderas = maderasData as MaderaItem[];
+
+function findMadera(id: string) {
+  return maderas.find((m) => m.id === id);
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const madera = findMadera(id);
 
   if (!madera) {
-    return (
-      <div className="p-10 text-center">
-        <h1 className="text-2xl font-bold">Wood type not found</h1>
-        <Link href="/en/#tipos" className="text-[#5d3b2d] font-bold hover:underline">
-          ← Back to Wood Types
-        </Link>
-      </div>
-    );
+    return {
+      title: "Wood type not found | Home Design Marques",
+      alternates: { canonical: `/en/wood/${id}` },
+    };
   }
 
-  return (
-    <div className="bg-[#fefaf3] min-h-screen font-sans">
-      <SiteHeader locale="en" />
-      <div className="max-w-[900px] mx-auto mt-[230px] p-6 bg-[#fff2e6] rounded-xl shadow-md">
-        <div className="flex flex-col items-center text-center">
-          <Image
-            src={madera.img}
-            alt={madera.nombre}
-            width={500}
-            height={400}
-            className="rounded-lg mb-6"
-          />
-          <h1 className="text-2xl font-bold mb-2">{madera.nombre}</h1>
-          <p className="text-gray-700 mb-2">
-            <strong>Origin:</strong> {madera.origen}
-          </p>
-          <p className="mb-6 whitespace-pre-line">{madera.descripcion}</p>
-          <Link href="/en/#tipos" className="text-[#5d3b2d] font-bold hover:underline">
-            ← Back to wood catalog
-          </Link>
-        </div>
-      </div>
-      <SiteFooter locale="en" />
-    </div>
-  );
+  const description = `${madera.nombre}: ${madera.descripcion} Origin: ${madera.origen}.`;
+
+  return {
+    title: `${madera.nombre} wood | Home Design Marques`,
+    description,
+    alternates: {
+      canonical: `/en/wood/${madera.id}`,
+      languages: {
+        "es-MX": `/maderas/${madera.id}`,
+        en: `/en/wood/${madera.id}`,
+      },
+    },
+    openGraph: {
+      title: `${madera.nombre} wood | Home Design Marques`,
+      description,
+      url: `/en/wood/${madera.id}`,
+      locale: "en_US",
+      images: [{ url: madera.img, alt: madera.nombre }],
+    },
+  };
+}
+
+export default function EnglishWoodDetail({ params }: { params: { id: string } }) {
+  return <WoodDetailContent params={params} locale="en" />;
 }

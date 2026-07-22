@@ -96,53 +96,14 @@ export default function RootLayout({
     "image": "https://homedesignmarques.com/logo-transparent.png",
     "@id": "https://homedesignmarques.com",
     "url": "https://homedesignmarques.com",
-    "telephone": "+52-55-1234-5678",
     "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "",
-      "addressLocality": "Ciudad de México",
-      "addressRegion": "CDMX",
-      "postalCode": "",
-      "addressCountry": "MX"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 19.4326,
-      "longitude": -99.1332
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
-      ],
-      "opens": "09:00",
-      "closes": "18:00"
-    },
     "sameAs": [
       "https://www.facebook.com/homedesignmarques",
       "https://www.instagram.com/homedesignmarques",
       "https://www.tiktok.com/@homedesignmarques"
     ],
     "description": "Venta y fabricación de casas de madera prefabricadas en México. Muebles y mobiliario de madera para casas y oficinas. Puertas, pisos, triplay. Servicio en CDMX y toda la República Mexicana.",
-    "areaServed": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates",
-        "latitude": 19.4326,
-        "longitude": -99.1332
-      },
-      "geoRadius": "500000"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "127"
-    },
+    "areaServed": "Mexico",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Catálogo de Productos de Madera",

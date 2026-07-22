@@ -40,9 +40,21 @@ export default function PrivacyNoticePage() {
           <p className="mb-4">
             You may request access to, correction or deletion of your personal data, or object to its use,
             by emailing{" "}
-            <a className="text-[#5d3b2d] underline" href="mailto:contacto@homedesignmarquez.com">
-              contacto@homedesignmarquez.com
+            <a className="text-[#5d3b2d] underline" href="mailto:info@homedesignmarques.com">
+              info@homedesignmarques.com
             </a>.
+          </p>
+          <h2 className="text-2xl font-semibold mt-6 mb-3 text-[#5d3b2d]">Data controller</h2>
+          <p className="mb-4">
+            The person responsible for processing your personal information is{" "}
+            <strong>Jorge Armando Lozano Martínez</strong>, Mexican tax ID (RFC){" "}
+            <strong>LOMJ590503C42</strong>, operating under the business name{" "}
+            <strong>Home Design Marques</strong>, with an address in Mexico City.
+            For any privacy-related matter, email{" "}
+            <a className="text-[#5d3b2d] underline" href="mailto:info@homedesignmarques.com">
+              info@homedesignmarques.com
+            </a>
+            .
           </p>
           <h2 className="text-2xl font-semibold mt-6 mb-3 text-[#5d3b2d]">Information security</h2>
           <p className="mb-4">

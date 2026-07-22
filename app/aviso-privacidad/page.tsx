@@ -77,10 +77,10 @@ export default function AvisoPrivacidad() {
           Rectificar, Cancelar u Oponerte (ARCO) al uso de tus datos personales.
           Para ejercer estos derechos, puedes enviarnos un correo a:
           <a
-            href="mailto:contacto@homedesignmarquez.com"
+            href="mailto:info@homedesignmarques.com"
             className="text-[#5d3b2d] underline ml-1"
           >
-            contacto@homedesignmarquez.com
+            info@homedesignmarques.com
           </a>
         </p>
 
@@ -111,10 +111,10 @@ export default function AvisoPrivacidad() {
           con nuevas disposiciones legales o internas. Te notificaremos cualquier
           cambio a través de nuestro sitio web:
           <a
-            href="https://homedesignmarquez.com"
+            href="https://homedesignmarques.com"
             className="text-[#5d3b2d] underline ml-1"
           >
-            www.homedesignmarquez.com
+            www.homedesignmarques.com
           </a>
         </p>
 
@@ -123,11 +123,22 @@ export default function AvisoPrivacidad() {
         </h2>
         <p className="mb-4 text-gray-800">
           El responsable del tratamiento de tus datos personales es{" "}
-          <strong>Home Design Márquez</strong>, con domicilio en Ciudad de México.
+          <strong>Jorge Armando Lozano Martínez</strong>, RFC{" "}
+          <strong>LOMJ590503C42</strong>, quien opera comercialmente como{" "}
+          <strong>Home Design Marques</strong>, con domicilio en Ciudad de México.
+          Para cualquier asunto relacionado con tus datos personales, puedes
+          escribir a{" "}
+          <a
+            href="mailto:info@homedesignmarques.com"
+            className="text-[#5d3b2d] underline"
+          >
+            info@homedesignmarques.com
+          </a>
+          .
         </p>
 
         <p className="mt-8 text-sm text-gray-600">
-          Última actualización: Agosto 2025
+          Última actualización: Junio 2026
         </p>
 
         <div className="mt-10">

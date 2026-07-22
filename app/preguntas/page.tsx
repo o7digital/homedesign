@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
@@ -78,8 +79,26 @@ const preguntas = [
 ];
 
 export default function PreguntasPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: preguntas.map((item) => ({
+      "@type": "Question",
+      name: item.pregunta,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.respuesta,
+      },
+    })),
+  };
+
   return (
     <div className="bg-[#fefaf3] font-sans flex flex-col min-h-screen">
+      <Script
+        id="faq-jsonld-es"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <SiteHeader />
 
       <main className="pt-[210px]">

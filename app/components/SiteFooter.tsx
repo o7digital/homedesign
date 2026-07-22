@@ -8,6 +8,28 @@ const footerCopy = {
   es: {
     rights: "Todos los derechos reservados.",
     privacy: "Aviso de Privacidad",
+    seoKeywords: [
+      "casas de madera México",
+      "casas prefabricadas de madera",
+      "cabañas de madera México",
+      "construcción de casas de madera CDMX",
+      "casas ecológicas México",
+      "casas modulares de madera",
+      "muebles de madera a medida",
+      "mobiliario de madera para oficinas",
+      "carpintería fina México",
+      "puertas de madera México",
+      "pisos de madera natural",
+      "triplay México",
+      "escaleras de madera",
+      "madera de pino",
+      "madera de cedro",
+      "madera de encino",
+      "madera de nogal",
+      "madera parota",
+      "productos de madera premium",
+      "construcción sustentable México",
+    ],
     links: [
       { href: "/#productos", label: "Casas de madera" },
       { href: "/#productos", label: "Mobiliario a medida" },
@@ -20,6 +42,28 @@ const footerCopy = {
   en: {
     rights: "All rights reserved.",
     privacy: "Privacy Notice",
+    seoKeywords: [
+      "wooden homes Mexico",
+      "prefabricated wooden homes",
+      "wood cabins Mexico",
+      "wooden house construction Mexico City",
+      "eco-friendly homes Mexico",
+      "modular wooden homes",
+      "custom wood furniture",
+      "wood office furniture",
+      "fine woodworking Mexico",
+      "wooden doors Mexico",
+      "natural wood flooring",
+      "plywood Mexico",
+      "wooden stairs",
+      "pine wood",
+      "cedar wood",
+      "oak wood",
+      "walnut wood",
+      "parota wood",
+      "premium wood products",
+      "sustainable construction Mexico",
+    ],
     links: [
       { href: "/en/#productos", label: "Wooden homes" },
       { href: "/en/#productos", label: "Custom furniture" },
@@ -29,7 +73,15 @@ const footerCopy = {
       { href: "/en/preguntas", label: "FAQ" },
     ],
   },
-} satisfies Record<Locale, { rights: string; privacy: string; links: Array<{ href: string; label: string }> }>;
+} satisfies Record<
+  Locale,
+  {
+    rights: string;
+    privacy: string;
+    seoKeywords: string[];
+    links: Array<{ href: string; label: string }>;
+  }
+>;
 
 export default function SiteFooter({ locale = "es" }: { locale?: Locale }) {
   const content = footerCopy[locale];
@@ -110,6 +162,10 @@ export default function SiteFooter({ locale = "es" }: { locale?: Locale }) {
           ))}
         </ul>
       </nav>
+
+      <p className="mt-8 max-w-5xl mx-auto px-4 text-xs leading-6 text-gray-500">
+        {content.seoKeywords.join(" · ")}
+      </p>
     </footer>
   );
 }

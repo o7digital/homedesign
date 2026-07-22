@@ -5,13 +5,13 @@ import { usePathname } from "next/navigation";
 
 const COPY = {
   es: {
-    title: "Vanessa AI Assistant",
+    title: "Olivia AI Assistant",
     status: "Asistente Home Design Marques",
     online: "En linea",
-    teaser: "Vanessa puede ayudarte",
+    teaser: "Olivia puede ayudarte",
     open: "Abrir chat",
     close: "Cerrar chat",
-    welcome: "Hola, soy Vanessa AI Assistant. Puedo ayudarte con casas de madera, muebles y cotizaciones.",
+    welcome: "Hola, soy Olivia AI Assistant. Puedo ayudarte con casas de madera, muebles y cotizaciones.",
     leadIntro: "Si quieres que un asesor te contacte para una cotizacion, deja tus datos.",
     firstName: "Nombre",
     lastName: "Apellido",
@@ -25,13 +25,13 @@ const COPY = {
     error: "No pude enviar el mensaje. Intenta de nuevo o usa el formulario de contacto.",
   },
   en: {
-    title: "Vanessa AI Assistant",
+    title: "Olivia AI Assistant",
     status: "Home Design Marques Assistant",
     online: "Online",
-    teaser: "Vanessa can help",
+    teaser: "Olivia can help",
     open: "Open chat",
     close: "Close chat",
-    welcome: "Hello, I am Vanessa AI Assistant. I can help with wooden houses, furniture, and quotes.",
+    welcome: "Hello, I am Olivia AI Assistant. I can help with wooden houses, furniture, and quotes.",
     leadIntro: "If you want an advisor to contact you for a quote, leave your details.",
     firstName: "First name",
     lastName: "Last name",
@@ -89,7 +89,7 @@ export default function VanessaChat() {
         body: JSON.stringify({
           ...lead,
           language,
-          message: `Lead Chat Vanessa AI Home Design Marques (${language})\n\n${transcript}`,
+          message: `Lead Chat Olivia AI Home Design Marques (${language})\n\n${transcript}`,
         }),
       });
       if (!response.ok) throw new Error("Lead delivery failed");

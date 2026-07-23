@@ -34,7 +34,7 @@ export default function SiteFooter({ locale = "es" }: { locale?: Locale }) {
           <FaInstagram />
         </a>
         <a
-          href="https://wa.me/5215512345678"
+          href="https://wa.me/527208297054"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-gray-400 text-xl"

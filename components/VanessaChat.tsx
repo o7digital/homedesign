@@ -188,7 +188,7 @@ export default function VanessaChat() {
 
       <div className="vanessa-closed">
         <a
-          href="https://wa.me/527208297054"
+          href="https://wa.me/525560670663"
           target="_blank"
           rel="noopener noreferrer"
           className="vanessa-whatsapp"

@@ -423,6 +423,11 @@ export function HomeContent({ locale = "es" }: { locale?: Locale }) {
         <p className="mb-8 text-center text-gray-700 max-w-2xl mx-auto">
           {t.contactIntro}
         </p>
+        <p className="mb-6 text-center text-lg font-semibold text-[#5d3b2d]">
+          <a href="tel:+525560670663" className="underline hover:text-[#3f281f]">
+            +52 55 60 67 06 63
+          </a>
+        </p>
 
         <form
           action="https://formspree.io/f/xqadzpgz"

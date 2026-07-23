@@ -187,6 +187,15 @@ export default function VanessaChat() {
       )}
 
       <div className="vanessa-closed">
+        <a
+          href="https://wa.me/527208297054"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="vanessa-whatsapp"
+          aria-label="WhatsApp"
+        >
+          WhatsApp
+        </a>
         {!isOpen && (
           <button type="button" className="vanessa-teaser" onClick={() => setIsOpen(true)}>
             {copy.teaser}

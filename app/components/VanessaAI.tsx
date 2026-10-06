@@ -72,7 +72,7 @@ export default function VanessaAI() {
       setMessages((items) => [...items, { role: "assistant", content: reply }]);
       await fetch(`${API}/widget/conversations`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ clientCode: CLIENT, visitorId: visitorId.current, content: reply, model: data.model }) });
     } catch {
-      setMessages((items) => [...items, { role: "assistant", content: isEnglish ? "Please contact info@homedesignmarques.com." : "Por favor contacte a info@homedesignmarques.com." }]);
+      setMessages((items) => [...items, { role: "assistant", content: isEnglish ? "Please contact info@homedesignmarques.com.mx." : "Por favor contacte a info@homedesignmarques.com.mx." }]);
     } finally { setLoading(false); }
   };
 

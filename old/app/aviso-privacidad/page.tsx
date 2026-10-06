@@ -65,10 +65,10 @@ export default function AvisoPrivacidad() {
           Rectificar, Cancelar u Oponerte (ARCO) al uso de tus datos personales.
           Para ejercer estos derechos, puedes enviarnos un correo a:
           <a
-            href="mailto:contacto@homedesignmarquez.com"
+            href="mailto:contacto@homedesignmarquez.com.mx"
             className="text-[#5d3b2d] underline ml-1"
           >
-            contacto@homedesignmarquez.com
+            contacto@homedesignmarquez.com.mx
           </a>
         </p>
 
@@ -99,10 +99,10 @@ export default function AvisoPrivacidad() {
           con nuevas disposiciones legales o internas. Te notificaremos cualquier
           cambio a través de nuestro sitio web:
           <a
-            href="https://homedesignmarquez.com"
+            href="https://homedesignmarquez.com.mx"
             className="text-[#5d3b2d] underline ml-1"
           >
-            www.homedesignmarquez.com
+            www.homedesignmarquez.com.mx
           </a>
         </p>
 

@@ -19,7 +19,7 @@ interface OffreItem {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://homedesignmarques.com'
+  const baseUrl = 'https://homedesignmarques.com.mx'
   
   const productos = productosData as unknown as Producto[];
   const maderas = maderasData as unknown as MaderaItem[];

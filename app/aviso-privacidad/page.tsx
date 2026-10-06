@@ -77,10 +77,10 @@ export default function AvisoPrivacidad() {
           Rectificar, Cancelar u Oponerte (ARCO) al uso de tus datos personales.
           Para ejercer estos derechos, puedes enviarnos un correo a:
           <a
-            href="mailto:info@homedesignmarques.com"
+            href="mailto:info@homedesignmarques.com.mx"
             className="text-[#5d3b2d] underline ml-1"
           >
-            info@homedesignmarques.com
+            info@homedesignmarques.com.mx
           </a>
         </p>
 
@@ -111,10 +111,10 @@ export default function AvisoPrivacidad() {
           con nuevas disposiciones legales o internas. Te notificaremos cualquier
           cambio a través de nuestro sitio web:
           <a
-            href="https://homedesignmarques.com"
+            href="https://homedesignmarques.com.mx"
             className="text-[#5d3b2d] underline ml-1"
           >
-            www.homedesignmarques.com
+            www.homedesignmarques.com.mx
           </a>
         </p>
 
@@ -129,10 +129,10 @@ export default function AvisoPrivacidad() {
           Para cualquier asunto relacionado con tus datos personales, puedes
           escribir a{" "}
           <a
-            href="mailto:info@homedesignmarques.com"
+            href="mailto:info@homedesignmarques.com.mx"
             className="text-[#5d3b2d] underline"
           >
-            info@homedesignmarques.com
+            info@homedesignmarques.com.mx
           </a>
           .
         </p>

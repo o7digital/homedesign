@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://homedesignmarques.com"),
+  metadataBase: new URL("https://homedesignmarques.com.mx"),
   title: "Home Design Marques | Venta y Fabricación de Casas de Madera Prefabricadas México",
   description: "Venta y fabricación de casas de madera prefabricadas en México. Muebles y mobiliario de madera para casas y oficinas. Puertas, pisos, triplay. Servicio en CDMX y toda la República Mexicana. Diseño moderno y sustentable.",
   keywords: [
@@ -92,9 +92,9 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Home Design Marques",
-    "image": "https://homedesignmarques.com/logo-transparent.png",
-    "@id": "https://homedesignmarques.com",
-    "url": "https://homedesignmarques.com",
+    "image": "https://homedesignmarques.com.mx/logo-transparent.png",
+    "@id": "https://homedesignmarques.com.mx",
+    "url": "https://homedesignmarques.com.mx",
     "priceRange": "$$",
     "sameAs": [
       "https://www.facebook.com/homedesignmarques",

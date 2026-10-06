@@ -864,7 +864,7 @@ Menu gauche → **SEO preferences**
 ### Contact technique:
 
 Pour toute assistance technique, contacter:
-- **Email:** support@homedesignmarques.com
+- **Email:** support@homedesignmarques.com.mx
 - **Équipe dev:** Voir README principal du projet
 
 ---
@@ -886,7 +886,7 @@ Avant de publier du nouveau contenu:
 ## 🔗 Liens utiles
 
 - **Admin DatoCMS:** https://homedesignmarques.admin.datocms.com
-- **Site web:** https://homedesignmarques.com
+- **Site web:** https://homedesignmarques.com.mx
 - **Documentation DatoCMS:** https://www.datocms.com/docs
 - **Guide SEO:** Voir `README_SEO.md`
 

@@ -279,7 +279,7 @@ Basado en: Volumen × Conversión × Competencia
 ## 📞 CONTACTO
 
 Para soporte o preguntas sobre la estrategia SEO:
-- **Email:** support@homedesignmarques.com
+- **Email:** support@homedesignmarques.com.mx
 - **Documentación:** Ver `README_SEO.md`
 
 ---

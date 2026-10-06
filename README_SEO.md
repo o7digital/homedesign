@@ -36,7 +36,7 @@ Archivo creado para ayudar a Google a indexar todas las páginas:
 - Aviso de privacidad (priority: 0.5)
 - Páginas de maderas: pino, cedro, encino (priority: 0.8)
 
-**Accesible en:** `https://homedesignmarques.com/sitemap.xml`
+**Accesible en:** `https://homedesignmarques.com.mx/sitemap.xml`
 
 ### 3. Robots.txt (`app/robots.ts`)
 
@@ -45,7 +45,7 @@ Configuración para motores de búsqueda:
 - ✅ Bloquea APIs (`/api/`)
 - ✅ Referencia al sitemap
 
-**Accesible en:** `https://homedesignmarques.com/robots.txt`
+**Accesible en:** `https://homedesignmarques.com.mx/robots.txt`
 
 ---
 
@@ -207,7 +207,7 @@ FAIBLE COMPÉTITION (Niche - Forte conversion):
 ### URL Base
 El sitemap y robots.txt están configurados con:
 ```
-https://homedesignmarques.com
+https://homedesignmarques.com.mx
 ```
 
 **⚠️ Si el dominio es diferente, actualizar en:**

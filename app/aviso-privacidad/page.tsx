@@ -138,7 +138,7 @@ export default function AvisoPrivacidad() {
         </p>
 
         <p className="mt-8 text-sm text-gray-600">
-          Última actualización: Junio 2026
+          Última actualización: Julio 2026
         </p>
 
         <div className="mt-10">
